@@ -1,0 +1,15 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="com.nirmiteepublic.clink" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    </style>
+
+    <style name="alertDialog" parent="ThemeOverlay.MaterialComponents.Dialog.Alert">
+        <item name="android:windowBackground">@drawable/dialog_rounded_corner</item>
+        <item name="android:windowMinWidthMinor">85%</item>
+    </style>
+
+    <style name="Theme.CLink" parent="com.nirmiteepublic.clink" />
+
+</resources>

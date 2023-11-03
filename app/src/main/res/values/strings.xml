@@ -1,0 +1,143 @@
+<resources>
+    <string name="app_name">Career Sathi</string>
+
+    <!--    content description-->
+    <string name="eye_icon">eye icon</string>
+    <string name="lock_icon">lock icon</string>
+    <string name="call_icon">call icon</string>
+    <string name="mail_icon">mail icon</string>
+    <string name="cart_icon">cart icon</string>
+
+    <string name="enter_password">Enter Password</string>
+    <string name="enter_number">Enter Number</string>
+    <string name="enter_name">Enter Name</string>
+    <string name="enter_email">Enter Email</string>
+    <string name="enter_confirm_password">Enter Confirm Password</string>
+
+    <string name="forgot_password">Forgot password ?</string>
+
+    <string name="register_description">Welcome, We are Happy to see yor here\nto continue please sign up first</string>
+    <string name="login_description">We are happy to see you again. To use your\naccount, you must Sign In first</string>
+    <string name="forgot_password_description">Don\'t worry! It happens. Please enter the phone number\nassociated with your account</string>
+    <string name="password_description">Complexity is the key to security, so forge a strong password like a master craftsman shaping a formidable shield</string>
+
+    <string name="create_new_account">Create New Account 🔥</string>
+    <string name="welcome_back">Welcome Back 👋</string>
+
+    <string name="register">Register</string>
+    <string name="login">Login</string>
+
+    <string name="submit">Submit</string>
+    <string name="confirm">Confirm</string>
+
+    <string name="already_have_an_account">Already have an Account? </string>
+    <string name="new_to_career_sathi">New to Career Sathi?</string>
+    <string name="set_password">Set Password</string>
+    <string name="have_a_referral_code">Have a Referral Code?</string>
+    <string name="enter_refer_code_description">Embrace the power of connection and referral: Enter the code that opens the door to shared rewards and endless possibilities!</string>
+    <string name="enter_refer_code">Enter Refer Code</string>
+    <string name="skip">Skip</string>
+    <string name="arrow_icon">arrow icon</string>
+    <string name="set_number_description">Stay connected effortlessly: Share your number today, so we can keep you informed tomorrow.</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="registration_completed_successfully">Registration Completed Successfully</string>
+    <string name="continue_go">Continue</string>
+    <string name="enter_code">Enter Code</string>
+    <string name="activation_description">We\'ve sent an mail with activation code to the email</string>
+    <string name="default_timer">You can request to resend otp in : 2:30</string>
+    <string name="splash_screen_image">splash screen image</string>
+    <string name="view_all">View All</string>
+    <string name="back_image">back image</string>
+    <string name="youtube_icon">Youtube icon</string>
+    <string name="comment_icon">comment icon</string>
+    <string name="slider_images">slider images</string>
+    <string name="category_image">category image</string>
+    <string name="categories">Categories</string>
+    <string name="part_time">Part Time</string>
+    <string name="job_options">Job Options</string>
+    <string name="earn">Earn</string>
+    <string name="calender">Calender</string>
+    <string name="profile_icon">profile icon</string>
+    <string name="ask_your_doubt_here">Ask your doubt here</string>
+    <string name="send_image">send image</string>
+
+    <string name="refer_icon">refer icon</string>
+    <string name="logout">Logout</string>
+    <string name="refer_and_earn">Refer and Earn</string>
+    <string name="share">Share</string>
+    <string name="my_details">My Details</string>
+    <string name="person_icon">person icon</string>
+    <string name="continue_icon">continue icon</string>
+    <string name="logout_icon">logout icon</string>
+    <string name="share_icon">share icon</string>
+    <string name="email">Email</string>
+    <string name="user_name">User Name</string>
+    <string name="number">Number</string>
+    <string name="save">Save</string>
+    <string name="change">Change</string>
+    <string name="enter_old_password">Enter Old Password</string>
+    <string name="connect_support">Connect Support</string>
+    <string name="support_icon">support icon</string>
+    <string name="copy_icon">copy icon</string>
+    <string name="join_refer_program">Join the Refer Program to start referring</string>
+    <string name="to_understand_how_referral_works">To Understand how referral works</string>
+    <string name="view_invitation_rules">View Invitation Rules</string>
+    <string name="check_icon">check icon</string>
+    <string name="join">Join</string>
+    <string name="earn_cash_rewards">Earn cash\nrewards</string>
+    <string name="friend_registered_successfully">Friend registered successfully</string>
+    <string name="copy_link">Copy link</string>
+    <string name="invite_code">Invite Code</string>
+    <string name="join_the_refer_program">Join Refer Program</string>
+    <string name="attention_icon">attention icon</string>
+    <string name="don_t_have_a_referral_code_use_our">Don\'t have a Referral Code. Use Our\'s</string>
+    <string name="invalid_invite_code">Invalid Invite Code</string>
+    <string name="code_applied">Code Applied</string>
+    <string name="subtotal">Subtotal</string>
+    <string name="referral_discount">Referral Discount</string>
+    <string name="final_amount">Final</string>
+    <string name="pay">Pay</string>
+    <string name="amount_payable">Amount Payable :</string>
+    <string name="upi_id">Upi ID</string>
+    <string name="copy_upi_id">Copy Upi ID</string>
+    <string name="money_icon">money icon</string>
+    <string name="complete_the_payment">Complete the Payment</string>
+    <string name="click_icon">click icon</string>
+    <string name="click_the_confirm_button_below">Click the Confirm Button Below</string>
+    <string name="reference_no">Reference Number</string>
+    <string name="transaction_description">Please provide the Transaction or Reference number that you received from the app after completing the payment. You can also locate the Reference ID in the message from your bank confirming the debited amount.</string>
+    <string name="watch_steps">Watch Steps</string>
+    <string name="transaction_history_icon">transaction history icon</string>
+    <string name="transaction_history">Transaction History</string>
+    <string name="invalid_reference_code">Invalid Reference Code</string>
+    <string name="wallet_balance">Wallet Balance</string>
+    <string name="refer_code">Refer Code</string>
+    <string name="total_earning">Total Earning</string>
+    <string name="total_withdraw">Total Withdraw</string>
+    <string name="total_joins">Total Joins</string>
+    <string name="total_registrations">Total Registrations</string>
+    <string name="team_icon">team icon</string>
+    <string name="withdraw">Withdraw</string>
+    <string name="wallet_icon">wallet icon</string>
+    <string name="amount">Amount</string>
+    <string name="withdraw_method">Withdraw Method</string>
+    <string name="bank_icon">bank icon</string>
+    <string name="bank_transfer">Bank Transfer</string>
+    <string name="upi_icon">upi icon</string>
+    <string name="upi_transfer">Upi Transfer</string>
+    <string name="upi_transfer_description">Feel free to enter your UPI ID, as we take every precaution to ensure its security</string>
+    <string name="enter_upi_id">Enter Upi Id</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="company_image">company image</string>
+    <string name="company_name">Company Name</string>
+    <string name="refer_amp_earn_money"><![CDATA[Refer & Earn Money]]></string>
+    <string name="description">Description</string>
+    <string name="enter_your_friends_code">Enter Your Friends Code</string>
+    <string name="get_link">Get Link</string>
+    <string name="add_own_link">Add Own Link</string>
+    <string name="link">Link</string>
+    <string name="refer_bonus_amount">Refer Bonus Amount</string>
+    <string name="refer_link">Refer Link</string>
+
+</resources>

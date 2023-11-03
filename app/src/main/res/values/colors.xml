@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="main_color">#07031E</color>
+    <color name="royal_blue">#3561FE</color>
+    <color name="light_blue">#4888F4</color>
+    <color name="periwinkle">#CDD9FF</color>
+    <color name="charcoal">#36454F</color>
+    <color name="cyan_process">#08BBCC</color>
+    <color name="item_back">#F8F9FD</color>
+    <color name="offwhite">#F7F7F7</color>
+    <color name="colorPrimary">#FF6750A4</color>
+
+    <color name="fade">#80A9A9A9</color>
+    <color name="yt_black">#0F0F0F</color>
+
+    <color name="dim">#97979A</color>
+
+    <!--    <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">#fff</color>-->
+
+</resources>
