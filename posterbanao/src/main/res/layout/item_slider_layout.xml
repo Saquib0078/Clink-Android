@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="slider"
+            type="com.visticsolution.posterbanao.model.SliderModel" />
+    </data>
+    <FrameLayout
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginHorizontal="@dimen/_8sdp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.cardview.widget.CardView
+            android:id="@+id/slider_rlt"
+            app:cardCornerRadius="8dp"
+            android:layout_margin="2dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/image"
+                android:imageURL="@{slider.image}"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/flag_afghanistan"
+                android:scaleType="fitXY"/>
+
+        </androidx.cardview.widget.CardView>
+    </FrameLayout>
+</layout>

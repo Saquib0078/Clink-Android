@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".payment.OfflineActivity">
+
+    <RelativeLayout
+        android:background="@color/app_color"
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="55dp">
+
+        <ImageButton
+            android:layout_centerVertical="true"
+            android:id="@+id/back_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:padding="15dp"
+            android:src="@drawable/ic_arrow_back"
+            app:tint="@color/white" />
+
+        <TextView
+            android:id="@+id/title_tv"
+            android:layout_toRightOf="@+id/back_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="@string/offline_payment"
+            android:textColor="@color/white"
+            android:textSize="16dp" />
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_above="@+id/submit_btn"
+        android:layout_below="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_above="@+id/submit_btn"
+            android:layout_below="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/_15sdp"
+                android:text="@string/offline_payment_title"
+                android:textColor="@color/textColor"
+                android:padding="@dimen/_15sdp"/>
+
+            <LinearLayout
+                android:paddingHorizontal="@dimen/_15sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/_15sdp"
+                    android:text="@string/payment_details"
+                    android:textColor="@color/textColor"/>
+
+                <TextView
+                    android:background="@drawable/rounded_bg"
+                    android:paddingHorizontal="@dimen/_15sdp"
+                    android:paddingVertical="@dimen/_5sdp"
+                    android:id="@+id/amountTv"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/_15sdp"
+                    android:text="₹ 100"
+                    android:textColor="@color/white"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="@dimen/_10sdp"
+                android:paddingHorizontal="@dimen/_10sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <LinearLayout
+                    android:paddingHorizontal="@dimen/_5sdp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/_15sdp"
+                        android:text="Scan QR Code"
+                        android:textColor="@color/textColor"/>
+
+                    <ImageView
+                        android:id="@+id/qrImage"
+                        android:textStyle="bold"
+                        android:layout_width="@dimen/_130sdp"
+                        android:layout_height="@dimen/_130sdp"
+                        android:textSize="@dimen/_15sdp"
+                        android:text="₹ 100"
+                        android:src="@drawable/gradiant_bg7"
+                        android:textColor="@color/textColor"/>
+
+                </LinearLayout>
+                <TextView
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:id="@+id/paymentDetailsTv"
+                    android:textStyle="bold"
+                    android:background="@drawable/rounded_dash_bg"
+                    android:backgroundTint="#1D8E8E8E"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/_15sdp"
+                    android:textIsSelectable="true"
+                    android:text="@string/offline_payment_title"
+                    android:textColor="@color/black_50"
+                    android:padding="@dimen/_15sdp"/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_marginTop="@dimen/_10sdp"
+                android:paddingHorizontal="@dimen/_15sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/_12sdp"
+                android:text="@string/attach_screenshot_of_payment"
+                android:textColor="@color/textColor"/>
+
+            <TextView
+                android:id="@+id/selectImage"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:drawableLeft="@drawable/ic_add"
+                android:gravity="center"
+                android:layout_marginHorizontal="@dimen/_15sdp"
+                android:background="@drawable/rounded_dash_bg"
+                android:backgroundTint="#1D8E8E8E"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/_15sdp"
+                android:text="@string/choose_screenshot"
+                android:textColor="@color/textColor"
+                android:padding="@dimen/_15sdp"/>
+
+            <ImageView
+                android:id="@+id/imgView"
+                android:layout_margin="@dimen/_15sdp"
+                android:layout_width="@dimen/_150sdp"
+                android:layout_height="@dimen/_150sdp"/>
+        </LinearLayout>
+    </ScrollView>
+
+    <TextView
+        android:layout_alignParentBottom="true"
+        android:id="@+id/submit_btn"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:layout_marginEnd="@dimen/_8sdp"
+        android:layout_marginBottom="@dimen/_8sdp"
+        android:background="@drawable/btn"
+        android:gravity="center"
+        android:text="@string/submit"
+        android:textColor="@color/white"
+        android:textSize="18dp"
+        android:textStyle="bold" />
+
+</RelativeLayout>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".ui.activity.actions.UserDetailsActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/back"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_marginStart="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@drawable/back_arrow_container"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_centerInParent="true"
+                android:importantForAccessibility="no"
+                android:src="@drawable/back"
+                app:tint="#5176F2" />
+
+        </RelativeLayout>
+
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/slideView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.6" />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.4"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/continue_next"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_45sdp"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_marginEnd="@dimen/_15sdp"
+                android:background="@drawable/sign_enabled"
+                android:text="@string/continue_next"
+                android:textColor="@color/white" />
+
+            <LinearLayout
+                android:id="@+id/dots"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_alignParentBottom="true"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:textAlignment="center" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/fragmentContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

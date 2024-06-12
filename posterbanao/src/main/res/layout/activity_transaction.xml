@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TransactionActivity">
+    <RelativeLayout
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/app_color">
+
+        <ImageButton
+            android:id="@+id/back_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:padding="15dp"
+            android:src="@drawable/ic_arrow_back"
+            app:tint="@color/white" />
+
+        <TextView
+            android:id="@+id/title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/back_btn"
+            android:text="@string/wallet_transactions"
+            android:textColor="@color/white"
+            android:textSize="16dp" />
+
+    </RelativeLayout>
+    <LinearLayout
+        android:background="@color/app_color"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp">
+        <TextView
+            android:gravity="center"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="@dimen/_13sdp"
+            android:text="ID"/>
+
+        <TextView
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.7"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_13sdp"
+            android:text="Title"/>
+
+        <TextView
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_12sdp"
+            android:text="@string/amount"/>
+        <TextView
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_12sdp"
+            android:text="@string/type"/>
+        <TextView
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.9"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_13sdp"
+            android:text="@string/Date"/>
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/userList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_transaction_histri" />
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/no_data_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="@dimen/_100sdp"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"
+                app:lottie_rawRes="@raw/no_data" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:text="@string/no_user_found"
+                android:textColor="@color/textColor"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/there_is_no_data_so"
+                android:textColor="@color/hintColor"
+                android:textSize="13dp" />
+        </LinearLayout>
+
+    </RelativeLayout>
+</LinearLayout>

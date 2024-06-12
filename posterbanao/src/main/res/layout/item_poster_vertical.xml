@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:soundEffectsEnabled="true">
+
+    <data>
+
+        <variable
+            name="posts"
+            type="com.visticsolution.posterbanao.model.PostsModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_4sdp"
+        android:layoutAnimation="@anim/rc_animation">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_base"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:cardBackgroundColor="@color/transparent"
+            app:cardCornerRadius="@dimen/_4sdp"
+            app:cardElevation="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="2dp"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <RelativeLayout
+                    android:background="@color/red_color_picker"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/iv"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:imageURL="@{posts.thumb_url}"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/btxt0" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/premium_tag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_margin="@dimen/_5sdp"
+                    android:isPremium="@{posts.premium}">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_centerInParent="true"
+                        android:src="@drawable/ic_crown" />
+
+                </RelativeLayout>
+
+                <ImageView
+                    android:id="@+id/video_type"
+                    android:layout_width="@dimen/_25sdp"
+                    android:layout_height="@dimen/_25sdp"
+                    android:layout_gravity="bottom"
+                    android:layout_margin="@dimen/_5sdp"
+                    android:background="@drawable/rounded_bg"
+                    android:isVideo="@{posts.item_url}"
+                    android:src="@drawable/exo_controls_play" />
+
+                <TextView
+                    android:id="@+id/isTamplate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|right"
+                    android:layout_margin="@dimen/_5sdp"
+                    android:background="@drawable/rounded_bg"
+                    android:paddingHorizontal="@dimen/_5sdp"
+                    android:paddingVertical="@dimen/_2sdp"
+                    android:text="@string/tamplate"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_10sdp"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:id="@+id/view_image"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/selected_border"
+                    android:visibility="invisible"
+                    app:tint="@color/app_color" />
+
+            </androidx.cardview.widget.CardView>
+
+        </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

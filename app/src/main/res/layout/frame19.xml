@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_42sdp"
+        android:layout_centerVertical="true"
+        android:background="#E9EBEB" />
+
+
+
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/ivf19"
+                android:layout_width="@dimen/_70sdp"
+                android:layout_height="@dimen/_70sdp"
+                android:background="@color/darkorange"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/_5sdp"
+                app:strokeColor="@color/white"
+                app:strokeWidth="@dimen/_2sdp"
+                app:shapeAppearanceOverlay="@style/DecagonView"
+                android:scaleType="centerCrop" />
+
+
+    <ImageView
+        android:layout_width="@dimen/_80sdp"
+        android:layout_height="@dimen/_85sdp"
+        android:layout_centerVertical="true"
+        android:adjustViewBounds="true"
+        android:src="@drawable/watchcrown" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvf19"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hello World"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:id="@+id/tvf191"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hello World"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</RelativeLayout>

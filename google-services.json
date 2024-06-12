@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "878738115009",
+    "project_id": "c-link-46f11",
+    "storage_bucket": "c-link-46f11.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:878738115009:android:01c3026d7d4d970eefc740",
+        "android_client_info": {
+          "package_name": "com.nirmitee.clinkadmin"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCp5AmXjzznL2b7PUfFgc9F98pUqvQ7Q-E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:878738115009:android:9144132d2e054deeefc740",
+        "android_client_info": {
+          "package_name": "com.nirmiteepublic.clink"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCp5AmXjzznL2b7PUfFgc9F98pUqvQ7Q-E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

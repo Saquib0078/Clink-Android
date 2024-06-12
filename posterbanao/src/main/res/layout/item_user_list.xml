@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="users"
+            type="com.visticsolution.posterbanao.model.UserModel" />
+    </data>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <androidx.cardview.widget.CardView
+                android:layout_margin="@dimen/_8sdp"
+                android:layout_width="@dimen/_70sdp"
+                android:layout_height="@dimen/_70sdp"
+                app:cardCornerRadius="@dimen/_8sdp">
+                <ImageView
+                    android:id="@+id/image"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/btxt1"
+                    android:scaleType="centerCrop"
+                    android:imageURL="@{users.profile_pic}"/>
+            </androidx.cardview.widget.CardView>
+            <LinearLayout
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@{users.name}"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/_13sdp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@{users.email}"
+                    android:textColor="@color/gray_darl"
+                    android:textSize="@dimen/_13sdp" />
+
+            </LinearLayout>
+            <TextView
+                android:id="@+id/dateBtn"
+                android:layout_marginRight="@dimen/_8sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/add_text"
+                android:textSize="@dimen/_12sdp"
+                android:background="@drawable/full_rounded_bg"
+                android:backgroundTint="@color/graycolor"
+                android:paddingHorizontal="@dimen/_10sdp"
+                android:paddingVertical="@dimen/_8sdp"
+                android:textColor="@color/textColor"/>
+        </LinearLayout>
+        <View
+            android:layout_marginHorizontal="@dimen/_8sdp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/graycolor"/>
+    </LinearLayout>
+</layout>

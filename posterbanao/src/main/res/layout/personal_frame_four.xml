@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <ImageView
+        android:id="@+id/iv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:src="@drawable/btxt0"/>
+
+    <com.maggie.stroketextviewlibrary.StrokeTextView
+        android:layout_margin="@dimen/_15sdp"
+        android:id="@+id/number"
+        android:layout_centerHorizontal="true"
+        android:drawableLeft="@drawable/ic_call"
+        android:drawablePadding="@dimen/_5sdp"
+        android:layout_marginTop="-3dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0123456789"
+        android:textSize="15sp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/calibrid"
+        app:stroke="5.0"
+        app:strokeColor="#000000"/>
+
+    <LinearLayout
+        android:background="#141927"
+        android:layout_below="@+id/iv"
+        android:id="@+id/bgView"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
+
+        <com.maggie.stroketextviewlibrary.StrokeTextView
+            android:layout_marginTop="@dimen/_25sdp"
+            android:id="@+id/user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" Hello Android! "
+            android:textSize="20sp"
+            android:textColor="#3F51B5"
+            android:fontFamily="@font/calibrid"
+            app:stroke="5.0"
+            app:strokeColor="#FFFFFF"/>
+        <com.maggie.stroketextviewlibrary.StrokeTextView
+            android:id="@+id/designation"
+            android:layout_marginTop="-3dp"
+            android:layout_marginLeft="@dimen/_3sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" Hello Android! "
+            android:textSize="13sp"
+            android:textColor="#FFFFFF"
+            app:stroke="0.0"
+            app:strokeColor="#FFFFFF"
+            android:fontFamily="@font/calibrid"/>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/imgLay"
+        android:layout_centerHorizontal="true"
+        android:layout_alignTop="@+id/bgView"
+        android:layout_marginTop="-40dp"
+        android:layout_width="@dimen/_80sdp"
+        android:layout_height="@dimen/_80sdp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_pic"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/flag_india" />
+
+    </RelativeLayout>
+
+    <View
+        android:background="#3F51B5"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_5sdp"
+        android:layout_alignBottom="@+id/bgView"/>
+
+</RelativeLayout>

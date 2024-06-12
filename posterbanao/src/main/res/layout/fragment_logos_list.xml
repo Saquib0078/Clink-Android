@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_centerVertical="true"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:spanCount="2"
+        tools:listitem="@layout/row_logos"/>
+
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/no_data_layout"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
+        <com.airbnb.lottie.LottieAnimationView
+            android:layout_width="@dimen/_150sdp"
+            android:layout_height="@dimen/_150sdp"
+            app:lottie_rawRes="@raw/no_data"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"/>
+        <TextView
+            android:layout_marginTop="@dimen/_5sdp"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/no_item_found"
+            android:textSize="20dp"
+            android:textColor="@color/textColor"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/there_is_no_data_so"
+            android:textSize="15dp"
+            android:textColor="@color/hintColor"/>
+    </LinearLayout>
+
+</RelativeLayout>

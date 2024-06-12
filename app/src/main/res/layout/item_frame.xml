@@ -1,0 +1,41 @@
+<!-- res/layout/item_frame.xml -->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_margin="@dimen/_5sdp"
+    android:background="@drawable/frame_square">
+
+    <!-- Frame Image -->
+    <ImageView
+        android:id="@+id/imageViewFrame"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_80sdp"
+        android:src="@drawable/frame_10"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="160dp"
+        android:text="hello"
+        app:layout_constraintBottom_toBottomOf="@+id/textView2"
+        app:layout_constraintStart_toStartOf="@+id/imageViewFrame"
+        app:layout_constraintTop_toTopOf="@+id/textView2" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="33dp"
+        android:layout_height="15dp"
+        android:text="hello"
+        app:layout_constraintEnd_toEndOf="@+id/imageViewFrame"
+        app:layout_constraintHorizontal_bias="0.331"
+        app:layout_constraintStart_toEndOf="@+id/textView4"
+        tools:layout_editor_absoluteY="45dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

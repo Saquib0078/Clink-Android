@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/_15sdp"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/_10sdp"/>
+
+    <LinearLayout
+        android:id="@+id/Bio"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_45sdp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:background="@drawable/input_box_bg"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/editMeetName"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:hint="Title"
+            android:inputType="text"
+            android:paddingStart="@dimen/_15sdp"
+            android:paddingEnd="@dimen/_11sdp"
+            android:textColor="@color/black"
+            android:textColorHint="#AAAAAB" />
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnUploadImage"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_marginStart="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_15sdp"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:background="@drawable/sign_enabled"
+        android:text="Upload "
+        android:textColor="@color/white" />
+
+</LinearLayout>

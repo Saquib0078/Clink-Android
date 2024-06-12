@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "827974990516",
+    "firebase_url": "https://posterapp-f21b8-default-rtdb.firebaseio.com",
+    "project_id": "posterapp-f21b8",
+    "storage_bucket": "posterapp-f21b8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:827974990516:android:6c670c5712de2d8c4f75e1",
+        "android_client_info": {
+          "package_name": "com.nirmitee.brandposterbanao"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "827974990516-atmsoscbu861fsecrrgn46pg7fi8a3t0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nirmitee.brandposterbanao",
+            "certificate_hash": "05e74c5e1873a2d4392b52de59f73fab6da9786c"
+          }
+        },
+        {
+          "client_id": "827974990516-qghjejeet9d6r2of7r4qmut56fgf5rn4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC5AgXwSS7qxA2TIDza3re0udrV8n7fBuo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "827974990516-qghjejeet9d6r2of7r4qmut56fgf5rn4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

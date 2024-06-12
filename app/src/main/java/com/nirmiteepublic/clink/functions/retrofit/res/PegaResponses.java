@@ -1,0 +1,21 @@
+package com.nirmiteepublic.clink.functions.retrofit.res;
+
+public enum PegaResponses {
+    INTERNAL_SERVER_ERROR,
+    UNEXPECTED_ERROR,
+    EMAIL_ALREADY_REGISTERED, // 001
+    INVALID_REFER_CODE, // 002
+    USER_NOT_EXISTS, // 003
+    INCORRECT_PASSWORD, // 004
+    ACCOUNT_BANNED, // 005
+    MISSING_TOKEN, // 006
+    SESSION_EXPIRED, // 007
+    INVALID_EMAIL, // 008
+    INVALID_OTP_REQUEST, // 009
+    INVALID_OTP, // 010
+    UNVERIFIED_ACCOUNT, // 011,
+    OTP_EXPIRED, // 012
+    UNDER_MAINTENANCE, // 014
+    UPDATE_REQUIRED, // 015
+
+}

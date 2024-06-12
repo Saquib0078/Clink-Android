@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.activity.pages.FilterUsersActivity">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.activity.pages.FilterUsersActivity">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp"
+            android:orientation="horizontal"
+            android:background="@drawable/header_bg">
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="horizontal"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                app:layout_constraintEnd_toStartOf="@+id/filter"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent">-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/textView5"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:gravity="center"-->
+<!--                    android:text="Total Users"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    android:textSize="@dimen/_20ssp"-->
+<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                    app:layout_constraintEnd_toStartOf="@+id/filter"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/count"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginBottom="6dp"-->
+<!--                    android:gravity="center"-->
+<!--                    android:layout_marginStart="@dimen/_15sdp"-->
+<!--                    android:text="0"-->
+
+<!--                    android:textColor="@color/white"-->
+<!--                    android:textSize="@dimen/_20ssp" />-->
+<!--            </LinearLayout>-->
+
+            <RelativeLayout
+                android:id="@+id/filter"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_alignParentEnd="true"
+
+                android:background="@drawable/round_waterspout_bg"
+                app:layout_constraintBottom_toBottomOf="@+id/checkBoxSelectAll"
+                app:layout_constraintEnd_toStartOf="@+id/checkBoxSelectAll"
+                app:layout_constraintHorizontal_bias="0.94"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/checkBoxSelectAll">
+
+                <ImageView
+                    android:layout_width="@dimen/_17sdp"
+                    android:layout_height="@dimen/_17sdp"
+                    android:layout_centerInParent="true"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/filter"
+                    app:tint="@color/white" />
+
+            </RelativeLayout>
+
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/checkBoxSelectAll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="10dp"
+                android:layout_toEndOf="@+id/filter"
+                android:button="@drawable/checkbg"
+                android:gravity="center"
+                android:text="Select All"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_12sdp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/toolbar"
+            android:layout_above="@+id/btn"
+
+            android:layout_marginTop="@dimen/_5sdp"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_45sdp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:textColor="@color/white"
+            android:background="@drawable/sign_enabled"
+            android:backgroundTint="@color/cyan_process"
+            android:text="Send Notification" />
+
+    </RelativeLayout>
+</RelativeLayout>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".editor.Fragment.MusicFragment">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/overlay_artwork"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:orientation="horizontal"
+        tools:listitem="@layout/recycler_frame_adapter"/>
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/no_data_layout"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_50sdp"
+            app:lottie_rawRes="@raw/no_data"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"/>
+        <TextView
+            android:layout_marginTop="@dimen/_2sdp"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/no_item_found"
+            android:textSize="15dp"
+            android:textColor="@color/textColor"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/no_personalFrameFound"
+        android:layout_width="match_parent"
+        android:layout_height="98dp"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_8sdp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/no_personal_frame_found"
+                android:textColor="@color/textColor"
+                android:textSize="10dp" />
+
+            <TextView
+                android:id="@+id/get_frame"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="3dp"
+                android:background="@drawable/rounded_bg"
+                android:paddingHorizontal="@dimen/_12sdp"
+                android:paddingVertical="5dp"
+                android:text="@string/get_your_frame"
+                android:textColor="@color/white"
+                android:textSize="10dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

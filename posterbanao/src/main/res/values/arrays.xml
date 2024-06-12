@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="fonts_array">
+        <item>default.ttf</item>
+        <item>f(1).ttf</item>
+        <item>hindi_.ttf</item>
+        <item>hindi2.ttf</item>
+        <item>f(2).ttf</item>
+        <item>f(3).ttf</item>
+        <item>f(4).ttf</item>
+        <item>f(5).ttf</item>
+        <item>f(6).ttf</item>
+        <item>f(7).ttf</item>
+        <item>f(8).ttf</item>
+        <item>f(9).otf</item>
+        <item>f(10).otf</item>
+    </string-array>
+    <string-array name="selectAction">
+        <item>Resend OTP</item>
+        <item>Enter OTP Manually</item>
+    </string-array>
+    <string-array name="cat_colors">
+        <item>#F63375</item>
+        <item>#8247EA</item>
+        <item>#F35D52</item>
+        <item>#3AB83F</item>
+        <item>#48ADF0</item>
+        <item>#F16354</item>
+        <item>#1FBD90</item>
+        <item>#9C27B0</item>
+        <item>#BF6C24</item>
+        <item>#F9AD35</item>
+    </string-array>
+
+</resources>

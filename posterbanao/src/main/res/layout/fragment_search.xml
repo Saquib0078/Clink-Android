@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/backgroundColor"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.SearchFragment">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/search_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        app:cardBackgroundColor="#48CDCDCD"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="0dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp">
+
+            <ImageButton
+                android:id="@+id/backBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:background="@color/transparent"
+                android:padding="2dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_arrow_back"
+                app:tint="@color/textColor" />
+
+            <EditText
+                android:id="@+id/search_edit"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_toEndOf="@+id/backBtn"
+                android:layout_toStartOf="@+id/search"
+                android:backgroundTint="@color/transparent"
+                android:gravity="center_vertical"
+                android:hint="@string/search_"
+                android:imeOptions="actionSearch"
+                android:inputType="text"
+                android:paddingHorizontal="8dp"
+                android:textColor="@color/textColor"
+                android:textColorHint="@color/hintColor"
+                android:textSize="15dp" />
+
+            <ImageButton
+                android:id="@+id/search"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@color/transparent"
+                android:padding="2dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_search"
+                app:tint="@color/textColor" />
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            app:spanCount="3"
+            tools:listitem="@layout/item_poster_vertical" />
+        <LinearLayout
+            android:id="@+id/no_data_layout"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/no_item_found"
+                android:textSize="15dp"
+                android:textColor="@color/textColor"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/there_is_no_data_so"
+                android:textSize="15dp"
+                android:textColor="@color/hintColor"/>
+        </LinearLayout>
+
+        <ListView
+            android:background="@color/editor_controller_bg"
+            android:id="@+id/suggestionView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"/>
+
+    </RelativeLayout>
+</LinearLayout>

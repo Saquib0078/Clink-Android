@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activity.pages.UserCompletedTaskActivity"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp"
+        android:background="@drawable/header_bg"
+        android:orientation="horizontal"
+        android:gravity="center">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Completed Task"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_15sdp"/>
+    </LinearLayout>
+<androidx.recyclerview.widget.RecyclerView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+    tools:listitem="@layout/item_user"
+    android:id="@+id/recview"/>
+</LinearLayout>

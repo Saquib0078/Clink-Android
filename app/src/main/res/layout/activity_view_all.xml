@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.activity.ViewAllActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp"
+        android:orientation="horizontal"
+        android:background="@drawable/header_bg"
+        android:layout_marginBottom="@dimen/_10sdp">
+        <TextView
+            android:id="@+id/tv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Title"
+            android:gravity="center"
+            android:textSize="@dimen/_18sdp"
+            android:textStyle="bold"
+            android:textColor="@color/white"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_250sdp"
+            app:cardCornerRadius="@dimen/_8sdp"
+            android:layout_margin="@dimen/_5sdp">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/dragon"
+                android:scaleType="centerCrop"
+                android:id="@+id/imgMain"/>
+        </androidx.cardview.widget.CardView>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="@dimen/_5sdp"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="3"
+            tools:listitem="@layout/item_graphics_image"/>
+    </LinearLayout>
+</LinearLayout>
