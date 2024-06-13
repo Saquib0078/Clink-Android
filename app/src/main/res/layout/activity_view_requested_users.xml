@@ -56,7 +56,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/profile_image"
                 android:layout_width="@dimen/_80sdp"
                 android:layout_height="@dimen/_80sdp"
@@ -90,14 +90,12 @@
                 android:gravity="center"
                 android:orientation="horizontal">
 
-                <TextView
+                <EditText
                     android:id="@+id/fname"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@null"
                     android:hint="First Name"
-                    android:gravity="center_vertical"
-
                     android:inputType="text"
                     android:paddingStart="@dimen/_15sdp"
                     android:paddingEnd="@dimen/_11sdp"
@@ -115,15 +113,13 @@
                 android:gravity="center"
                 android:orientation="horizontal">
 
-                <TextView
+                <EditText
                     android:id="@+id/lname"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:autofillHints="phone"
                     android:background="@null"
                     android:hint="Last Name"
-                    android:gravity="center_vertical"
-
                     android:inputType="text"
                     android:paddingStart="@dimen/_15sdp"
                     android:paddingEnd="@dimen/_11sdp"
@@ -151,14 +147,14 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/nName"
+                    android:id="@+id/booth"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@null"
-                    android:hint="Nick Name"
-                    android:inputType="text"
-
+                    android:hint="booth"
                     android:gravity="center_vertical"
+
+                    android:inputType="text"
                     android:paddingStart="@dimen/_15sdp"
                     android:paddingEnd="@dimen/_11sdp"
                     android:textColor="@color/black"
@@ -175,15 +171,13 @@
                 android:gravity="center"
                 android:orientation="horizontal">
 
-                <TextView
+                <EditText
                     android:id="@+id/mobile"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:autofillHints="phone"
                     android:background="@null"
                     android:hint="Mobile"
-                    android:gravity="center_vertical"
-
                     android:inputType="number"
                     android:paddingStart="@dimen/_15sdp"
                     android:paddingEnd="@dimen/_11sdp"
@@ -233,15 +227,13 @@
             android:gravity="center"
             android:orientation="horizontal">
 
-            <TextView
+            <EditText
                 android:id="@+id/bio"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@null"
                 android:hint="Your Bio"
                 android:inputType="text"
-                android:gravity="center_vertical"
-
                 android:paddingStart="@dimen/_15sdp"
                 android:paddingEnd="@dimen/_11sdp"
                 android:textColor="@color/black"
@@ -333,58 +325,131 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/Intrest"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_50sdp"
-            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_5sdp"
-            android:layout_marginEnd="@dimen/_10sdp"
-            android:background="@drawable/input_box_bg"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:transitionName="number_trans">
+            android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/intrest"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@null"
-                android:gravity="center_vertical"
+            <LinearLayout
+                android:id="@+id/Intrest"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:background="@drawable/input_box_bg"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:transitionName="number_trans">
 
-                android:hint="Your Intrest"
-                android:inputType="text"
-                android:paddingStart="@dimen/_15sdp"
-                android:paddingEnd="@dimen/_11sdp"
-                android:textColor="@color/black"
-                android:textColorHint="#AAAAAB" />
+                <TextView
+                    android:id="@+id/intrest"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+
+                    android:hint="Your Intrest"
+                    android:inputType="text"
+                    android:paddingStart="@dimen/_15sdp"
+                    android:paddingEnd="@dimen/_11sdp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#AAAAAB" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/Gender"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_margin="@dimen/_5sdp"
+                android:layout_weight="1"
+                android:background="@drawable/input_box_bg"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Spinner
+                    android:id="@+id/gender"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:autofillHints="phone"
+                    android:background="@null"
+                    android:hint="Gender"
+                    android:gravity="center_vertical"
+                    android:inputType="number"
+                    android:paddingStart="@dimen/_15sdp"
+                    android:paddingEnd="@dimen/_11sdp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#AAAAAB" />
+            </LinearLayout>
+
+
         </LinearLayout>
+
 
         <LinearLayout
-            android:id="@+id/Language"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_50sdp"
-            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_5sdp"
-            android:layout_marginEnd="@dimen/_10sdp"
-            android:background="@drawable/input_box_bg"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:transitionName="number_trans">
+            android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/language"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@null"
-                android:hint="Your Language"
-                android:gravity="center_vertical"
+            <LinearLayout
+                android:id="@+id/Language"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:background="@drawable/input_box_bg"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:transitionName="number_trans">
 
-                android:inputType="text"
-                android:paddingStart="@dimen/_15sdp"
-                android:paddingEnd="@dimen/_11sdp"
-                android:textColor="@color/black"
-                android:textColorHint="#AAAAAB" />
+                <TextView
+                    android:id="@+id/language"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:hint="Your Language"
+                    android:gravity="center_vertical"
+
+                    android:inputType="text"
+                    android:paddingStart="@dimen/_15sdp"
+                    android:paddingEnd="@dimen/_11sdp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#AAAAAB" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/Dob"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:background="@drawable/input_box_bg"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:transitionName="number_trans">
+
+                <TextView
+                    android:id="@+id/dob"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:hint="Date of Birth"
+                    android:gravity="center_vertical"
+
+                    android:inputType="text"
+                    android:paddingStart="@dimen/_15sdp"
+                    android:paddingEnd="@dimen/_11sdp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#AAAAAB" />
+            </LinearLayout>
+
         </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -399,19 +464,16 @@
                 android:layout_margin="@dimen/_5sdp"
                 android:layout_weight="1"
                 android:background="@drawable/input_box_bg"
-                android:gravity="center_vertical"
-
+                android:gravity="center"
                 android:orientation="horizontal">
 
-                <TextView
+                <EditText
                     android:id="@+id/area"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@null"
                     android:hint="Your Area"
                     android:inputType="text"
-                    android:gravity="center_vertical"
-
                     android:paddingStart="@dimen/_15sdp"
                     android:paddingEnd="@dimen/_11sdp"
                     android:textColor="@color/black"
@@ -425,10 +487,10 @@
                 android:layout_margin="@dimen/_5sdp"
                 android:layout_weight="1"
                 android:background="@drawable/input_box_bg"
-                android:gravity="center_vertical"
+                android:gravity="center"
                 android:orientation="horizontal">
 
-                <TextView
+                <EditText
                     android:id="@+id/ward"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -438,8 +500,6 @@
                     android:inputType="number"
                     android:paddingStart="@dimen/_15sdp"
                     android:paddingEnd="@dimen/_11sdp"
-                    android:gravity="center_vertical"
-
                     android:textColor="@color/black"
                     android:textColorHint="#AAAAAB" />
             </LinearLayout>
@@ -460,15 +520,13 @@
             android:orientation="horizontal"
             android:transitionName="number_trans">
 
-            <TextView
+            <EditText
                 android:id="@+id/whatsapp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@null"
                 android:hint="Whatsapp Number"
                 android:inputType="text"
-                android:gravity="center_vertical"
-
                 android:paddingStart="@dimen/_15sdp"
                 android:paddingEnd="@dimen/_11sdp"
                 android:textColor="@color/black"
@@ -487,15 +545,13 @@
             android:orientation="horizontal"
             android:transitionName="number_trans">
 
-            <TextView
+            <EditText
                 android:id="@+id/insta"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@null"
                 android:hint="Instagram Link"
                 android:inputType="text"
-                android:gravity="center_vertical"
-
                 android:paddingStart="@dimen/_15sdp"
                 android:paddingEnd="@dimen/_11sdp"
                 android:textColor="@color/black"
@@ -515,15 +571,13 @@
             android:orientation="horizontal"
             android:transitionName="number_trans">
 
-            <TextView
+            <EditText
                 android:id="@+id/facebook"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@null"
                 android:hint="Facebook Link"
                 android:inputType="text"
-                android:gravity="center_vertical"
-
                 android:paddingStart="@dimen/_15sdp"
                 android:paddingEnd="@dimen/_11sdp"
                 android:textColor="@color/black"
@@ -540,6 +594,7 @@
             android:background="@drawable/sign_enabled"
             android:text="Update Profile"
             android:textColor="@color/white" />
+
 
 
     </LinearLayout>

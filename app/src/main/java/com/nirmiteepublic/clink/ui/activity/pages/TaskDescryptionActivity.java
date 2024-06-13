@@ -2,6 +2,8 @@ package com.nirmiteepublic.clink.ui.activity.pages;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
@@ -45,17 +47,17 @@ public class TaskDescryptionActivity extends PegaAppCompatActivity {
 
     String taskID;
     boolean userCompletedTask = false;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityTaskDescryptionBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+
         progressDialog = new PegaProgressDialog(this);
+
+        showProgressDialog();
         setWindowThemeSecond();
-
-
 
         Glide.with(this)
                 .load(UserUtils.getUserDp())
@@ -68,31 +70,30 @@ public class TaskDescryptionActivity extends PegaAppCompatActivity {
             String receivedImageID = intent.getStringExtra("imageID");
             taskID = intent.getStringExtra("taskID");
 
-
             Glide.with(this)
                     .load(receivedImageID)
                     .into(binding.bannerimage);
         }
         showProgressDialog();
 
+        if (UserUtils.isSuperAdmin()){
+            binding.viewUsers.setVisibility(View.VISIBLE);
+        }
 
-
-if (UserUtils.isSuperAdmin()){
-    binding.viewUsers.setVisibility(View.VISIBLE);
-}
         binding.viewUsers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent1=new Intent(TaskDescryptionActivity.this, UserCompletedTaskActivity.class);
-                intent1.putExtra("taskID",taskID);
+                Intent intent1 = new Intent(TaskDescryptionActivity.this, UserCompletedTaskActivity.class);
+                intent1.putExtra("taskID", taskID);
                 startActivity(intent1);
             }
         });
+
         RetrofitClient.getInstance(this).getApiInterfaces().getTaskById(taskID).enqueue(new Callback<TaskModelResponse>() {
             @Override
             public void onResponse(Call<TaskModelResponse> call, retrofit2.Response<TaskModelResponse> response) {
+                hideProgressDialog();
                 if (response.isSuccessful()) {
-                    hideProgressDialog();
                     Task taskModel = response.body().getTask();
                     if (taskModel != null) {
                         // Convert TaskModel to JSON string using Gson
@@ -102,7 +103,6 @@ if (UserUtils.isSuperAdmin()){
                         String date = taskModel.getTime();
                         String description = taskModel.getTaskDescription();
                         String image = taskModel.getDp();
-
                         String taskname = taskModel.getTaskName();
 
                         List<Object> completedUsers = taskModel.getCompletedUsers();
@@ -121,22 +121,16 @@ if (UserUtils.isSuperAdmin()){
                                         binding.btncomplete.setBackgroundResource(R.drawable.sign_disabled);
                                         binding.btncomplete.setEnabled(false);
                                     }
-
                                 }
                             }
                         }
 
                         binding.date.setText(date);
-//            binding.name.setText(name);
                         binding.title.setText(taskname);
                         binding.descryption.setText(description);
 
-
                         fetchuser(createdBy);
-
-
                     }
-
                 }
             }
 
@@ -144,13 +138,8 @@ if (UserUtils.isSuperAdmin()){
             public void onFailure(Call<TaskModelResponse> call, Throwable t) {
                 hideProgressDialog();
                 Toast.makeText(getApplicationContext(), "" + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-
             }
-
         });
-
-
-
 
         binding.comment.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -158,6 +147,7 @@ if (UserUtils.isSuperAdmin()){
                 startActivity(new Intent(TaskDescryptionActivity.this, TaskCommentActivity.class));
             }
         });
+
         binding.btncomplete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -165,10 +155,7 @@ if (UserUtils.isSuperAdmin()){
                 markTaskAsCompleted(taskID, userId);
             }
         });
-
-
     }
-
 
     private void markTaskAsCompleted(String taskId, String userId) {
         showProgressDialog();
@@ -188,19 +175,15 @@ if (UserUtils.isSuperAdmin()){
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
+                        hideProgressDialog();
                         try {
                             if (response.has("status") && response.getString("status").equals("success")) {
-
-                                hideProgressDialog();
                                 Toast.makeText(TaskDescryptionActivity.this, "Task Completed", Toast.LENGTH_SHORT).show();
-
                             } else {
-                                hideProgressDialog();
                                 Toast.makeText(TaskDescryptionActivity.this, "Task Not Completed", Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
-                            hideProgressDialog();
                             Toast.makeText(TaskDescryptionActivity.this, "Error parsing response", Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -220,13 +203,13 @@ if (UserUtils.isSuperAdmin()){
     }
 
     private void fetchTaskDetails(String num) {
+        showProgressDialog();
         RetrofitClient.getInstance(this).getApiInterfaces().getUserData(num).enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
-                String res = null;
+                hideProgressDialog();
                 try {
-                    hideProgressDialog();
-                    res = response.body().string();
+                    String res = response.body().string();
                     JSONObject jsonObject = new JSONObject(res);
                     JSONObject dataObject = jsonObject.getJSONObject("data");
                     String dist = dataObject.optString("dist");
@@ -244,46 +227,40 @@ if (UserUtils.isSuperAdmin()){
                             .into(binding.profile);
 
                 } catch (IOException e) {
-                    hideProgressDialog();
                     Toast.makeText(TaskDescryptionActivity.this, "" + e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                 } catch (JSONException e) {
-                    hideProgressDialog();
                     Toast.makeText(TaskDescryptionActivity.this, "" + e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                 }
-
             }
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
                 hideProgressDialog();
                 Toast.makeText(TaskDescryptionActivity.this, "" + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-
             }
         });
     }
 
     private void fetchuser(String id) {
+        showProgressDialog();
         RetrofitClient.getInstance(this).getApiInterfaces().getPrimaryUser(id)
                 .enqueue(new Callback<UserModelPrimary>() {
                     @Override
                     public void onResponse(Call<UserModelPrimary> call, retrofit2.Response<UserModelPrimary> response) {
+                        hideProgressDialog();
                         if (response.isSuccessful()) {
                             UserDataPrimary userModelPrimary = response.body().getUserDataPrimary();
                             String num = userModelPrimary.getNum();
-
-                            hideProgressDialog();
                             fetchTaskDetails(num);
-
                         }
                     }
 
                     @Override
                     public void onFailure(Call<UserModelPrimary> call, Throwable t) {
-                        Toast.makeText(TaskDescryptionActivity.this, "" + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                         hideProgressDialog();
+                        Toast.makeText(TaskDescryptionActivity.this, "" + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
-
     }
 
     private void showProgressDialog() {
@@ -297,6 +274,4 @@ if (UserUtils.isSuperAdmin()){
             progressDialog.dismiss(); // Dismiss the progress dialog
         }
     }
-
-
 }

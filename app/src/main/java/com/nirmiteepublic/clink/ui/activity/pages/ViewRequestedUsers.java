@@ -2,15 +2,17 @@ package com.nirmiteepublic.clink.ui.activity.pages;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import com.nirmiteepublic.clink.R;
 import com.nirmiteepublic.clink.databinding.ActivityViewRequestedUsersBinding;
 import com.nirmiteepublic.clink.functions.retrofit.req.RetrofitClient;
-import com.nirmiteepublic.clink.functions.utils.UserUtils;
 import com.pegalite.popups.DialogData;
 import com.pegalite.popups.PegaProgressDialog;
 
@@ -43,8 +45,6 @@ public class ViewRequestedUsers extends AppCompatActivity {
                 Toast.makeText(this, "No Data Found", Toast.LENGTH_SHORT).show();
                 // Handle case where userId is not passed in the Intent
             }
-        } else {
-            Toast.makeText(this, "No Data Found", Toast.LENGTH_SHORT).show();
         }
 
 
@@ -55,23 +55,26 @@ public class ViewRequestedUsers extends AppCompatActivity {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 String responseBody = null;
-                if (response.code() == 200) {
+                if (response.isSuccessful()) {
                     hideProgressDialog();
                     try {
                         responseBody = response.body().string();
                         Gson gson = new Gson();
                         JsonObject jsonObject = gson.fromJson(responseBody, JsonObject.class);
-                        JsonObject findNumObject = jsonObject.getAsJsonObject("findNum");
-                        JsonObject findNumObject1 = jsonObject.getAsJsonObject("data");
-                        String fname = findNumObject1.getAsJsonPrimitive("fName").getAsString();
-                        String lname = findNumObject1.getAsJsonPrimitive("lName").getAsString();
+                        System.out.println(jsonObject);
+                        Log.d("data", String.valueOf(jsonObject));
+
+//                        JsonObject findNumObject = jsonObject.getAsJsonObject("findNum");
+                        JsonObject findNumObject = jsonObject.getAsJsonObject("data");
+                        String fname = findNumObject.getAsJsonPrimitive("fName").getAsString();
+                        String lname = findNumObject.getAsJsonPrimitive("lName").getAsString();
                         String lang = findNumObject.getAsJsonPrimitive("lang") != null ? findNumObject.getAsJsonPrimitive("lang").getAsString() : "";
                         String edu = findNumObject.getAsJsonPrimitive("edu") != null ? findNumObject.getAsJsonPrimitive("edu").getAsString() : "";
                         String intr = findNumObject.getAsJsonPrimitive("intr") != null ? findNumObject.getAsJsonPrimitive("intr").getAsString() : "";
                         String num = findNumObject.getAsJsonPrimitive("num") != null ? findNumObject.getAsJsonPrimitive("num").getAsString() : "";
                         String FrameName = findNumObject.getAsJsonPrimitive("FrameName") != null ? findNumObject.getAsJsonPrimitive("FrameName").getAsString() : "";
                         String FrameAdd = findNumObject.getAsJsonPrimitive("FrameAdd") != null ? findNumObject.getAsJsonPrimitive("FrameAdd").getAsString() : "";
-                        String Image = findNumObject.getAsJsonPrimitive("Image") != null ? findNumObject.getAsJsonPrimitive("Image").getAsString() : "";
+                        String Image = findNumObject.getAsJsonPrimitive("dp") != null ? findNumObject.getAsJsonPrimitive("dp").getAsString() : "";
                         String distr = findNumObject.getAsJsonPrimitive("dist") != null ? findNumObject.getAsJsonPrimitive("dist").getAsString() : "";
                         String teh = findNumObject.getAsJsonPrimitive("teh") != null ? findNumObject.getAsJsonPrimitive("teh").getAsString() : "";
                         String vill = findNumObject.getAsJsonPrimitive("vill") != null ? findNumObject.getAsJsonPrimitive("vill").getAsString() : "";
@@ -81,18 +84,29 @@ public class ViewRequestedUsers extends AppCompatActivity {
                         String insta = findNumObject.getAsJsonPrimitive("insta") != null ? findNumObject.getAsJsonPrimitive("insta").getAsString() : "";
                         String ward = findNumObject.getAsJsonPrimitive("ward") != null ? findNumObject.getAsJsonPrimitive("ward").getAsString() : "";
                         String id = findNumObject.getAsJsonPrimitive("_id") != null ? findNumObject.getAsJsonPrimitive("_id").getAsString() : "";
+                        String dob = findNumObject.getAsJsonPrimitive("dob") != null ? findNumObject.getAsJsonPrimitive("dob").getAsString() : "";
+                        String bio = findNumObject.getAsJsonPrimitive("bio") != null ? findNumObject.getAsJsonPrimitive("bio").getAsString() : "";
+                        String booth = findNumObject.getAsJsonPrimitive("booth") != null ? findNumObject.getAsJsonPrimitive("booth").getAsString() : "";
+////                        Intent intent=getIntent();
+////                        if(intent!=null){
+////                            dist =  intent.getStringExtra("selected");
+////                            binding.selected.setText(dist);
+////                        }
+//
+//                        UserUtils.setFRAMEADD(FrameAdd);
+//                        UserUtils.setFRAMENAME(FrameName);
+//                        UserUtils.setUserDp(Image);
+//                        System.out.println(responseBody);
+//                        UserUtils.setSecondaryUserid(id);
+                        if (binding.profileImage != null) {
+                            Toast.makeText(ViewRequestedUsers.this, "" + Image, Toast.LENGTH_SHORT).show();
+                            Glide.with(ViewRequestedUsers.this)
+                                    .load(RetrofitClient.PROFILE_IMAGE + Image)
+                                    .placeholder(R.drawable.default_image)
+                                    .error(R.drawable.default_image)
+                                    .into(binding.profileImage);
+                        }
 
-//                        Intent intent=getIntent();
-//                        if(intent!=null){
-//                            dist =  intent.getStringExtra("selected");
-//                            binding.selected.setText(dist);
-//                        }
-
-                        UserUtils.setFRAMEADD(FrameAdd);
-                        UserUtils.setFRAMENAME(FrameName);
-                        UserUtils.setUserDp(Image);
-                        System.out.println(responseBody);
-                        UserUtils.setSecondaryUserid(id);
                         binding.fname.setText(fname);
                         binding.lname.setText(lname);
                         binding.tehsil.setText(teh);
@@ -107,6 +121,9 @@ public class ViewRequestedUsers extends AppCompatActivity {
                         binding.facebook.setText(fb);
                         binding.insta.setText(insta);
                         binding.ward.setText(ward);
+                        binding.dob.setText(dob);
+                        binding.booth.setText(booth);
+                        binding.bio.setText(bio);
 
 
                     } catch (IOException e) {

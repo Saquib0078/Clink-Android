@@ -50,6 +50,7 @@ import org.json.JSONObject;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.lang.reflect.Field;
 
 import timber.log.Timber;
 
@@ -84,6 +85,7 @@ public class ItemBroadcastMediaViewHolder extends RecyclerView.ViewHolder {
         binding.commentCount.setText(model.getComments());
         binding.date.setText(Utils.getTimeAgo(model.getTime()));
         String dp=RetrofitClient.PROFILE_IMAGE+model.getProfileDP();
+
         Glide.with(context)
                 .load(dp)
                 .fitCenter()
@@ -227,30 +229,108 @@ public class ItemBroadcastMediaViewHolder extends RecyclerView.ViewHolder {
         Glide.with(itemView).load(RetrofitClient.USER_BASE_URL+"getUsermedia/"+model.getBroadcastID()+"."+model.getType()).fitCenter().placeholder(ContextCompat.getDrawable(context, R.drawable.round_image_placeholder)).into(binding.postImage);
     }
 
+//    private void loadVideo() {
+//        binding.postVideo.setVisibility(View.VISIBLE);
+//        binding.postImage.setVisibility(View.GONE);
+//
+//        binding.postVideo.setVideoURI(Uri.parse(Utils.loadBroadcastMedia(model.getBroadcastID(), model.getType())));
+//
+//        MediaController mediaController=new MediaController(context);
+//        binding.postVideo.setMediaController(mediaController);
+//        mediaController.setAnchorView(binding.postVideo);
+//        binding.postVideo.setOnPreparedListener(mp -> {
+//            mp.setLooping(true);
+//            binding.postVideo.start();
+//
+//        });
+//        binding.postVideo.setOnErrorListener(new MediaPlayer.OnErrorListener() {
+//            @Override
+//            public boolean onError(MediaPlayer mp, int what, int extra) {
+//                // Handle error and possibly retry connection
+//                Timber.tag("MediaError").e("Error occurred: " + what + ", " + extra);
+//                return true;
+//            }
+//        });
+//
+//    }
+
+
     private void loadVideo() {
         binding.postVideo.setVisibility(View.VISIBLE);
         binding.postImage.setVisibility(View.GONE);
 
         binding.postVideo.setVideoURI(Uri.parse(Utils.loadBroadcastMedia(model.getBroadcastID(), model.getType())));
-
-        MediaController mediaController=new MediaController(context);
-        binding.postVideo.setMediaController(mediaController);
-        mediaController.setAnchorView(binding.postVideo);
         binding.postVideo.setOnPreparedListener(mp -> {
             mp.setLooping(true);
             binding.postVideo.start();
-
+            binding.playButton.setVisibility(View.GONE);
+            binding.pauseButton.setVisibility(View.VISIBLE);
         });
-        binding.postVideo.setOnErrorListener(new MediaPlayer.OnErrorListener() {
-            @Override
-            public boolean onError(MediaPlayer mp, int what, int extra) {
-                // Handle error and possibly retry connection
-                Timber.tag("MediaError").e("Error occurred: " + what + ", " + extra);
-                return true;
+
+        binding.postVideo.setOnErrorListener((mp, what, extra) -> {
+            Timber.tag("MediaError").e("Error occurred: " + what + ", " + extra);
+            return true;
+        });
+
+        binding.playButton.setOnClickListener(v -> {
+            if (!binding.postVideo.isPlaying()) {
+                binding.postVideo.start();
+                binding.playButton.setVisibility(View.GONE);
+                binding.pauseButton.setVisibility(View.VISIBLE);
             }
         });
 
+        binding.pauseButton.setOnClickListener(v -> {
+            if (binding.postVideo.isPlaying()) {
+                binding.postVideo.pause();
+                binding.pauseButton.setVisibility(View.GONE);
+                binding.playButton.setVisibility(View.VISIBLE);
+            }
+        });
+
+//        binding.soundButton.setOnClickListener(v -> {
+//            if (binding.postVideo.isPlaying()) {
+//                if (getCurrentVolume() == 1.0f) {
+//                    setVolume(0.0f, 0.0f);
+//                    binding.soundButton.setImageResource(R.drawable.ic_sound_off);
+//                } else {
+//                    setVolume(1.0f, 1.0f);
+//                    binding.soundButton.setImageResource(R.drawable.ic_sound_on);
+//                }
+//            }
+//        });
     }
+
+//    private float getCurrentVolume() {
+//        try {
+//            Class<?> videoViewClass = Class.forName("android.widget.VideoView");
+//            Field mMediaPlayerField = videoViewClass.getDeclaredField("mMediaPlayer");
+//            mMediaPlayerField.setAccessible(true);
+//            MediaPlayer mediaPlayer = (MediaPlayer) mMediaPlayerField.get(binding.postVideo);
+//            if (mediaPlayer != null) {
+//                // You need to maintain the volume state because there is no direct getter method for volume
+//                return mediaPlayer.getVolume();
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        return 1.0f; // Default to full volume
+//    }
+
+    private void setVolume(float leftVolume, float rightVolume) {
+        try {
+            Class<?> videoViewClass = Class.forName("android.widget.VideoView");
+            Field mMediaPlayerField = videoViewClass.getDeclaredField("mMediaPlayer");
+            mMediaPlayerField.setAccessible(true);
+            MediaPlayer mediaPlayer = (MediaPlayer) mMediaPlayerField.get(binding.postVideo);
+            if (mediaPlayer != null) {
+                mediaPlayer.setVolume(leftVolume, rightVolume);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
     private void shareImageBroadcast() {
         binding.postImage.setDrawingCacheEnabled(true);

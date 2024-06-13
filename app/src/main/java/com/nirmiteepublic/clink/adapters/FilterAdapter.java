@@ -124,6 +124,8 @@ public class FilterAdapter extends RecyclerView.Adapter<FilterAdapter.ViewHolder
         notifyDataSetChanged();
     }
 
+
+
     public List<MergedUsersItem> getSelectedUsers() {
         List<MergedUsersItem> selectedUsers = new ArrayList<>();
         for (MergedUsersItem user : dataItems) {

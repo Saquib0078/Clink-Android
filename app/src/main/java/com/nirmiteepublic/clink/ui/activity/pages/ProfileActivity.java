@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.core.app.ActivityOptionsCompat;
 import androidx.core.view.ViewCompat;
 
+import com.bumptech.glide.Glide;
 import com.nirmiteepublic.clink.R;
 import com.nirmiteepublic.clink.databinding.ActivityProfileBinding;
 import com.nirmiteepublic.clink.functions.utils.UserUtils;
@@ -37,6 +38,11 @@ public class ProfileActivity extends PegaAppCompatActivity {
             ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(this, binding.profileImageContainer, Objects.requireNonNull(ViewCompat.getTransitionName(binding.profileImageContainer)));
             startActivity(new Intent(this, EditProfileActivity.class), options.toBundle());
         });
+
+        Glide.with(ProfileActivity.this)
+                .load(UserUtils.getUserDp())
+                .placeholder(R.drawable.default_image) // Set placeholder image resource
+                .into(binding.profileImage);
     }
 
     @Override

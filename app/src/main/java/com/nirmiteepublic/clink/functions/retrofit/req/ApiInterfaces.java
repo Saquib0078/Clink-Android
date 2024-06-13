@@ -44,7 +44,7 @@ public interface ApiInterfaces {
     Call<ResponseBody> checkRegister(@Body RequestBody requestBody);
 
     @Headers("Content-Type: application/json")
-    @GET("/user/getPrimaryUsersData/{id}")
+    @GET("/user/controllers/getUserDetails/{id}")
     Call<ResponseBody> getUser(@Path("id") String userId);
 
     @Headers("Content-Type: application/json")

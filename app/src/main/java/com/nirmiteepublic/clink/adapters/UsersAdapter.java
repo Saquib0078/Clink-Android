@@ -26,12 +26,16 @@ public class UsersAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     List<UserModel> userModelList;
     List<UserModel> filteredUserModels;
     Context context;
+    boolean matched;
     private String searchString = "";
 
     public UsersAdapter(List<UserModel> userModelList) {
         this.userModelList = userModelList;
-        this.filteredUserModels = new ArrayList<>(userModelList);
 
+    }
+    public void setFilteredList(List<UserModel>filteredList){
+        this.userModelList=filteredList;
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -74,20 +78,34 @@ public class UsersAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     }
 
 
-    public void filter(String query) {
-        searchString = query.toLowerCase(Locale.getDefault());
-        filteredUserModels.clear();
-        if (!searchString.isEmpty()) {
-            for (UserModel user : userModelList) {
-                if (user.getUsername().toLowerCase(Locale.getDefault()).contains(searchString)) {
-                    filteredUserModels.add(user);
-                }
-            }
-        } else {
-            // If search query is empty, add all items from userModelList to filteredUserModels
-            filteredUserModels.addAll(userModelList);
-        }
-
-    }
+//    public void filterUsers(String query) {
+//        searchString = query.toLowerCase(Locale.ROOT);
+//        filteredUserModels.clear();
+//
+//        if (searchString.isEmpty()) {
+//            filteredUserModels.addAll(userModelList);
+//        } else {
+//            String[] words = searchString.split("\\s+");
+//
+//            for (UserModel user : userModelList) {
+//                String username = user.getUsername() != null ? user.getUsername().trim().toLowerCase(Locale.ROOT) : "";
+//
+//                boolean matched = true;
+//
+//                for (String word : words) {
+//                    if (!username.contains(word)) {
+//                        matched = false;
+//                        break;
+//                    }
+//                }
+//
+//                if (matched) {
+//                    filteredUserModels.add(user);
+//                }
+//            }
+//        }
+//
+//        notifyDataSetChanged();
+//    }
 }
 

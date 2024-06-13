@@ -65,6 +65,42 @@ public class NetworkFragment extends PegaFragment {
             }
         });
 
+//        binding.searchView.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//                // Not needed
+//
+//            }
+//
+//            @Override
+//            public void onTextChanged(CharSequence s, int start, int before, int count) {
+//                // Filter the list based on the search query
+//                adapter.filterUsers(s.toString());
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable s) {
+//                // Not needed
+//            }
+//        });
+
+        // In your activity or fragment
+
+        binding.searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                // Do nothing
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                filteredList(newText);
+                return true;
+            }
+        });
+
+
 
         loadNetwork();
 //        userStatus();
@@ -182,6 +218,22 @@ public class NetworkFragment extends PegaFragment {
                 adapter.notifyItemChanged(index);
                 break;
             }
+        }
+    }
+
+    private void filteredList(String text) {
+        List<UserModel> userModelList = new ArrayList<>();
+        for (UserModel userModel : userModels) {
+            String username = userModel.getUsername();
+            if (username != null && username.toLowerCase().contains(text.toLowerCase())) {
+                userModelList.add(userModel);
+            }
+        }
+
+        if (userModelList.isEmpty()) {
+            Toast.makeText(requireContext(), "No Data Found", Toast.LENGTH_SHORT).show();
+        } else {
+            adapter.setFilteredList(userModelList);
         }
     }
 

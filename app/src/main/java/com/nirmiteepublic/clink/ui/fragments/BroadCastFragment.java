@@ -54,7 +54,8 @@ public class BroadCastFragment extends PegaFragment {
     private final List<BroadcastModel> broadcastModels = new ArrayList<>();
     private FragmentBroadCastBinding binding;
     private boolean isLoading;
-
+    String Image;
+    String ProfileImage;
 
 
     private BroadcastUniversalAdapter adapter;
@@ -85,29 +86,6 @@ public class BroadCastFragment extends PegaFragment {
 
 
 
-//        mDatabase.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                int onlineUsersCount = 0;
-//                // Iterate through the users
-//                for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
-//                    // Get the online status of each user
-//                    Boolean isOnline = userSnapshot.child("online").getValue(Boolean.class);
-//                    // Check if the user is online (status is true)
-//                    if (isOnline != null && isOnline) {
-//                        onlineUsersCount++;
-//                    }
-//                }
-//                Toast.makeText(requireContext(), ""+onlineUsersCount, Toast.LENGTH_SHORT).show();
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//                Toast.makeText(requireContext(), "Error: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
-//                // Handle errors
-//            }
-//        });
         return binding.getRoot();
     }
 
@@ -214,20 +192,21 @@ public class BroadCastFragment extends PegaFragment {
                         String res = response.body().string();
                         JSONObject jsonObject = new JSONObject(res);
                         System.out.println("USer" + jsonObject);
-                        JSONObject dataObject = jsonObject.getJSONObject("user"); // Access the "data" object
+                        JSONObject dataObject = jsonObject.getJSONObject("data"); // Access the "data" object
 
                         String fName = dataObject.optString("fName");
                         String dp = dataObject.optString("fName");
 
-                        String Image = dataObject.optString("Image");
+                         Image = dataObject.optString("Image");
                         String FrameName = dataObject.optString("FrameName");
                         String FrameAdd = dataObject.optString("FrameAdd");
-                        String ProfileImage = dataObject.optString("dp");
+                         ProfileImage = dataObject.optString("dp");
 
-                        UserUtils.setPROFILEIMAGE(RetrofitClient.PROFILE_IMAGE + ProfileImage);
+                        UserUtils.setUserDp(RetrofitClient.PROFILE_IMAGE + ProfileImage);
                         UserUtils.setFRAMEADD(FrameAdd);
                         UserUtils.setFRAMENAME(FrameName);
-                        UserUtils.setUserDp(RetrofitClient.USER_BASE_URL + "getUsermedia/" + Image);
+
+//                        UserUtils.setUserDp(RetrofitClient.USER_BASE_URL + "getUsermedia/" + Image);
 
 
                     } catch (IOException e) {

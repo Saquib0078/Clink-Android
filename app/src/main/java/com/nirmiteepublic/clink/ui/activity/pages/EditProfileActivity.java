@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -87,7 +88,7 @@ public class EditProfileActivity extends PegaAppCompatActivity {
                 showDatePicker();
             }
         });
-        binding.nName.setOnClickListener(new View.OnClickListener() {
+        binding.booth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(EditProfileActivity.this, BoothActivity.class);
@@ -270,7 +271,7 @@ public class EditProfileActivity extends PegaAppCompatActivity {
     private void handleBoothSelect(Intent data) {
         if (data != null && data.hasExtra("selectBooth")) {
             selectBooth = data.getStringExtra("selectBooth");
-            binding.nName.setText(selectBooth);
+            binding.booth.setText(selectBooth);
         }
     }
 
@@ -311,7 +312,7 @@ public class EditProfileActivity extends PegaAppCompatActivity {
         String lMark = binding.intrest.getText().toString();
         String vill = binding.village.getText().toString();
         String ward = binding.ward.getText().toString();
-        String booth = binding.nName.getText().toString();
+        String booth = binding.booth.getText().toString();
         String insta = binding.insta.getText().toString();
         String fb = binding.facebook.getText().toString();
         String wpn = binding.whatsapp.getText().toString();
@@ -496,25 +497,29 @@ public class EditProfileActivity extends PegaAppCompatActivity {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 String responseBody = null;
-                if (response.code() == 200) {
+                if (response.isSuccessful()) {
                     hideProgressDialog();
-
                     try {
                         responseBody = response.body().string();
                         Gson gson = new Gson();
                         JsonObject jsonObject = gson.fromJson(responseBody, JsonObject.class);
-                        JsonObject findNumObject = jsonObject.getAsJsonObject("findNum");
-                        JsonObject findNumObject1 = jsonObject.getAsJsonObject("user");
-                        String booth = findNumObject.getAsJsonPrimitive("booth") != null ? findNumObject.getAsJsonPrimitive("booth").getAsString() : "";
-                        String fname = findNumObject1.getAsJsonPrimitive("fName").getAsString();
-                        String lname = findNumObject1.getAsJsonPrimitive("lName").getAsString();
+                        System.out.println(jsonObject);
+                        Log.d("data", String.valueOf(jsonObject));
+
+//                        JsonObject findNumObject = jsonObject.getAsJsonObject("findNum");
+                        JsonObject findNumObject = jsonObject.getAsJsonObject("data");
+                        String fname = findNumObject.getAsJsonPrimitive("fName").getAsString();
+                        String lname = findNumObject.getAsJsonPrimitive("lName").getAsString();
                         String lang = findNumObject.getAsJsonPrimitive("lang") != null ? findNumObject.getAsJsonPrimitive("lang").getAsString() : "";
+                        String dob = findNumObject.getAsJsonPrimitive("dob") != null ? findNumObject.getAsJsonPrimitive("dob").getAsString() : "";
+                        String bio = findNumObject.getAsJsonPrimitive("bio") != null ? findNumObject.getAsJsonPrimitive("bio").getAsString() : "";
+                        String booth = findNumObject.getAsJsonPrimitive("booth") != null ? findNumObject.getAsJsonPrimitive("booth").getAsString() : "";
                         String edu = findNumObject.getAsJsonPrimitive("edu") != null ? findNumObject.getAsJsonPrimitive("edu").getAsString() : "";
                         String intr = findNumObject.getAsJsonPrimitive("intr") != null ? findNumObject.getAsJsonPrimitive("intr").getAsString() : "";
                         String num = findNumObject.getAsJsonPrimitive("num") != null ? findNumObject.getAsJsonPrimitive("num").getAsString() : "";
                         String FrameName = findNumObject.getAsJsonPrimitive("FrameName") != null ? findNumObject.getAsJsonPrimitive("FrameName").getAsString() : "";
                         String FrameAdd = findNumObject.getAsJsonPrimitive("FrameAdd") != null ? findNumObject.getAsJsonPrimitive("FrameAdd").getAsString() : "";
-                        String Image = findNumObject.getAsJsonPrimitive("Image") != null ? findNumObject.getAsJsonPrimitive("Image").getAsString() : "";
+                        String Image = findNumObject.getAsJsonPrimitive("dp") != null ? findNumObject.getAsJsonPrimitive("dp").getAsString() : "";
                         String distr = findNumObject.getAsJsonPrimitive("dist") != null ? findNumObject.getAsJsonPrimitive("dist").getAsString() : "";
                         String teh = findNumObject.getAsJsonPrimitive("teh") != null ? findNumObject.getAsJsonPrimitive("teh").getAsString() : "";
                         String vill = findNumObject.getAsJsonPrimitive("vill") != null ? findNumObject.getAsJsonPrimitive("vill").getAsString() : "";
@@ -524,21 +529,27 @@ public class EditProfileActivity extends PegaAppCompatActivity {
                         String insta = findNumObject.getAsJsonPrimitive("insta") != null ? findNumObject.getAsJsonPrimitive("insta").getAsString() : "";
                         String ward = findNumObject.getAsJsonPrimitive("ward") != null ? findNumObject.getAsJsonPrimitive("ward").getAsString() : "";
                         String id = findNumObject.getAsJsonPrimitive("_id") != null ? findNumObject.getAsJsonPrimitive("_id").getAsString() : "";
-                        String bio = findNumObject.getAsJsonPrimitive("bio") != null ? findNumObject.getAsJsonPrimitive("bio").getAsString() : "";
-                        String dob = findNumObject.getAsJsonPrimitive("dob") != null ? findNumObject.getAsJsonPrimitive("dob").getAsString() : "";
-                        String gender = findNumObject.getAsJsonPrimitive("gender") != null ? findNumObject.getAsJsonPrimitive("gender").getAsString() : "";
-
-//                        Intent intent=getIntent();
-//                        if(intent!=null){
-//                            dist =  intent.getStringExtra("selected");
-//                            binding.selected.setText(dist);
-//                        }
-
-                        UserUtils.setFRAMEADD(FrameAdd);
-                        UserUtils.setFRAMENAME(FrameName);
+//
+////                        Intent intent=getIntent();
+////                        if(intent!=null){
+////                            dist =  intent.getStringExtra("selected");
+////                            binding.selected.setText(dist);
+////                        }
+//
+//                        UserUtils.setFRAMEADD(FrameAdd);
+//                        UserUtils.setFRAMENAME(FrameName);
                         UserUtils.setUserDp(Image);
-                        System.out.println(responseBody);
+//                        System.out.println(responseBody);
                         UserUtils.setSecondaryUserid(id);
+                        if (binding.profileImage != null) {
+                            Toast.makeText(EditProfileActivity.this, ""+Image, Toast.LENGTH_SHORT).show();
+                            Glide.with(EditProfileActivity.this)
+                                    .load(RetrofitClient.PROFILE_IMAGE+Image)
+                                    .placeholder(R.drawable.default_image)
+                                    .error(R.drawable.default_image)
+                                    .into(binding.profileImage);
+                        }
+
                         binding.fname.setText(fname);
                         binding.lname.setText(lname);
                         binding.tehsil.setText(teh);
@@ -553,14 +564,10 @@ public class EditProfileActivity extends PegaAppCompatActivity {
                         binding.facebook.setText(fb);
                         binding.insta.setText(insta);
                         binding.ward.setText(ward);
-                        binding.nName.setText(booth);
-                        binding.bio.setText(bio);
                         binding.dob.setText(dob);
+                        binding.bio.setText(bio);
+                        binding.booth.setText(booth);
 
-                        Glide.with(EditProfileActivity.this)
-                                .load(UserUtils.getPROFILEIMAGE())
-                                .placeholder(R.drawable.default_image) // Set placeholder image resource
-                                .into(binding.profileImage);
 
 
                     } catch (IOException e) {

@@ -12,6 +12,16 @@ public class UserItem {
 
 	@SerializedName("fName")
 	private String fName;
+	@SerializedName("dp")
+	private String dp;
+
+	public String getDp() {
+		return dp;
+	}
+
+	public void setDp(String dp) {
+		this.dp = dp;
+	}
 
 	@SerializedName("role")
 	private int role;
