@@ -14,7 +14,7 @@ import com.instamojo.android.helpers.Logger;
  */
 public class JavaScriptInterface {
 
-    private Activity activity;
+    private final Activity activity;
 
     /**
      * Constructor for ScriptInterface.

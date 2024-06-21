@@ -11,7 +11,7 @@ import org.json.JSONObject;
 
 public class UserViewModel extends ViewModel {
 
-    private UserRespository respository;
+    private final UserRespository respository;
 
     public UserViewModel() {
         respository = new UserRespository();

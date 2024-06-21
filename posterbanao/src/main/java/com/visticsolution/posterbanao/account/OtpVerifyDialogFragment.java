@@ -167,12 +167,12 @@ public class OtpVerifyDialogFragment extends Fragment {
         JSONObject parameters = new JSONObject();
         try {
             parameters.put("social_id", socialId);
-            parameters.put("social", "" + social);
-            parameters.put("auth_token", "" + loginmodel.authTokon);
-            parameters.put("email", "" + loginmodel.email);
-            parameters.put("number", "" + loginmodel.phoneNo);
-            parameters.put("profile_pic", "" + loginmodel.picture);
-            parameters.put("name", "" + loginmodel.fname);
+            parameters.put("social", social);
+            parameters.put("auth_token", loginmodel.authTokon);
+            parameters.put("email", loginmodel.email);
+            parameters.put("number", loginmodel.phoneNo);
+            parameters.put("profile_pic", loginmodel.picture);
+            parameters.put("name", loginmodel.fname);
             parameters.put("device_token", Functions.getDeviceToken(context));
         } catch (Exception e) {
             e.printStackTrace();

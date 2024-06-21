@@ -18,7 +18,7 @@ import java.util.List;
 
 public class CompletedUserAdapter extends RecyclerView.Adapter<CompletedUserAdapter.ViewHolder> {
 
-    private List<CompleteduserModel> userList;
+    private final List<CompleteduserModel> userList;
       Context context;
 
     public CompletedUserAdapter( List<CompleteduserModel> userList) {
@@ -53,7 +53,7 @@ public class CompletedUserAdapter extends RecyclerView.Adapter<CompletedUserAdap
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        private ItemUserBinding binding;
+        private final ItemUserBinding binding;
 
         public ViewHolder(ItemUserBinding binding) {
             super(binding.getRoot());

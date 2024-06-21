@@ -144,7 +144,7 @@ public class BrandingFragment extends Fragment {
         });
     }
 
-    private ActivityResultLauncher<String[]> mPermissionResult = registerForActivityResult(
+    private final ActivityResultLauncher<String[]> mPermissionResult = registerForActivityResult(
             new ActivityResultContracts.RequestMultiplePermissions(), new ActivityResultCallback<Map<String, Boolean>>() {
                 @RequiresApi(api = Build.VERSION_CODES.M)
                 @Override

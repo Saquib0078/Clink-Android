@@ -43,24 +43,33 @@ public class CreateMeetActivity extends AppCompatActivity {
     Bitmap bitmap;
     String radioButtonValue;
     ActivityCreateMeetBinding binding;
-
+    MultipartBody.Part imageID;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityCreateMeetBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+
         binding.radiogrp.setOnCheckedChangeListener((group, checkedId) -> {
             if (checkedId == R.id.limited) {
                 radioButtonValue = "Limited Users";
                 binding.invite.setVisibility(View.VISIBLE);
-                binding.selectedUsers.setVisibility(View.VISIBLE);
+//                binding.selectedUsers.setVisibility(View.VISIBLE);
                 binding.invite.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                        byte[] byteArray = stream.toByteArray();
                         Intent intent = new Intent(CreateMeetActivity.this, FilterUserActivity.class);
-                        intent.putExtra("meetActivity", "meeting");
-                        startActivity(intent);                    }
+                        intent.putExtra("meetActivity", true);
+                        intent.putExtra("type", "meeting");
+                        intent.putExtra("title", binding.editMeetName.getText().toString());
+                        intent.putExtra("body", binding.editMeetDesc.getText().toString());
+                        intent.putExtra("imageUrl", byteArray);
+                        startActivity(intent);
+                    }
                 });
             } else if (checkedId == R.id.openall) {
                 radioButtonValue = "Open for All";
@@ -119,7 +128,7 @@ public class CreateMeetActivity extends AppCompatActivity {
                     binding.img.setImageBitmap(bitmap);
 
                 } catch (IOException e) {
-                    Toast.makeText(CreateMeetActivity.this, ""+e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();                }
+                    Toast.makeText(CreateMeetActivity.this, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();                }
 
             }
 
@@ -198,7 +207,7 @@ public class CreateMeetActivity extends AppCompatActivity {
             RequestBody radioRequestBody = RequestBody.create(MediaType.parse("text/plain"), radioButtonValue);
 
             // Create MultipartBody.Part for the image
-            MultipartBody.Part imageID = MultipartBody.Part.createFormData("imageID", "image.jpg", imageRequestBody);
+             imageID = MultipartBody.Part.createFormData("imageID", "image.jpg", imageRequestBody);
 
             // Assuming you have a Retrofit instance named retrofit
             RetrofitClient.getInstance(this).getApiInterfaces().publishMeet(
@@ -224,7 +233,7 @@ public class CreateMeetActivity extends AppCompatActivity {
                         } catch (IOException e) {
                             binding.progressBar.setVisibility(View.GONE);
 
-                            Toast.makeText(CreateMeetActivity.this, ""+e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();                        }
+                            Toast.makeText(CreateMeetActivity.this, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();                        }
 
                         Toast.makeText(CreateMeetActivity.this, "Error" + response.errorBody(), Toast.LENGTH_SHORT).show();
                     }
@@ -234,7 +243,7 @@ public class CreateMeetActivity extends AppCompatActivity {
                 public void onFailure(Call<ResponseBody> call, Throwable t) {
                     binding.progressBar.setVisibility(View.GONE);
 
-                    Toast.makeText(CreateMeetActivity.this, "" + t.getLocalizedMessage().toString(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CreateMeetActivity.this, t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
         }

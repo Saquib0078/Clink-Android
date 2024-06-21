@@ -2,8 +2,8 @@ package com.nirmiteepublic.clink.models;
 
 // Model class for user data
 public class UserData {
-    private String userName;
-    private String userLocation;
+    private final String userName;
+    private final String userLocation;
 
     public UserData(String userName, String userLocation) {
         this.userName = userName;

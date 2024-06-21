@@ -27,7 +27,7 @@ public class UsersAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     List<UserModel> filteredUserModels;
     Context context;
     boolean matched;
-    private String searchString = "";
+    private final String searchString = "";
 
     public UsersAdapter(List<UserModel> userModelList) {
         this.userModelList = userModelList;

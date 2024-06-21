@@ -48,7 +48,7 @@ public class AddressPagerHolder {
                     binding.option1Title.setTextColor(Color.BLACK);
                     binding.option1Title.setText(selected);
                     data.put("dist", selected);
-                    Toast.makeText(context, ""+selected, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, selected, Toast.LENGTH_SHORT).show();
                 } catch (JSONException e) {
                     throw new RuntimeException(e);
                 }

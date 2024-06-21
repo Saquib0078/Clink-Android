@@ -363,7 +363,7 @@ public class EditProfileActivity extends PegaAppCompatActivity {
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
                 hideProgressDialog();
-                Toast.makeText(EditProfileActivity.this, "" + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(EditProfileActivity.this, t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -542,7 +542,7 @@ public class EditProfileActivity extends PegaAppCompatActivity {
 //                        System.out.println(responseBody);
                         UserUtils.setSecondaryUserid(id);
                         if (binding.profileImage != null) {
-                            Toast.makeText(EditProfileActivity.this, ""+Image, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(EditProfileActivity.this, Image, Toast.LENGTH_SHORT).show();
                             Glide.with(EditProfileActivity.this)
                                     .load(RetrofitClient.PROFILE_IMAGE+Image)
                                     .placeholder(R.drawable.default_image)
@@ -573,7 +573,7 @@ public class EditProfileActivity extends PegaAppCompatActivity {
                     } catch (IOException e) {
                         hideProgressDialog();
 
-                        Toast.makeText(EditProfileActivity.this, ""+e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();                    }
+                        Toast.makeText(EditProfileActivity.this, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();                    }
 
                 } else {
                     hideProgressDialog();
@@ -585,7 +585,7 @@ public class EditProfileActivity extends PegaAppCompatActivity {
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
-                Toast.makeText(EditProfileActivity.this, "" + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(EditProfileActivity.this, t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                 hideProgressDialog();
 
             }

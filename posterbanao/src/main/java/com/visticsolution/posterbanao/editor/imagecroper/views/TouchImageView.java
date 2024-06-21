@@ -33,7 +33,7 @@ public class TouchImageView extends ImageView {
 
     private boolean imageRenderedAtLeastOnce;
     private boolean isPaningOn;
-    private PointF last;
+    private final PointF last;
     private float[] f3m;
     private ScaleGestureDetector mScaleDetector;
     private ScaleType mScaleType;
@@ -52,7 +52,7 @@ public class TouchImageView extends ImageView {
     private State state;
     private float superMaxScale;
     private float superMinScale;
-    private OnTouchListener userTouchListener;
+    private final OnTouchListener userTouchListener;
     private int viewHeight;
     private int viewWidth;
 
@@ -463,10 +463,7 @@ public class TouchImageView extends ImageView {
         if (x >= -1.0f && direction < 0) {
             return false;
         }
-        if ((Math.abs(x) + ((float) this.viewWidth)) + SUPER_MIN_MULTIPLIER < getImageWidth() || direction <= 0) {
-            return true;
-        }
-        return false;
+        return (Math.abs(x) + ((float) this.viewWidth)) + SUPER_MIN_MULTIPLIER < getImageWidth() || direction <= 0;
     }
 
     public boolean onTouchEvent(MotionEvent event) {
@@ -671,15 +668,15 @@ public class TouchImageView extends ImageView {
 
     private class DoubleTapZoom implements Runnable {
         private static final float ZOOM_TIME = 500.0f;
-        private float bitmapX;
-        private float bitmapY;
-        private PointF endTouch;
-        private AccelerateDecelerateInterpolator interpolator;
-        private long startTime;
-        private PointF startTouch;
-        private float startZoom;
-        private boolean stretchImageToSuper;
-        private float targetZoom;
+        private final float bitmapX;
+        private final float bitmapY;
+        private final PointF endTouch;
+        private final AccelerateDecelerateInterpolator interpolator;
+        private final long startTime;
+        private final PointF startTouch;
+        private final float startZoom;
+        private final boolean stretchImageToSuper;
+        private final float targetZoom;
 
         DoubleTapZoom(float targetZoom, float focusX, float focusY, boolean stretchImageToSuper) {
             this.interpolator = new AccelerateDecelerateInterpolator();

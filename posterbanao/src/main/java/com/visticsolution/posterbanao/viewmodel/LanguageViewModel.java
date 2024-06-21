@@ -10,7 +10,7 @@ import java.util.List;
 
 public class LanguageViewModel extends ViewModel {
 
-    private LanguageRespository respository;
+    private final LanguageRespository respository;
 
     public LanguageViewModel(){
         respository = new LanguageRespository();

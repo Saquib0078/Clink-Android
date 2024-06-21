@@ -10,8 +10,7 @@ import com.hw.photomovie.opengl.FboTexture;
  * Created by huangwei on 2018/9/8.
  */
 public class KuwaharaMovieFilter extends BaseMovieFilter {
-    public static final String KUWAHARA_FRAGMENT_SHADER = "" +
-            "varying highp vec2 textureCoordinate;\n" +
+    public static final String KUWAHARA_FRAGMENT_SHADER = "varying highp vec2 textureCoordinate;\n" +
             "uniform sampler2D inputImageTexture;\n" +
             "uniform int radius;\n" +
             "\n" +
@@ -98,7 +97,7 @@ public class KuwaharaMovieFilter extends BaseMovieFilter {
             "gl_FragColor = vec4(m3, 1.0);\n" +
             "}\n" +
             "}\n";
-    private int mRadius;
+    private final int mRadius;
     private int mRadiusLocation;
 
     public KuwaharaMovieFilter() {

@@ -11,7 +11,7 @@ import com.hw.photomovie.util.ScaleType;
  */
 public class FitCenterSegment extends SingleBitmapSegment {
 
-    private Matrix mScaleMatrix = new Matrix();
+    private final Matrix mScaleMatrix = new Matrix();
     protected RectF mDstRect = new RectF();
     protected RectF mScaleRect = new RectF();
     private int mBackgroundColor;

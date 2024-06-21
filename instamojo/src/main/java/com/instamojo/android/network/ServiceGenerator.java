@@ -26,7 +26,7 @@ public class ServiceGenerator {
             .addInterceptor(new DefaultHeadersInterceptor())
             .build();
 
-    private static Retrofit.Builder builder = new Retrofit.Builder()
+    private static final Retrofit.Builder builder = new Retrofit.Builder()
             .client(httpClient)
             .addConverterFactory(GsonConverterFactory.create());
 

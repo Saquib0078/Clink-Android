@@ -69,7 +69,7 @@ public class ServiceUtility {
         int index = msg.indexOf(delim);
         varName = msg.substring(0,index);
         if((index+1)!=msg.length())
-            varVal = msg.substring(index+1,msg.length());
+            varVal = msg.substring(index+1);
         respList.add(varName);
         respList.add(varVal);
         return respList.size() > 0 ? respList : null;

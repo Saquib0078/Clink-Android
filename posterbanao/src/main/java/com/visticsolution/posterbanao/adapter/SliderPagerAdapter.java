@@ -19,8 +19,8 @@ import java.util.List;
 public class SliderPagerAdapter extends LoopingPagerAdapter {
 
 
-    private List<SliderModel> list;
-    private AdapterClickListener listener;
+    private final List<SliderModel> list;
+    private final AdapterClickListener listener;
     Context context;
 
     public SliderPagerAdapter(Context context, List<SliderModel> List, AdapterClickListener listener) {
@@ -47,7 +47,7 @@ public class SliderPagerAdapter extends LoopingPagerAdapter {
                 }
             });
 
-            view.setTag("" + i);
+            view.setTag(String.valueOf(i));
         }
 
     }

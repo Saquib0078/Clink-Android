@@ -31,7 +31,7 @@ public class NestedWebView extends WebView implements NestedScrollingChild3 {
     private final int[] mScrollConsumed = new int[2];
 
     private int mLastMotionY;
-    private NestedScrollingChildHelper mChildHelper;
+    private final NestedScrollingChildHelper mChildHelper;
     private boolean mIsBeingDragged = false;
     private VelocityTracker mVelocityTracker;
     private int mTouchSlop;

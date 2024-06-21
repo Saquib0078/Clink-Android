@@ -53,7 +53,7 @@
                android:layout_width="match_parent"
                android:layout_height="match_parent"
                android:background="@null"
-               android:hint="Meeting Title"
+               android:hint="Notification Title"
                android:inputType="text"
                android:paddingStart="@dimen/_15sdp"
                android:paddingEnd="@dimen/_11sdp"
@@ -75,7 +75,7 @@
                android:layout_width="match_parent"
                android:layout_height="match_parent"
                android:background="@null"
-               android:hint="Meeting Descryption"
+               android:hint="Notification Descryption"
                android:inputType="text"
                android:paddingStart="@dimen/_15sdp"
                android:paddingEnd="@dimen/_11sdp"
@@ -87,30 +87,30 @@
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
            android:orientation="vertical">
-           <RadioGroup
-               android:id="@+id/radiogrp"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:layout_marginTop="@dimen/_5sdp"
-               android:orientation="horizontal"
-               android:padding="@dimen/_5sdp"
-               android:paddingStart="@dimen/_15sdp"
-               android:paddingEnd="@dimen/_11sdp">
+<!--           <RadioGroup-->
+<!--               android:id="@+id/radiogrp"-->
+<!--               android:layout_width="match_parent"-->
+<!--               android:layout_height="wrap_content"-->
+<!--               android:layout_marginTop="@dimen/_5sdp"-->
+<!--               android:orientation="horizontal"-->
+<!--               android:padding="@dimen/_5sdp"-->
+<!--               android:paddingStart="@dimen/_15sdp"-->
+<!--               android:paddingEnd="@dimen/_11sdp">-->
 
-               <RadioButton
-                   android:id="@+id/limited"
-                   android:layout_width="0dp"
-                   android:layout_height="wrap_content"
-                   android:layout_weight="1"
-                   android:text="Meeting" />
+<!--               <RadioButton-->
+<!--                   android:id="@+id/limited"-->
+<!--                   android:layout_width="0dp"-->
+<!--                   android:layout_height="wrap_content"-->
+<!--                   android:layout_weight="1"-->
+<!--                   android:text="Meeting" />-->
 
-               <RadioButton
-                   android:id="@+id/openall"
-                   android:layout_width="0dp"
-                   android:layout_height="wrap_content"
-                   android:layout_weight="1"
-                   android:text="Task" />
-           </RadioGroup>
+<!--               <RadioButton-->
+<!--                   android:id="@+id/openall"-->
+<!--                   android:layout_width="0dp"-->
+<!--                   android:layout_height="wrap_content"-->
+<!--                   android:layout_weight="1"-->
+<!--                   android:text="Task" />-->
+<!--           </RadioGroup>-->
            <LinearLayout
                android:layout_width="match_parent"
                android:layout_height="wrap_content"

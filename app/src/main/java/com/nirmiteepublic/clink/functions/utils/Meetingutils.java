@@ -9,6 +9,6 @@ public class Meetingutils {
     }
 
     public void setMEETING_ID(String MEETING_ID) {
-        this.MEETING_ID = MEETING_ID;
+        Meetingutils.MEETING_ID = MEETING_ID;
     }
 }

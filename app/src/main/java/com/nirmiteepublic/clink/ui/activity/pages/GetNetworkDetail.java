@@ -82,7 +82,7 @@ public class GetNetworkDetail extends AppCompatActivity {
                                 String ward = findNumObject.has("ward") ? findNumObject.getAsJsonPrimitive("ward").getAsString() : "";
                                 String id = findNumObject.has("_id") ? findNumObject.getAsJsonPrimitive("_id").getAsString() : "";
                                 String dp = findNumObject1.has("dp") ? findNumObject1.getAsJsonPrimitive("dp").getAsString() : "";
-                                Toast.makeText(GetNetworkDetail.this, ""+dp, Toast.LENGTH_SHORT).show();
+                                Toast.makeText(GetNetworkDetail.this, dp, Toast.LENGTH_SHORT).show();
                                 UserUtils.setSecondaryUserid(id);
                                 binding.fname.setText(fname);
                                 binding.lname.setText(lname);
@@ -117,14 +117,14 @@ public class GetNetworkDetail extends AppCompatActivity {
                     } catch (IOException e) {
                         binding.progressBar.setVisibility(View.GONE);
 
-                        Toast.makeText(GetNetworkDetail.this, ""+e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(GetNetworkDetail.this, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                     }
                 }
             }
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
-                Toast.makeText(GetNetworkDetail.this, ""+t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(GetNetworkDetail.this, t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                 binding.progressBar.setVisibility(View.GONE);
             }
         });

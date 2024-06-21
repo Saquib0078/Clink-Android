@@ -81,7 +81,7 @@ public class StickerView extends RelativeLayout implements MultiTouchListener.To
         LayoutParams layoutParams = (LayoutParams) StickerView.this.getLayoutParams();
         int action = motionEvent.getAction();
 
-        Log.d("action___",""+action);
+        Log.d("action___", String.valueOf(action));
         if (action == 0) {
             if (stickerView != null) {
                 stickerView.requestDisallowInterceptTouchEvent(true);
@@ -230,8 +230,8 @@ public class StickerView extends RelativeLayout implements MultiTouchListener.To
     private int imgAlpha = 255;
     private int imgColor = 0;
     private boolean isBorderVisible = false;
-    private boolean isColorFilterEnable = false;
-    private boolean isFromAddText = false;
+    private final boolean isColorFilterEnable = false;
+    private final boolean isFromAddText = false;
     private Uri resUri = null;
     private ImageView rotateIv;
     private float rotation;

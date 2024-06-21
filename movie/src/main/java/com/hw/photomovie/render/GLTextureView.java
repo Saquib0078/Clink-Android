@@ -678,7 +678,7 @@ public class GLTextureView extends TextureView implements TextureView.SurfaceTex
     }
 
     private class DefaultContextFactory implements GLTextureView.EGLContextFactory {
-        private int EGL_CONTEXT_CLIENT_VERSION = 0x3098;
+        private final int EGL_CONTEXT_CLIENT_VERSION = 0x3098;
 
         public EGLContext createContext(EGL10 egl, EGLDisplay display, EGLConfig config) {
             int[] attrib_list = {EGL_CONTEXT_CLIENT_VERSION, mEGLContextClientVersion,
@@ -879,7 +879,7 @@ public class GLTextureView extends TextureView implements TextureView.SurfaceTex
             return defaultValue;
         }
 
-        private int[] mValue;
+        private final int[] mValue;
         // Subclasses can adjust these values:
         protected int mRedSize;
         protected int mGreenSize;
@@ -1123,7 +1123,7 @@ public class GLTextureView extends TextureView implements TextureView.SurfaceTex
             return function + " failed: " + GLUtils.getEGLErrorString(error);
         }
 
-        private WeakReference<GLTextureView> mGLSurfaceViewWeakRef;
+        private final WeakReference<GLTextureView> mGLSurfaceViewWeakRef;
         EGL10 mEgl;
         EGLDisplay mEglDisplay;
         EGLSurface mEglSurface;
@@ -1263,8 +1263,7 @@ public class GLTextureView extends TextureView implements TextureView.SurfaceTex
                             // When pausing, optionally release the EGL Context:
                             if (pausing && mHaveEglContext) {
                                 GLTextureView view = mGLSurfaceViewWeakRef.get();
-                                boolean preserveEglContextOnPause = view == null ?
-                                        false : view.mPreserveEGLContextOnPause;
+                                boolean preserveEglContextOnPause = view != null && view.mPreserveEGLContextOnPause;
                                 if (!preserveEglContextOnPause) {
                                     stopEglContextLocked();
                                     if (LOG_SURFACE) {
@@ -1427,12 +1426,8 @@ public class GLTextureView extends TextureView implements TextureView.SurfaceTex
                         }
                         GLTextureView view = mGLSurfaceViewWeakRef.get();
                         if (view != null) {
-                            try {
-//                                Trace.traceBegin(Trace.TRACE_TAG_VIEW, "onSurfaceCreated");
-                                view.mRenderer.onSurfaceCreated(gl, mEglHelper.mEglConfig);
-                            } finally {
-//                                Trace.traceEnd(Trace.TRACE_TAG_VIEW);
-                            }
+                            //                                Trace.traceBegin(Trace.TRACE_TAG_VIEW, "onSurfaceCreated");
+                            view.mRenderer.onSurfaceCreated(gl, mEglHelper.mEglConfig);
                         }
                         createEglContext = false;
                     }
@@ -1443,12 +1438,8 @@ public class GLTextureView extends TextureView implements TextureView.SurfaceTex
                         }
                         GLTextureView view = mGLSurfaceViewWeakRef.get();
                         if (view != null) {
-                            try {
-//                                Trace.traceBegin(Trace.TRACE_TAG_VIEW, "onSurfaceChanged");
-                                view.mRenderer.onSurfaceChanged(gl, w, h);
-                            } finally {
-//                                Trace.traceEnd(Trace.TRACE_TAG_VIEW);
-                            }
+                            //                                Trace.traceBegin(Trace.TRACE_TAG_VIEW, "onSurfaceChanged");
+                            view.mRenderer.onSurfaceChanged(gl, w, h);
                         }
                         sizeChanged = false;
                     }
@@ -1460,15 +1451,11 @@ public class GLTextureView extends TextureView implements TextureView.SurfaceTex
                     {
                         GLTextureView view = mGLSurfaceViewWeakRef.get();
                         if (view != null) {
-                            try {
-//                                Trace.traceBegin(Trace.TRACE_TAG_VIEW, "onDrawFrame");
-                                needSwap = view.mRenderer.onDrawFrame(gl);
-                                if (finishDrawingRunnable != null) {
-                                    finishDrawingRunnable.run();
-                                    finishDrawingRunnable = null;
-                                }
-                            } finally {
-//                                Trace.traceEnd(Trace.TRACE_TAG_VIEW);
+                            //                                Trace.traceBegin(Trace.TRACE_TAG_VIEW, "onDrawFrame");
+                            needSwap = view.mRenderer.onDrawFrame(gl);
+                            if (finishDrawingRunnable != null) {
+                                finishDrawingRunnable.run();
+                                finishDrawingRunnable = null;
                             }
                         }
                     }
@@ -1735,7 +1722,7 @@ public class GLTextureView extends TextureView implements TextureView.SurfaceTex
         private boolean mRequestRender;
         private boolean mWantRenderNotification;
         private boolean mRenderComplete;
-        private ArrayList<Runnable> mEventQueue = new ArrayList<Runnable>();
+        private final ArrayList<Runnable> mEventQueue = new ArrayList<Runnable>();
         private boolean mSizeChanged = true;
         private Runnable mFinishDrawingRunnable = null;
 
@@ -1748,7 +1735,7 @@ public class GLTextureView extends TextureView implements TextureView.SurfaceTex
          * called. This weak reference allows the GLSurfaceView to be garbage collected while
          * the GLThread is still alive.
          */
-        private WeakReference<GLTextureView> mGLSurfaceViewWeakRef;
+        private final WeakReference<GLTextureView> mGLSurfaceViewWeakRef;
 
     }
 
@@ -1783,7 +1770,7 @@ public class GLTextureView extends TextureView implements TextureView.SurfaceTex
             }
         }
 
-        private StringBuilder mBuilder = new StringBuilder();
+        private final StringBuilder mBuilder = new StringBuilder();
     }
 
 
@@ -1795,7 +1782,7 @@ public class GLTextureView extends TextureView implements TextureView.SurfaceTex
     }
 
     private static class GLThreadManager {
-        private static String TAG = "GLThreadManager";
+        private static final String TAG = "GLThreadManager";
 
         public synchronized void threadExiting(GLThread thread) {
             if (LOG_THREADS) {

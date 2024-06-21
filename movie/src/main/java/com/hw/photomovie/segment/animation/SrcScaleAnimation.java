@@ -9,10 +9,10 @@ import com.hw.photomovie.util.PhotoUtil;
  */
 public class SrcScaleAnimation extends SrcAnimation {
 
-    private float mFrom;
-    private float mTo;
+    private final float mFrom;
+    private final float mTo;
 
-    private RectF mMaxShowRect = new RectF();
+    private final RectF mMaxShowRect = new RectF();
 
     private float mFromW, mFromH, mToW, mToH;
     private float mX, mY;

@@ -191,7 +191,7 @@ public class CreateFragment extends Fragment {
                 int parseInt = Integer.parseInt(split[0]);
                 int parseInt2 = Integer.parseInt(split[1]);
                 int gcd = gcd(parseInt, parseInt2);
-                ratio = "" + (parseInt / gcd) + ":" + (parseInt2 / gcd) + ":" + parseInt + ":" + parseInt2;
+                ratio = (parseInt / gcd) + ":" + (parseInt2 / gcd) + ":" + parseInt + ":" + parseInt2;
                 startAction(v);
 
             }
@@ -221,7 +221,7 @@ public class CreateFragment extends Fragment {
         return i2 == 0 ? i : gcd(i2, i % i2);
     }
 
-    private ActivityResultLauncher<String[]> mPermissionResult = registerForActivityResult(
+    private final ActivityResultLauncher<String[]> mPermissionResult = registerForActivityResult(
             new ActivityResultContracts.RequestMultiplePermissions(), new ActivityResultCallback<Map<String, Boolean>>() {
                 @RequiresApi(api = Build.VERSION_CODES.M)
                 @Override

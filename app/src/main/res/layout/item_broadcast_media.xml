@@ -92,7 +92,7 @@
             </LinearLayout>
 
             <androidx.cardview.widget.CardView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10sdp"
                 app:cardBackgroundColor="@color/white"
@@ -102,7 +102,7 @@
                 <RelativeLayout
                     android:id="@+id/mediaContainer"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="match_parent">
 
                     <ImageView
                         android:id="@+id/post_image"
@@ -113,16 +113,6 @@
                         android:scaleType="fitCenter"
                         android:src="@drawable/round_image_placeholder" />
 
-                   <LinearLayout
-                       android:layout_width="wrap_content"
-                       android:layout_height="wrap_content">
-
-                       <VideoView
-                           android:id="@+id/post_video"
-                           android:layout_width="wrap_content"
-                           android:layout_height="@dimen/_400sdp"
-                           android:visibility="gone" />
-                   </LinearLayout>
 
                     <ImageView
                         android:id="@+id/loved"
@@ -132,23 +122,44 @@
                         android:importantForAccessibility="no"
                         android:src="@drawable/loved_icon"
                         android:visibility="invisible" />
-                    <ImageView
-                        android:id="@+id/playButton"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:layout_centerInParent="true"
-                        android:importantForAccessibility="no"
-                        android:src="@drawable/play"
-                        android:visibility="invisible" />
-                    <ImageView
-                        android:id="@+id/pauseButton"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:src="@drawable/play"
 
+                    <com.google.android.exoplayer2.ui.PlayerView
+                        android:id="@+id/postVideo"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_400sdp"
+                        android:visibility="visible"
+                        app:resize_mode="fill"
+                        app:use_controller="false" />
+
+                    <ImageView
+                        android:id="@+id/play"
+                        android:layout_width="@dimen/_40sdp"
+                        android:layout_height="@dimen/_40sdp"
                         android:layout_centerInParent="true"
-                        android:importantForAccessibility="no"
-                        android:visibility="invisible" />
+                        android:src="@drawable/play" />
+
+                    <ImageView
+                        android:id="@+id/soundToggleButton"
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_alignParentRight="true"
+                        android:layout_margin="@dimen/_16sdp"
+                        android:src="@drawable/volumeoff" />
+
+                    <!--                    <SeekBar-->
+                    <!--                        android:id="@+id/videoSeekBar"-->
+                    <!--                        android:layout_width="match_parent"-->
+                    <!--                        android:layout_height="wrap_content"-->
+                    <!--                        android:layout_alignParentBottom="true"-->
+                    <!--                        android:layout_margin="16dp"-->
+                    <!--                        android:visibility="gone" />-->
+
+                    <ProgressBar
+                        android:id="@+id/progressBar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:visibility="gone" />
 
                 </RelativeLayout>
 

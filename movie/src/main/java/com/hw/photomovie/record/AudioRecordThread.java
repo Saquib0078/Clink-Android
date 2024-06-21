@@ -28,12 +28,12 @@ import java.util.concurrent.CyclicBarrier;
 public class AudioRecordThread extends Thread {
     private static final String TAG = "AudioRecordThread";
 
-    private Context mContext;
-    private String mAudioPath;
-    private MediaMuxer mMediaMuxer;
-    private CyclicBarrier mBarrier;
+    private final Context mContext;
+    private final String mAudioPath;
+    private final MediaMuxer mMediaMuxer;
+    private final CyclicBarrier mBarrier;
     private volatile Exception mException;
-    private long mVideoDurationUs;
+    private final long mVideoDurationUs;
 
     public AudioRecordThread(Context context, String audioPath, MediaMuxer mediaMuxer, CyclicBarrier muxerBarrier, long videoDurationMs) {
         super("AudioRecordThread");

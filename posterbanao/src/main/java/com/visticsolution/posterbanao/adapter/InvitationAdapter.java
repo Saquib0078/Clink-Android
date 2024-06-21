@@ -74,7 +74,7 @@ public class InvitationAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
     @Override
     public int getItemCount() {
-        Log.d("onChanged___",""+list.size());
+        Log.d("onChanged___", String.valueOf(list.size()));
         return list.size();
     }
 

@@ -25,7 +25,7 @@ import retrofit2.Response;
 public class UserRespository {
 
 
-    private ApiService apiService;
+    private final ApiService apiService;
 
     public UserRespository() {
         apiService = ApiClient.getRetrofit().create(ApiService.class);
@@ -151,14 +151,14 @@ public class UserRespository {
         MutableLiveData<UserResponse> data = new MutableLiveData<>();
         apiService.login(
                 Constants.API_KEY,
-                "" + object.getString("social"),
-                "" + object.getString("social_id"),
-                "" + object.getString("auth_token"),
-                "" + object.getString("email"),
-                "" + object.getString("number"),
-                "" + object.getString("profile_pic"),
-                "" + object.getString("name"),
-                "" + object.getString("device_token")).enqueue(new Callback<UserResponse>() {
+                object.getString("social"),
+                object.getString("social_id"),
+                object.getString("auth_token"),
+                object.getString("email"),
+                object.getString("number"),
+                object.getString("profile_pic"),
+                object.getString("name"),
+                object.getString("device_token")).enqueue(new Callback<UserResponse>() {
             @Override
             public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
                 data.setValue(response.body());
@@ -176,14 +176,14 @@ public class UserRespository {
         MutableLiveData<UserResponse> data = new MutableLiveData<>();
         apiService.updateProfile(
                 Constants.API_KEY,
-                "" + uid,
-                "" + name,
-                "" + email,
-                "" + number,
-                ""+designation,
-                "" + refercode,
-                "" + state,
-                "" + dist,
+                uid,
+                name,
+                email,
+                number,
+                designation,
+                refercode,
+                state,
+                dist,
                 Integer.parseInt(category)).enqueue(new Callback<UserResponse>() {
             @Override
             public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
@@ -202,9 +202,9 @@ public class UserRespository {
         MutableLiveData<UserResponse> data = new MutableLiveData<>();
         apiService.addContact(
                 Constants.API_KEY,
-                "" + uid,
-                "" + number,
-                "" + message).enqueue(new Callback<UserResponse>() {
+                uid,
+                number,
+                message).enqueue(new Callback<UserResponse>() {
             @Override
             public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
                 data.setValue(response.body());
@@ -222,8 +222,8 @@ public class UserRespository {
         MutableLiveData<UserResponse> data = new MutableLiveData<>();
         apiService.getBusinessDetail(
                 Constants.API_KEY,
-                "" + uid,
-                "" + bid).enqueue(new Callback<UserResponse>() {
+                uid,
+                bid).enqueue(new Callback<UserResponse>() {
             @Override
             public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
                 data.setValue(response.body());
@@ -241,12 +241,12 @@ public class UserRespository {
         MutableLiveData<UserResponse> data = new MutableLiveData<>();
         apiService.updateSubscription(
                 Constants.API_KEY,
-                "" + uid,
-                "" + type,
-                "" + sid,
-                "" + tid,
-                "" + promocode,
-                ""+amount).enqueue(new Callback<UserResponse>() {
+                uid,
+                type,
+                sid,
+                tid,
+                promocode,
+                amount).enqueue(new Callback<UserResponse>() {
             @Override
             public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
                 data.setValue(response.body());
@@ -264,7 +264,7 @@ public class UserRespository {
         MutableLiveData<UserResponse> data = new MutableLiveData<>();
         apiService.getUserFrames(
                 Constants.API_KEY,
-                "" + uid).enqueue(new Callback<UserResponse>() {
+                uid).enqueue(new Callback<UserResponse>() {
             @Override
             public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
                 data.setValue(response.body());
@@ -282,7 +282,7 @@ public class UserRespository {
         MutableLiveData<UserResponse> data = new MutableLiveData<>();
         apiService.getInvitedUser(
                 Constants.API_KEY,
-                "" + uid).enqueue(new Callback<UserResponse>() {
+                uid).enqueue(new Callback<UserResponse>() {
             @Override
             public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
                 data.setValue(response.body());
@@ -300,7 +300,7 @@ public class UserRespository {
         MutableLiveData<UserResponse> data = new MutableLiveData<>();
         apiService.getWithdrawRequest(
                 Constants.API_KEY,
-                "" + uid).enqueue(new Callback<UserResponse>() {
+                uid).enqueue(new Callback<UserResponse>() {
             @Override
             public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
                 data.setValue(response.body());
@@ -318,7 +318,7 @@ public class UserRespository {
         MutableLiveData<UserResponse> data = new MutableLiveData<>();
         apiService.getTransactionRequest(
                 Constants.API_KEY,
-                "" + uid).enqueue(new Callback<UserResponse>() {
+                uid).enqueue(new Callback<UserResponse>() {
             @Override
             public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
                 data.setValue(response.body());
@@ -336,7 +336,7 @@ public class UserRespository {
         MutableLiveData<UserResponse> data = new MutableLiveData<>();
         apiService.withdrawRequest(
                 Constants.API_KEY,
-                "" + uid,
+                uid,
                 balance,
                 s).enqueue(new Callback<UserResponse>() {
             @Override
@@ -356,7 +356,7 @@ public class UserRespository {
         MutableLiveData<UserResponse> data = new MutableLiveData<>();
         apiService.cheakReferCode(
                 Constants.API_KEY,
-                "" + code).enqueue(new Callback<UserResponse>() {
+                code).enqueue(new Callback<UserResponse>() {
             @Override
             public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
                 data.setValue(response.body());
@@ -374,7 +374,7 @@ public class UserRespository {
         MutableLiveData<UserResponse> data = new MutableLiveData<>();
         apiService.getUserCategory(
                 Constants.API_KEY,
-                "" + category_id).enqueue(new Callback<UserResponse>() {
+                category_id).enqueue(new Callback<UserResponse>() {
             @Override
             public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
                 data.setValue(response.body());
@@ -392,8 +392,8 @@ public class UserRespository {
         MutableLiveData<UserResponse> data = new MutableLiveData<>();
         apiService.getUserBusiness(
                 Constants.API_KEY,
-                "" + uid,
-                "" + type).enqueue(new Callback<UserResponse>() {
+                uid,
+                type).enqueue(new Callback<UserResponse>() {
             @Override
             public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
                 data.setValue(response.body());
@@ -471,10 +471,10 @@ public class UserRespository {
         MutableLiveData<UserResponse> data = new MutableLiveData<>();
         apiService.addInquiry(
                 Constants.API_KEY,
-                "" + uid,
-                "" + service_id,
-                "" + number,
-                "" + message).enqueue(new Callback<UserResponse>() {
+                uid,
+                service_id,
+                number,
+                message).enqueue(new Callback<UserResponse>() {
             @Override
             public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
                 data.setValue(response.body());

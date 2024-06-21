@@ -27,9 +27,9 @@ public class SubtitleLayer extends MovieLayer {
 
     private String mText;
     private int mMarginBottom;
-    private List<BitmapInfo> mBitmapInfos = new ArrayList<BitmapInfo>();
+    private final List<BitmapInfo> mBitmapInfos = new ArrayList<BitmapInfo>();
 
-    private RectF mDstRect = new RectF();
+    private final RectF mDstRect = new RectF();
     /**
      * 进度超过这个点就开始消失
      */

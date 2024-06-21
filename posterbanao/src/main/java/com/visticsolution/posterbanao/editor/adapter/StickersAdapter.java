@@ -19,8 +19,8 @@ import java.util.List;
 
 public class StickersAdapter extends RecyclerView.Adapter<StickersAdapter.ViewHolder> {
 
-    private List<StickerModel> list;
-    private StickerPagerAdapter.OnStickerSelect listener;
+    private final List<StickerModel> list;
+    private final StickerPagerAdapter.OnStickerSelect listener;
     Context context;
 
     public StickersAdapter(Context context, List<StickerModel> list, StickerPagerAdapter.OnStickerSelect listener) {

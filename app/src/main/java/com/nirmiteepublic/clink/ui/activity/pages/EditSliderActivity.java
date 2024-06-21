@@ -122,7 +122,7 @@ public class EditSliderActivity extends PegaAppCompatActivity {
                     try {
                         jsonObject = new JSONObject(jsonResponse);
                     } catch (JSONException e) {
-                        Toast.makeText(EditSliderActivity.this, "" + e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(EditSliderActivity.this, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                     }
                     try {
                         JSONArray slidersArray = jsonObject.getJSONArray("sliders");
@@ -135,13 +135,13 @@ public class EditSliderActivity extends PegaAppCompatActivity {
                         }
                     } catch (JSONException e) {
                         hideProgressDialog();
-                        Toast.makeText(EditSliderActivity.this, "" + e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(EditSliderActivity.this, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                     }
                     try {
                         initImageSlider(new JSONArray(sliderUrls));
                     } catch (JSONException e) {
                         hideProgressDialog();
-                        Toast.makeText(EditSliderActivity.this, "" + e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(EditSliderActivity.this, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                     }
                 }
             }
@@ -149,7 +149,7 @@ public class EditSliderActivity extends PegaAppCompatActivity {
             @Override
             public void onFailure(Call<SliderImageResponse> call, Throwable t) {
                 hideProgressDialog();
-                Toast.makeText(EditSliderActivity.this, "" + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(EditSliderActivity.this, t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -201,7 +201,7 @@ public class EditSliderActivity extends PegaAppCompatActivity {
                         } catch (IOException e) {
                             binding.progressBar.setVisibility(View.GONE);
                             hideProgressDialog();
-                            Toast.makeText(EditSliderActivity.this, "" + e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(EditSliderActivity.this, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                         }
                         hideProgressDialog();
                         Toast.makeText(EditSliderActivity.this, "Error" + response.errorBody(), Toast.LENGTH_SHORT).show();
@@ -212,7 +212,7 @@ public class EditSliderActivity extends PegaAppCompatActivity {
                 public void onFailure(Call<ResponseBody> call, Throwable t) {
                     binding.progressBar.setVisibility(View.GONE);
                     hideProgressDialog();
-                    Toast.makeText(EditSliderActivity.this, "" + t.getLocalizedMessage().toString(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(EditSliderActivity.this, t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
         }
@@ -230,7 +230,7 @@ public class EditSliderActivity extends PegaAppCompatActivity {
                     imageView.setImageBitmap(bitmap);
 
                 } catch (IOException e) {
-                    Toast.makeText(EditSliderActivity.this, "" + e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(EditSliderActivity.this, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                 }
 
             }

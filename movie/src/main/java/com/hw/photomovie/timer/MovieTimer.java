@@ -17,7 +17,7 @@ public class MovieTimer implements IMovieTimer, ValueAnimator.AnimatorUpdateList
     private long mPausedPlayTime;
     private boolean mPaused;
 
-    private PhotoMovie mPhotoMovie;
+    private final PhotoMovie mPhotoMovie;
     private boolean mLoop;
 
     public MovieTimer(PhotoMovie photoMovie) {

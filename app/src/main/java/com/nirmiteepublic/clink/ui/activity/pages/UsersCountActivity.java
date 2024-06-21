@@ -38,7 +38,7 @@ ActivityUsersCountBinding binding;
 
             @Override
             public void onFailure(Call<UserCount> call, Throwable t) {
-                Toast.makeText(UsersCountActivity.this, ""+t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(UsersCountActivity.this, t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 

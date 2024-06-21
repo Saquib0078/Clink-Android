@@ -35,7 +35,7 @@ public class ItemBroadcastHeaderViewHolder extends RecyclerView.ViewHolder {
     public void bind() {
         binding.name.setText("Hey, " + UserUtils.getUserFirstName());
         binding.greeting.setText("Good " + UserUtils.getGreeting());
-        SharedPreferences prefs = context.getSharedPreferences("NotificationPrefs", context.MODE_PRIVATE);
+        SharedPreferences prefs = context.getSharedPreferences("NotificationPrefs", Context.MODE_PRIVATE);
         boolean notificationStatus = prefs.getBoolean("notificationStatus", false);
         if (notificationStatus) {
             prefs.edit().putBoolean("notificationStatus", false).apply();

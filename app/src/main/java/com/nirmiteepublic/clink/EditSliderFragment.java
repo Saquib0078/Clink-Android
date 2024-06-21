@@ -123,6 +123,6 @@ public class EditSliderFragment extends BottomSheetDialogFragment implements Ima
 
     @Override
     public void onItemClick(String id) {
-        Toast.makeText(requireContext(), ""+id, Toast.LENGTH_SHORT).show();
+        Toast.makeText(requireContext(), id, Toast.LENGTH_SHORT).show();
     }
 }

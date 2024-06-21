@@ -11,7 +11,7 @@ import java.util.List;
 
 public class HomeViewModel extends ViewModel {
 
-    private HomeRespository respository;
+    private final HomeRespository respository;
 
     public HomeViewModel() {
         respository = new HomeRespository();

@@ -353,7 +353,7 @@ public class EditProfileActivity extends AppCompatActivity {
                 try {
                     moveFile(new File(imageFilePath),newfile);
                 } catch (IOException e) {
-                    Toast.makeText(context, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
                 Functions.getSharedPreference(context).edit().putString("P_PATH",newfile.getAbsolutePath()+"/"+new File(imageFilePath).getName()).apply();
 
@@ -388,7 +388,7 @@ public class EditProfileActivity extends AppCompatActivity {
                         }
                     });
         }catch (Exception e){
-            Toast.makeText(this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
         }finally {
             if (inputChannel != null) inputChannel.close();
             if (outputChannel != null) outputChannel.close();
@@ -396,7 +396,7 @@ public class EditProfileActivity extends AppCompatActivity {
 
     }
 
-    private ActivityResultLauncher<String[]> mPermissionResult = registerForActivityResult(
+    private final ActivityResultLauncher<String[]> mPermissionResult = registerForActivityResult(
             new ActivityResultContracts.RequestMultiplePermissions(), new ActivityResultCallback<Map<String, Boolean>>() {
                 @RequiresApi(api = Build.VERSION_CODES.M)
                 @Override

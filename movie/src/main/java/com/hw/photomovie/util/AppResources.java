@@ -44,7 +44,7 @@ public class AppResources {
     }
 
     private static final class Holder {
-        private static AppResources INSTANCE = new AppResources();
+        private static final AppResources INSTANCE = new AppResources();
     }
 
     public static String loadShaderFromAssets(String assetsName){

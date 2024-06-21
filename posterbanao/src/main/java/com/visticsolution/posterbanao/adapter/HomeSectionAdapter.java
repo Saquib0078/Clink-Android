@@ -33,7 +33,7 @@ public class HomeSectionAdapter extends RecyclerView.Adapter<HomeSectionAdapter.
         void onItemClick(View view, List<PostsModel> postsModels, int main_position, int child_position);
     }
 
-    private HomeSectionAdapter.OnItemClickListener listener;
+    private final HomeSectionAdapter.OnItemClickListener listener;
 
     public HomeSectionAdapter(Context context, List<SectionModel> arrayList, OnItemClickListener listener) {
         this.context = context;

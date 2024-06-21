@@ -113,21 +113,21 @@ public class Texture2dProgram {
             "    gl_FragColor = sum;\n" +
             "}\n";
 
-    private ProgramType mProgramType;
+    private final ProgramType mProgramType;
 
     // Handles to the GL program and various components of it.
     private int mProgramHandle;
-    private int muMVPMatrixLoc;
-    private int muTexMatrixLoc;
+    private final int muMVPMatrixLoc;
+    private final int muTexMatrixLoc;
     private int muKernelLoc;
-    private int muTexOffsetLoc;
-    private int muColorAdjustLoc;
-    private int maPositionLoc;
-    private int maTextureCoordLoc;
+    private final int muTexOffsetLoc;
+    private final int muColorAdjustLoc;
+    private final int maPositionLoc;
+    private final int maTextureCoordLoc;
 
-    private int mTextureTarget;
+    private final int mTextureTarget;
 
-    private float[] mKernel = new float[KERNEL_SIZE];
+    private final float[] mKernel = new float[KERNEL_SIZE];
     private float[] mTexOffset;
     private float mColorAdjust;
 

@@ -64,19 +64,27 @@ public class ItemTaskCommentViewHolder extends RecyclerView.ViewHolder {
         binding.username.setText(commentModel.getUsername());
         binding.time.setText(Utils.getTimeAgo(commentModel.getTime()));
         binding.comments.setText(commentModel.getComment());
-        Glide.with(context)
-                .load(UserUtils.getUserDp())
-                .placeholder(R.drawable.default_image)
-                .into(binding.userImage);
-        if (commentModel.getReplies() != null) {
+
+// Load profile image with Glide
+        String profileImageUrl = commentModel.getProfileDP();
+        if (profileImageUrl != null && !profileImageUrl.isEmpty()) {
+            Glide.with(context)
+                    .load(RetrofitClient.PROFILE_IMAGE + profileImageUrl)
+                    .placeholder(R.drawable.default_image)
+                    .into(binding.userImage);
+        } else {
+            binding.userImage.setImageResource(R.drawable.default_image);
+        }
+
+// Handle replies
+        if (commentModel.getReplies() != null && !commentModel.getReplies().isEmpty()) {
             binding.viewReplies.setVisibility(View.VISIBLE);
             binding.viewReplyText.setText("View " + commentModel.getReplies() + " Replies");
             binding.viewReplies.setOnClickListener(v -> loadReplies(commentModel.getCommentID()));
-            Glide.with(context)
-                    .load(UserUtils.getUserDp())
-                    .placeholder(R.drawable.default_image)
-                    .into(binding.userImage);
+        } else {
+            binding.viewReplies.setVisibility(View.GONE);
         }
+
 
         if (UserUtils.getUserNumber().equals(commentModel.getNumber()) || UserUtils.isAdmin()) {
             binding.threeDots.setVisibility(View.VISIBLE);

@@ -10,8 +10,7 @@ import android.opengl.GLES20;
  */
 public class AlphaGradientFilter extends MovieFilter {
 
-    protected static final String ALPHA_FRAGMENT_SHADER = "" +
-            "precision mediump float;\n" +
+    protected static final String ALPHA_FRAGMENT_SHADER = "precision mediump float;\n" +
             "varying highp vec2 textureCoordinate;\n" +
             "uniform sampler2D inputImageTexture;\n" +
             "uniform float uStart;\n" +

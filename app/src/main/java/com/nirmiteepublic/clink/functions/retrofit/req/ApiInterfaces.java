@@ -65,13 +65,11 @@ public interface ApiInterfaces {
             @Part MultipartBody.Part imageID
     );
 
-    @Multipart
-    @PUT("/user/controllers/frameusers/{id}")
-    Call<ResponseBody> updateFrame(
-            @Path("id") String userId,
-            @Part("FrameName") RequestBody FrameName,
-            @Part("FrameAdd") RequestBody FrameAdd,
-            @Part MultipartBody.Part Image
+    @Headers("Content-Type: application/json")
+    @PUT("/meeting/updateLive/{id}")
+    Call<ResponseBody> updateLive(
+            @Path("id") String meetid,
+            @Body Map<String, Boolean> live
     );
 
     @Headers("Content-Type: application/json")
@@ -226,7 +224,9 @@ public interface ApiInterfaces {
             @Part("title") RequestBody title,
             @Part("body") RequestBody body,
             @Part("phoneNumbers") List<String> phoneNumbers,
-            @Part MultipartBody.Part imageUrl
+            @Part MultipartBody.Part imageUrl,
+            @Part("meetingType") RequestBody meetingType
+
 
     );
 
@@ -353,6 +353,7 @@ public interface ApiInterfaces {
     Call<ResponseBody> CreateSlider(
             @Part MultipartBody.Part slider
     );
+
     @Headers("Content-Type: application/json")
     @DELETE("graphics/controllers/AnyGraphicImage/{id}")
     Call<Void> deleteGraphicObject(@Path("id") String id, @Body String GraphicId);
@@ -366,13 +367,15 @@ public interface ApiInterfaces {
             @Part MultipartBody.Part imageUrl
 
     );
+
     @Headers("Content-Type: application/json")
     @POST("graphics/controllers/chipButtonList")
-    Call<Void> AddChipBtns( @Body RequestBody requestBody);
+    Call<Void> AddChipBtns(@Body RequestBody requestBody);
 
     @Headers("Content-Type: application/json")
     @PUT("graphics/controllers/chipButtonList/{chipButtonListId}")
     Call<Void> EditChipBtns(@Path("chipButtonListId") String chipButtonListId, @Body RequestBody requestBody);
+
     @Headers("Content-Type: application/json")
     @DELETE("graphics/controllers/chipButtonList/{chipButtonListId}")
     Call<Void> DeleteChipBtns(@Path("chipButtonListId") String chipButtonListId);

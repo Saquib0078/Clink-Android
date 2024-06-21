@@ -20,6 +20,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 
 public class VillageActivity extends AppCompatActivity {
 ActivityVillageBinding binding;
@@ -32,7 +33,7 @@ ActivityVillageBinding binding;
         String selectedTehsil = getIntent().getStringExtra("selectedTehsil");
         String selectedDistrict = getIntent().getStringExtra("selectedDistrict");
         Toast.makeText(this, "Dis"+selectedDistrict, Toast.LENGTH_SHORT).show();
-        Toast.makeText(this, ""+selectedTehsil, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, selectedTehsil, Toast.LENGTH_SHORT).show();
 
 
         JSONArray villagesForTehsil = getVillagesForTehsil(selectedDistrict,selectedTehsil);
@@ -66,7 +67,7 @@ ActivityVillageBinding binding;
             byte[] buffer = new byte[size];
             inputStream.read(buffer);
             inputStream.close();
-            String jsonString = new String(buffer, "UTF-8");
+            String jsonString = new String(buffer, StandardCharsets.UTF_8);
 
             // Parse the JSON data
             JSONObject districtData = new JSONObject(jsonString);

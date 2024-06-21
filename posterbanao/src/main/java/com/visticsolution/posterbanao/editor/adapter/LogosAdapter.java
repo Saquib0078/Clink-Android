@@ -23,8 +23,8 @@ import java.util.List;
 
 public class LogosAdapter extends RecyclerView.Adapter<LogosAdapter.ViewHolder> {
 
-    private List<LogosModel> list;
-    private OnClickEvent listener;
+    private final List<LogosModel> list;
+    private final OnClickEvent listener;
     Context context;
     String name;
 
@@ -92,7 +92,7 @@ public class LogosAdapter extends RecyclerView.Adapter<LogosAdapter.ViewHolder> 
                 }
             });
         } catch (Exception e) {
-            Toast.makeText(context, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
 

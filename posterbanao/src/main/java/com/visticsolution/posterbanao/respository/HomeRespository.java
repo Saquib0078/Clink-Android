@@ -20,7 +20,7 @@ import retrofit2.Response;
 public class HomeRespository {
 
 
-    private ApiService apiService;
+    private final ApiService apiService;
 
     public HomeRespository() {
         apiService = ApiClient.getRetrofit().create(ApiService.class);
@@ -47,7 +47,7 @@ public class HomeRespository {
         apiService.cheakPromo(Constants.API_KEY, promo).enqueue(new Callback<HomeResponse>() {
             @Override
             public void onResponse(Call<HomeResponse> call, Response<HomeResponse> response) {
-                Log.d("response___t", "" + response.body());
+                Log.d("response___t", String.valueOf(response.body()));
                 data.setValue(response.body());
             }
 

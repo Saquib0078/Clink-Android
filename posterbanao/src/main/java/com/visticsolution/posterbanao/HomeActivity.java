@@ -125,10 +125,10 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     protected void onResume() {
         super.onResume();
         if (interstitialAdapter != null){
-            if (interstitialAdapter.isLoaded()){
-                interstitialAdapter.showAds();
+            if (InterstitialAdapter.isLoaded()){
+                InterstitialAdapter.showAds();
             }else{
-                interstitialAdapter.LoadAds();
+                InterstitialAdapter.LoadAds();
             }
         }
     }

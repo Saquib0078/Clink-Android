@@ -219,17 +219,14 @@ public class AutoScrollViewPager extends ViewPager {
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
 
-            switch (msg.what) {
-                case SCROLL_WHAT:
-                    AutoScrollViewPager pager = this.autoScrollViewPager.get();
-                    if (pager != null) {
-                        pager.scroller.setScrollDurationFactor(pager.autoScrollFactor);
-                        pager.scrollOnce();
-                        pager.scroller.setScrollDurationFactor(pager.swipeScrollFactor);
-                        pager.sendScrollMessage(pager.interval + pager.scroller.getDuration());
-                    }
-                default:
-                    break;
+            if (msg.what == SCROLL_WHAT) {
+                AutoScrollViewPager pager = this.autoScrollViewPager.get();
+                if (pager != null) {
+                    pager.scroller.setScrollDurationFactor(pager.autoScrollFactor);
+                    pager.scrollOnce();
+                    pager.scroller.setScrollDurationFactor(pager.swipeScrollFactor);
+                    pager.sendScrollMessage(pager.interval + pager.scroller.getDuration());
+                }
             }
         }
     }

@@ -182,22 +182,7 @@
         android:background="@drawable/sign_enabled"
         android:visibility="gone"
         android:layout_marginStart="@dimen/_15sdp"/>
-    <TextView
-        android:id="@+id/selectedUsers"
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:visibility="gone"
 
-        android:layout_height="wrap_content"
-        android:background="@null"
-        android:gravity="center_vertical"
-        android:hint="0"
-        android:inputType="text"
-        android:paddingStart="@dimen/_15sdp"
-        android:paddingEnd="@dimen/_11sdp"
-        android:textColor="@color/black"
-        android:textColorHint="#AAAAAB"
-        android:textSize="@dimen/_15sdp" />
 </LinearLayout>
 
 </LinearLayout>

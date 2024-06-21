@@ -88,14 +88,14 @@ public class ViewAllActivity extends PegaAppCompatActivity {
 
                         } catch (JSONException e) {
                             hideProgressDialog();
-                            Toast.makeText(ViewAllActivity.this, "" + e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ViewAllActivity.this, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                         }
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 hideProgressDialog();
-                Toast.makeText(ViewAllActivity.this, "" + error.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(ViewAllActivity.this, error.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 

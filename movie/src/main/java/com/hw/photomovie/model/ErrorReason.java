@@ -6,8 +6,8 @@ package com.hw.photomovie.model;
  */
 public class ErrorReason {
 
-    private Throwable mThrowable;
-    private String mExtra;
+    private final Throwable mThrowable;
+    private final String mExtra;
 
     public ErrorReason(Throwable cause,String extra) {
         mThrowable = cause;

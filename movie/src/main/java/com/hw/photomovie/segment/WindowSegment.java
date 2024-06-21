@@ -26,7 +26,7 @@ public class WindowSegment extends SingleBitmapSegment {
     /**
      * 白线分离的动画时间占比
      */
-    private static float LINE_SPLIT_RATE = 0.4f;
+    private static final float LINE_SPLIT_RATE = 0.4f;
     /**
      * 白线分离到一半时的停顿时间占比
      */
@@ -60,13 +60,13 @@ public class WindowSegment extends SingleBitmapSegment {
 
     private float mLineWidth;
 
-    private BetweenLinesFilter filter = new BetweenLinesFilter();
+    private final BetweenLinesFilter filter = new BetweenLinesFilter();
     /**
      * 是否存在斜率
      */
     private boolean mKExisted;
 
-    private int mAppearMode;
+    private final int mAppearMode;
 
     private float mBMoveDis;
 

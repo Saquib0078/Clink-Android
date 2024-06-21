@@ -18,8 +18,8 @@ import java.util.ArrayList;
 
 public class LanguageAdapter extends RecyclerView.Adapter<LanguageAdapter.ViewHolder> {
 
-    private ArrayList<LanguageModel> list;
-    private AdapterClickListener listener;
+    private final ArrayList<LanguageModel> list;
+    private final AdapterClickListener listener;
     Context context;
 
     public LanguageAdapter(Context context,ArrayList<LanguageModel> list, AdapterClickListener listener) {
@@ -39,19 +39,11 @@ public class LanguageAdapter extends RecyclerView.Adapter<LanguageAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.binding.setLanguage(list.get(position));
-        if (list.get(position).isSelected()){
-            holder.binding.switchBtn.setChecked(true);
-        }else {
-            holder.binding.switchBtn.setChecked(false);
-        }
+        holder.binding.switchBtn.setChecked(list.get(position).isSelected());
         holder.binding.switchBtn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (b){
-                    list.get(position).setSelected(true);
-                }else{
-                    list.get(position).setSelected(false);
-                }
+                list.get(position).setSelected(b);
             }
         });
         holder.bind(position, list.get(position) , listener);

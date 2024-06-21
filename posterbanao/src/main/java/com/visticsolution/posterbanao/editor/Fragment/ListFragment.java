@@ -26,7 +26,7 @@ public class ListFragment extends Fragment {
     public static View hintView;
     public static RelativeLayout layNotext;
     public ArrayList<Pair<Long, View>> mItemArray = new ArrayList<>();
-    private ArrayList<View> arrView = new ArrayList<>();
+    private final ArrayList<View> arrView = new ArrayList<>();
     private DragListView mDragListView;
 
     @Override

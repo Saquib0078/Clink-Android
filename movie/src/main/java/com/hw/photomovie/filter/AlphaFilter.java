@@ -11,8 +11,7 @@ public class AlphaFilter extends MovieFilter {
 
     private static final String ALPHA_UNIFORM = "uAlpha";
 
-    protected static final String ALPHA_FRAGMENT_SHADER = "" +
-            "precision mediump float;\n" +
+    protected static final String ALPHA_FRAGMENT_SHADER = "precision mediump float;\n" +
             "varying highp vec2 textureCoordinate;\n" +
             " \n" +
             "uniform sampler2D inputImageTexture;\n" +

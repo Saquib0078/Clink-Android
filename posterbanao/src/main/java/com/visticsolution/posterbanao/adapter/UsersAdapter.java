@@ -18,8 +18,8 @@ import java.util.List;
 
 public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.ViewHolder> {
 
-    private List<UserModel> list;
-    private AdapterClickListener listener;
+    private final List<UserModel> list;
+    private final AdapterClickListener listener;
     Context context;
 
     public UsersAdapter(Context context, List<UserModel> list, AdapterClickListener listener) {

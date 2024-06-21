@@ -20,7 +20,7 @@ public class MultiTouchListener implements View.OnTouchListener {
     private int mActivePointerId = -1;
     private float mPrevX;
     private float mPrevY;
-    private ScaleGestureDetector mScaleGestureDetector = new ScaleGestureDetector(new ScaleGestureListener());
+    private final ScaleGestureDetector mScaleGestureDetector = new ScaleGestureDetector(new ScaleGestureListener());
 
     private static float adjustAngle(float f) {
         return f > 180.0f ? f - 360.0f : f < -180.0f ? f + 360.0f : f;
@@ -228,7 +228,7 @@ public class MultiTouchListener implements View.OnTouchListener {
     private class ScaleGestureListener extends ScaleGestureDetector.SimpleOnScaleGestureListener {
         private float mPivotX;
         private float mPivotY;
-        private Vector2D mPrevSpanVector;
+        private final Vector2D mPrevSpanVector;
 
         private ScaleGestureListener() {
             this.mPrevSpanVector = new Vector2D();

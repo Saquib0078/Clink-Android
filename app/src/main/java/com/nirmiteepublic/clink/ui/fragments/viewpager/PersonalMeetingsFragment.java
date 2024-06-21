@@ -59,7 +59,7 @@ public class PersonalMeetingsFragment extends Fragment {
 
         progressDialog = new PegaProgressDialog(requireActivity());
         binding.progressBar.setVisibility(View.VISIBLE);
-
+        progressDialog.setMessage("Loading...");
         showProgressDialog();
         ApiManager.getLiveMeetings(requireContext(), new ApiManager.VolleyCallback() {
             @Override
@@ -100,7 +100,7 @@ public class PersonalMeetingsFragment extends Fragment {
                     }
                 } catch (JSONException e) {
                     hideProgressDialog();
-                    Toast.makeText(requireContext(), "" + e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(requireContext(), e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
 

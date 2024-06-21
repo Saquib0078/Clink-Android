@@ -128,7 +128,7 @@ public class UploadGraphicsActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
                 binding.progressBar.setVisibility(View.GONE);
-                Toast.makeText(UploadGraphicsActivity.this, "" + t.getLocalizedMessage().toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(UploadGraphicsActivity.this, t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -166,7 +166,7 @@ public class UploadGraphicsActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
                 binding.progressBar.setVisibility(View.GONE);
-                Toast.makeText(UploadGraphicsActivity.this, "" + t.getLocalizedMessage().toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(UploadGraphicsActivity.this, t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }

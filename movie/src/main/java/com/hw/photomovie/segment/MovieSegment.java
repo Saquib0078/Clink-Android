@@ -21,7 +21,7 @@ public abstract class MovieSegment<T> {
 
     protected PhotoMovie mPhotoMovie;
 
-    private List<PhotoData> mAllocatedPhotos = new ArrayList<PhotoData>();
+    private final List<PhotoData> mAllocatedPhotos = new ArrayList<PhotoData>();
 
     protected List<PhotoData> mPhotos = new ArrayList<PhotoData>();
 
@@ -189,9 +189,8 @@ public abstract class MovieSegment<T> {
 
         // Convert upside down mirror-reversed image to right-side up normal image.
         for (int i = 0; i < height; i++) {
-            for (int j = 0; j < width; j++) {
-                pixelMirroredArray[(height - i - 1) * width + j] = pixelArray[i * width + j];
-            }
+            if (width >= 0)
+                System.arraycopy(pixelArray, i * width + 0, pixelMirroredArray, (height - i - 1) * width + 0, width);
         }
 
         Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);

@@ -175,7 +175,7 @@ public class TamplateUtils {
                 textInfo.setTxt_y_pos(realY);
                 textInfo.setTxt_rotation(rotation);
                 textInfo.setTxt_color(color.replace("0x", "#"));
-                textInfo.setTxt_order("" + i);
+                textInfo.setTxt_order(String.valueOf(i));
                 textInfo.setFont_family(font);
                 textInfo.setTxt_weight(weight);
                 textInfo.setTxt_justification(justification);
@@ -188,7 +188,7 @@ public class TamplateUtils {
 
     static class LoadFonts extends AsyncTask<String, String, String> {
 
-        private String fontUrl;
+        private final String fontUrl;
         InputStream inputStream;
         Context context;
 

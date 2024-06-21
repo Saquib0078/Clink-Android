@@ -74,7 +74,7 @@ public class PostsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
     @Override
     public int getItemCount() {
-        Log.d("onChanged___",""+list.size());
+        Log.d("onChanged___", String.valueOf(list.size()));
         return list.size();
     }
 

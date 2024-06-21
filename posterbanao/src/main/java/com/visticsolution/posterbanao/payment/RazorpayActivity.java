@@ -46,7 +46,7 @@ public class RazorpayActivity extends AppCompatActivity implements PaymentResult
             checkout.open(this, options);
         } catch (Exception e) {
             Functions.cancelLoader();
-            Toast.makeText(this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
 

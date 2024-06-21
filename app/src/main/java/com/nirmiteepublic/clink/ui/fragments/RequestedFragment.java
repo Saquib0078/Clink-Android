@@ -40,7 +40,7 @@ public class RequestedFragment extends Fragment {
 
             @Override
             public void onFailure(Call<Response> call, Throwable t) {
-                Toast.makeText(requireContext(), ""+t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(requireContext(), t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 

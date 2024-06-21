@@ -17,7 +17,7 @@ import retrofit2.Response;
 public class LanguageRespository {
 
 
-    private ApiService apiService;
+    private final ApiService apiService;
     public LanguageRespository(){
         apiService = ApiClient.getRetrofit().create(ApiService.class);
     }

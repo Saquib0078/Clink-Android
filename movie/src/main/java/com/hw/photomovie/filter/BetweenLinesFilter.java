@@ -7,8 +7,7 @@ import android.opengl.GLES20;
  * 只展示所给的两条之间中间部分图片内容
  */
 public class BetweenLinesFilter extends MovieFilter {
-    protected static final String VERTEX_SHADER = "" +
-            "attribute vec4 position;\n" +
+    protected static final String VERTEX_SHADER = "attribute vec4 position;\n" +
             "attribute vec4 inputTextureCoordinate;\n" +
             " \n" +
             "varying vec2 textureCoordinate;\n" +

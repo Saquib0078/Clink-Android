@@ -88,7 +88,7 @@ public class CCAvenueActivity extends AppCompatActivity implements Communicator 
 
                 if (!ServiceUtility.chkNull(vResponse).equals("")
                         && ServiceUtility.chkNull(vResponse).toString().indexOf("ERROR") == -1) {
-                    StringBuffer vEncVal = new StringBuffer("");
+                    StringBuffer vEncVal = new StringBuffer();
                     vEncVal.append(ServiceUtility.addToPostParams(AvenuesParams.AMOUNT, mainIntent.getStringExtra(AvenuesParams.AMOUNT)));
                     vEncVal.append(ServiceUtility.addToPostParams(AvenuesParams.CURRENCY, mainIntent.getStringExtra(AvenuesParams.CURRENCY)));
                     encVal = RSAUtility.encrypt(vEncVal.substring(0, vEncVal.length() - 1), vResponse);

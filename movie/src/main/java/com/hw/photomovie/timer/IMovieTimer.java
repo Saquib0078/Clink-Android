@@ -5,17 +5,17 @@ package com.hw.photomovie.timer;
  */
 public interface IMovieTimer {
 
-    public void start();
+    void start();
 
-    public void pause();
+    void pause();
 
-    public void setMovieListener(MovieListener movieListener);
+    void setMovieListener(MovieListener movieListener);
 
-    public int getCurrentPlayTime();
+    int getCurrentPlayTime();
 
     void setLoop(boolean loop);
 
-    public interface MovieListener {
+    interface MovieListener {
         void onMovieUpdate(int elapsedTime);
 
         void onMovieStarted();

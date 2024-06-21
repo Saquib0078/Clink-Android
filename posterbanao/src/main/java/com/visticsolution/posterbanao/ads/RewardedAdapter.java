@@ -34,27 +34,25 @@ public class RewardedAdapter {
         if (Functions.getSharedPreference(mcontext).getString("show_ads","false").equals("true")
                 && Functions.getSharedPreference(mcontext).getString("show_admob_rewarded","false").equals("true")
                 && !Functions.IsPremiumEnable(mcontext)) {
-            switch (Constants.AD_NETWORK) {
-                case Constants.ADMOB:
-                    loading = true;
-                    AdRequest.Builder builder = new AdRequest.Builder();
-                    AdMobrewardedVideoAd.load(mcontext, Functions.getSharedPreference(mcontext).getString("admob_rewarde_id","false"), builder.build(),
-                            new RewardedAdLoadCallback() {
-                                @Override
-                                public void onAdLoaded(@NonNull RewardedAd interstitialAd) {
-                                    loading = false;
-                                    AdMobrewardedVideoAd = interstitialAd;
-                                    listener.onAdLoaded();
-                                }
+            if (Constants.AD_NETWORK.equals(Constants.ADMOB)) {
+                loading = true;
+                AdRequest.Builder builder = new AdRequest.Builder();
+                RewardedAd.load(mcontext, Functions.getSharedPreference(mcontext).getString("admob_rewarde_id", "false"), builder.build(),
+                        new RewardedAdLoadCallback() {
+                            @Override
+                            public void onAdLoaded(@NonNull RewardedAd interstitialAd) {
+                                loading = false;
+                                AdMobrewardedVideoAd = interstitialAd;
+                                listener.onAdLoaded();
+                            }
 
-                                @Override
-                                public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
-                                    loading = false;
-                                    AdMobrewardedVideoAd = null;
-                                    listener.onAdFailedToLoad();
-                                }
-                            });
-                    break;
+                            @Override
+                            public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                                loading = false;
+                                AdMobrewardedVideoAd = null;
+                                listener.onAdFailedToLoad();
+                            }
+                        });
             }
         } else {
             AdMobrewardedVideoAd = null;
@@ -62,7 +60,7 @@ public class RewardedAdapter {
     }
 
     public static boolean isLoaded() {
-        return AdMobrewardedVideoAd == null ? false : true;
+        return AdMobrewardedVideoAd != null;
     }
 
     public static void showAds() {

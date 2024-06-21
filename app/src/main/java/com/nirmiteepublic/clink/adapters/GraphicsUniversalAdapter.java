@@ -65,7 +65,7 @@ public class GraphicsUniversalAdapter extends RecyclerView.Adapter<RecyclerView.
 
                       // Format the parsed date to the desired format
                       String formattedDate = outputFormat.format(date);
-                      Toast.makeText(context, ""+formattedDate, Toast.LENGTH_SHORT).show();
+                      Toast.makeText(context, formattedDate, Toast.LENGTH_SHORT).show();
                       // Print the formatted date
                   } catch (ParseException e) {
                       // Handle the parse exception if the date string is not in the expected format

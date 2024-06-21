@@ -50,13 +50,13 @@ public class PickedImageActionFragment extends DialogFragment {
 
     public PickedImageActionFragment(int id,String path, OnBitmapSelect onBitmapSelect) {
         this.id = id;
-        this.path = path;
+        PickedImageActionFragment.path = path;
         this.onBitmapSelect = onBitmapSelect;
     }
 
     public PickedImageActionFragment(int id,Bitmap path, OnBitmapSelect onBitmapSelect) {
         this.id = id;
-        this.bitmap = path;
+        bitmap = path;
         this.onBitmapSelect = onBitmapSelect;
     }
 

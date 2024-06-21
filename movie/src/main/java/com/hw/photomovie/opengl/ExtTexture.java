@@ -4,7 +4,7 @@ package com.hw.photomovie.opengl;
 // Before drawing, setSize() should be called.
 public class ExtTexture extends BasicTexture {
 
-    private int mTarget;
+    private final int mTarget;
 
     public ExtTexture(GLESCanvas canvas, int target) {
         GLId glId = canvas.getGLId();

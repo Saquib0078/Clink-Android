@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class TestMuiltBitmapLayer extends MovieLayer {
 
-    private Rect mTempRect = new Rect();
+    private final Rect mTempRect = new Rect();
 
     @Override
     public void drawFrame(GLESCanvas canvas, float progress) {

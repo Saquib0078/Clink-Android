@@ -14,8 +14,7 @@ import java.nio.FloatBuffer;
  */
 public class MovieFilter {
 
-    protected static final String VERTEX_SHADER = "" +
-            "attribute vec4 position;\n" +
+    protected static final String VERTEX_SHADER = "attribute vec4 position;\n" +
             "attribute vec4 inputTextureCoordinate;\n" +
             " \n" +
             "varying vec2 textureCoordinate;\n" +
@@ -25,8 +24,7 @@ public class MovieFilter {
             "    gl_Position = position;\n" +
             "    textureCoordinate = inputTextureCoordinate.xy;\n" +
             "}";
-    protected static final String FRAGMENT_SHADER = "" +
-            "varying highp vec2 textureCoordinate;\n" +
+    protected static final String FRAGMENT_SHADER = "varying highp vec2 textureCoordinate;\n" +
             " \n" +
             "uniform sampler2D inputImageTexture;\n" +
             " \n" +
@@ -35,22 +33,22 @@ public class MovieFilter {
             "     gl_FragColor = texture2D(inputImageTexture, textureCoordinate);\n" +
             "}";
 
-    static final float CUBE[] = {
+    static final float[] CUBE = {
             -1.0f, -1.0f,
             1.0f, -1.0f,
             -1.0f, 1.0f,
             1.0f, 1.0f,
     };
 
-    static final float TEXTURE_CUBE[] = {
+    static final float[] TEXTURE_CUBE = {
             0.0f, 1.0f,
             1.0f, 1.0f,
             0.0f, 0.0f,
             1.0f, 0.0f,
     };
 
-    private String mVertexShader;
-    private String mFragmentShader;
+    private final String mVertexShader;
+    private final String mFragmentShader;
 
     private FloatBuffer mCubeBuffer;
     private FloatBuffer mTextureCubeBuffer;
@@ -64,9 +62,9 @@ public class MovieFilter {
 
     protected RectF mViewportRect = new RectF();
 
-    private RectF mTempRect = new RectF();
-    private Matrix mTempMatrix = new Matrix();
-    private float[] mTempCube = new float[8];
+    private final RectF mTempRect = new RectF();
+    private final Matrix mTempMatrix = new Matrix();
+    private final float[] mTempCube = new float[8];
 
     protected boolean mIsOpaque = false;
 

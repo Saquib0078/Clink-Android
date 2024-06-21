@@ -24,17 +24,17 @@ import android.opengl.Matrix;
 public class Sprite2d {
     private static final String TAG = GlUtil.TAG;
 
-    private Drawable2d mDrawable;
-    private float mColor[];
+    private final Drawable2d mDrawable;
+    private final float[] mColor;
     private int mTextureId;
     private float mAngle;
     private float mScaleX, mScaleY;
     private float mPosX, mPosY;
 
-    private float[] mModelViewMatrix;
+    private final float[] mModelViewMatrix;
     private boolean mMatrixReady;
 
-    private float[] mScratchMatrix = new float[16];
+    private final float[] mScratchMatrix = new float[16];
 
     public Sprite2d(Drawable2d drawable) {
         mDrawable = drawable;

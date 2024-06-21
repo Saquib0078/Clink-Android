@@ -45,6 +45,7 @@ public class TaskFragment extends PegaFragment {
 
         binding = FragmentTaskBinding.inflate(inflater, container, false);
         binding.progressBar.setVisibility(View.VISIBLE);
+
         List<TaskModel> taskModelList = new ArrayList<>();
         TasksAdapter adapter = new TasksAdapter(taskModelList);
         binding.recyclerView.setAdapter(adapter);

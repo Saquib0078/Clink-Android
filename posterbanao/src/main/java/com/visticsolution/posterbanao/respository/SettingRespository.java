@@ -17,7 +17,7 @@ import retrofit2.Response;
 public class SettingRespository {
 
 
-    private ApiService apiService;
+    private final ApiService apiService;
     public SettingRespository(){
         apiService = ApiClient.getRetrofit().create(ApiService.class);
     }

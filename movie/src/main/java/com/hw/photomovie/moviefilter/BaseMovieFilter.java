@@ -17,8 +17,7 @@ import java.nio.FloatBuffer;
  */
 public class BaseMovieFilter implements IMovieFilter {
 
-    protected static final String VERTEX_SHADER = "" +
-            "attribute vec4 position;\n" +
+    protected static final String VERTEX_SHADER = "attribute vec4 position;\n" +
             "attribute vec4 inputTextureCoordinate;\n" +
             " \n" +
             "varying vec2 textureCoordinate;\n" +
@@ -28,8 +27,7 @@ public class BaseMovieFilter implements IMovieFilter {
             "    gl_Position = position;\n" +
             "    textureCoordinate = inputTextureCoordinate.xy;\n" +
             "}";
-    protected static final String FRAGMENT_SHADER = "" +
-            "varying highp vec2 textureCoordinate;\n" +
+    protected static final String FRAGMENT_SHADER = "varying highp vec2 textureCoordinate;\n" +
             " \n" +
             "uniform sampler2D inputImageTexture;\n" +
             " \n" +
@@ -38,22 +36,22 @@ public class BaseMovieFilter implements IMovieFilter {
             "     gl_FragColor = texture2D(inputImageTexture, textureCoordinate);\n" +
             "}";
 
-    static final float CUBE[] = {
+    static final float[] CUBE = {
             -1.0f, -1.0f,
             1.0f, -1.0f,
             -1.0f, 1.0f,
             1.0f, 1.0f,
     };
 
-    static final float TEXTURE_CUBE[] = {
+    static final float[] TEXTURE_CUBE = {
             0.0f, 1.0f,
             1.0f, 1.0f,
             0.0f, 0.0f,
             1.0f, 0.0f,
     };
 
-    private String mVertexShader;
-    private String mFragmentShader;
+    private final String mVertexShader;
+    private final String mFragmentShader;
 
     protected FloatBuffer mCubeBuffer;
     protected FloatBuffer mTextureCubeBuffer;
@@ -171,8 +169,8 @@ public class BaseMovieFilter implements IMovieFilter {
         mIsOpaque = bool;
     }
 
-    private Rect textureRect = new Rect();
-    private RectF dstRect = new RectF();
+    private final Rect textureRect = new Rect();
+    private final RectF dstRect = new RectF();
 
     @Override
     public void doFilter(PhotoMovie photoMovie, int elapsedTime, FboTexture inputTexture, FboTexture outputTexture) {

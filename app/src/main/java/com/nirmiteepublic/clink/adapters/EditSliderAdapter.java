@@ -60,10 +60,8 @@ public class EditSliderAdapter extends RecyclerView.Adapter<EditSliderAdapter.Vi
                 builder.setItems(new CharSequence[]{ "Delete"}, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        switch (which) {
-                            case 0:
-                               DeleteSlider(imageSliderModelList.get(position).getSlider());
-                                break;
+                        if (which == 0) {
+                            DeleteSlider(imageSliderModelList.get(position).getSlider());
                         }
                     }
                 });
@@ -101,7 +99,7 @@ public class EditSliderAdapter extends RecyclerView.Adapter<EditSliderAdapter.Vi
 
                     @Override
                     public void onFailure(Call<Void> call, Throwable t) {
-                        Toast.makeText(context, ""+t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
 
                     }
                 });

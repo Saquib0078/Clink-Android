@@ -104,7 +104,7 @@ public class FontAdapter extends BaseAdapter {
 
             TextView textView2 = viewHolder.txtView;
 
-            textView2.setText(MainActivity.fontArraylist.get(0).getFonts().get(length) + "");
+            textView2.setText(MainActivity.fontArraylist.get(0).getFonts().get(length));
 
             if (file.exists()) {
                 viewHolder.txtDownloadFont.setVisibility(View.GONE);

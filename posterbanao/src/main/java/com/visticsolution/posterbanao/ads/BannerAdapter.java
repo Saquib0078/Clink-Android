@@ -17,17 +17,15 @@ public class BannerAdapter {
         if (Functions.getSharedPreference(context).getString("show_ads","false").equals("true")
                 && Functions.getSharedPreference(context).getString("show_admob_banner","false").equals("true")
                 && !Functions.IsPremiumEnable(context)) {
-            switch (Constants.AD_NETWORK) {
-                case Constants.ADMOB:
-                    AdView mAdView = new AdView(context);
-                    mAdView.setAdSize(AdSize.BANNER);
-                    mAdView.setAdUnitId(Functions.getSharedPreference(context).getString("admob_banner_id","false"));
-                    AdRequest.Builder builder = new AdRequest.Builder();
-                    mAdView.loadAd(builder.build());
-                    mAdViewLayout.removeAllViews();
-                    mAdViewLayout.addView(mAdView);
-                    mAdViewLayout.setGravity(Gravity.CENTER);
-                    break;
+            if (Constants.AD_NETWORK.equals(Constants.ADMOB)) {
+                AdView mAdView = new AdView(context);
+                mAdView.setAdSize(AdSize.BANNER);
+                mAdView.setAdUnitId(Functions.getSharedPreference(context).getString("admob_banner_id", "false"));
+                AdRequest.Builder builder = new AdRequest.Builder();
+                mAdView.loadAd(builder.build());
+                mAdViewLayout.removeAllViews();
+                mAdViewLayout.addView(mAdView);
+                mAdViewLayout.setGravity(Gravity.CENTER);
             }
         } else {
             mAdViewLayout.setVisibility(View.GONE);

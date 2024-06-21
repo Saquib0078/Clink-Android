@@ -38,10 +38,10 @@ import java.util.concurrent.CyclicBarrier;
 public class GLMovieRecorder {
     private static final String TAG = "GLMovieRecorder";
 
-    private Context mContext;
+    private final Context mContext;
     private GLSurfaceMovieRenderer mGLSurfaceMovieRenderer;
     private boolean mInited;
-    private HandlerThread mRecordThread = new HandlerThread("GLMovieRecorder");
+    private final HandlerThread mRecordThread = new HandlerThread("GLMovieRecorder");
     private String mAudioPath;
     private CyclicBarrier mCyclicBarrier;
     private Exception mAudioRecordException;

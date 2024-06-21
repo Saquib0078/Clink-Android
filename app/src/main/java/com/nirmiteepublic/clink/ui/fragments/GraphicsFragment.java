@@ -104,7 +104,7 @@ public class GraphicsFragment extends PegaFragment implements GraphicsAdapter.Gr
 
             @Override
             public void onFailure(Call<ChipBtnResponse> call, Throwable t) {
-                Toast.makeText(requireContext(), "" + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(requireContext(), t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -122,7 +122,7 @@ public class GraphicsFragment extends PegaFragment implements GraphicsAdapter.Gr
                 try {
                     jsonObject = new JSONObject(jsonResponse);
                 } catch (JSONException e) {
-                    Toast.makeText(requireContext(), "" + e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(requireContext(), e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                 }
                 try {
                     JSONArray slidersArray = jsonObject.getJSONArray("sliders");
@@ -134,19 +134,19 @@ public class GraphicsFragment extends PegaFragment implements GraphicsAdapter.Gr
                         sliderUrls.add(imageUrl);
                     }
                 } catch (JSONException e) {
-                    Toast.makeText(requireContext(), "" + e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(requireContext(), e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                 }
                 try {
                     initImageSlider(new JSONArray(sliderUrls));
                 } catch (JSONException e) {
-                    Toast.makeText(requireContext(), "" + e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(requireContext(), e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
 
 
             @Override
             public void onFailure(Call<SliderImageResponse> call, Throwable t) {
-                Toast.makeText(requireContext(), "" + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(requireContext(), t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -269,7 +269,7 @@ public class GraphicsFragment extends PegaFragment implements GraphicsAdapter.Gr
 
 //     DeleteGraphicsImage(GraphicID,graphicId);
 //        Toast.makeText(requireContext(), ".."+id, Toast.LENGTH_SHORT).show();
-        Toast.makeText(requireContext(), "" + graphicId, Toast.LENGTH_SHORT).show();
+        Toast.makeText(requireContext(), graphicId, Toast.LENGTH_SHORT).show();
     }
 
 
@@ -284,7 +284,7 @@ public class GraphicsFragment extends PegaFragment implements GraphicsAdapter.Gr
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-                Toast.makeText(requireContext(), "" + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(requireContext(), t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 

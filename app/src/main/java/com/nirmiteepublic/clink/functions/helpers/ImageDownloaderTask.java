@@ -19,8 +19,8 @@ import java.net.URL;
 
 public class ImageDownloaderTask extends AsyncTask<String, Void, Uri> {
 
-    private Context context;
-    private ImageDownloadListener listener;
+    private final Context context;
+    private final ImageDownloadListener listener;
 
     public ImageDownloaderTask(Context context, ImageDownloadListener listener) {
         this.context = context;

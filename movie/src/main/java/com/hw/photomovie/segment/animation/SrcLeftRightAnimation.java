@@ -9,11 +9,11 @@ import com.hw.photomovie.util.PhotoUtil;
  * 从最左边扫到最右边
  */
 public class SrcLeftRightAnimation extends SrcAnimation {
-    private RectF mMaxShowRect = new RectF();
+    private final RectF mMaxShowRect = new RectF();
     /**
      * 转移开始前的初始位置
      */
-    private RectF mInitRect = new RectF();
+    private final RectF mInitRect = new RectF();
 
     private float mTransDisX;
 

@@ -16,6 +16,7 @@ import org.json.JSONException;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 public class EducationActivity extends AppCompatActivity {
@@ -40,7 +41,7 @@ ActivityEducationBinding binding;
             // Set the selected district to the previous activity's TextView
             Intent resultIntent = new Intent();
             resultIntent.putExtra("selectedEducation", selectedEducation);
-            Toast.makeText(this, "" + selectedEducation, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, selectedEducation, Toast.LENGTH_SHORT).show();
             setResult(Activity.RESULT_OK, resultIntent);
 
             finish();
@@ -61,7 +62,7 @@ ActivityEducationBinding binding;
             inputStream.close();
 
             // Convert the byte array to a string
-            String jsonString = new String(buffer, "UTF-8");
+            String jsonString = new String(buffer, StandardCharsets.UTF_8);
 
             // Parse JSON array
             JSONArray jsonArray = new JSONArray(jsonString);

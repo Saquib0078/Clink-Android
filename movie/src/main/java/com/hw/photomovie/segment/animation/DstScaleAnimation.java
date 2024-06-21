@@ -8,11 +8,11 @@ import android.graphics.RectF;
  */
 public class DstScaleAnimation extends DstAnimation {
 
-    private float mFromScale;
-    private float mToScale;
-    private RectF mProgressDstRect = new RectF();
+    private final float mFromScale;
+    private final float mToScale;
+    private final RectF mProgressDstRect = new RectF();
     private float mProgress;
-    private Matrix mScaleMatrix = new Matrix();
+    private final Matrix mScaleMatrix = new Matrix();
 
     public DstScaleAnimation(RectF dstRect, float fromScale, float toScale) {
         super(dstRect);

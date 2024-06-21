@@ -134,10 +134,7 @@ public class PlayAnimatedVideActivity extends AppCompatActivity {
             @Override
             public void onPlayerStateChanged(boolean playWhenReady, int playbackState) {
                 Player.EventListener.super.onPlayerStateChanged(playWhenReady, playbackState);
-                switch (playbackState) {
-                    case ExoPlayer.STATE_ENDED:
-//                            ivPlayVideo.setVisibility(View.VISIBLE);
-                        break;
+                if (playbackState == ExoPlayer.STATE_ENDED) {//                            ivPlayVideo.setVisibility(View.VISIBLE);
                 }
             }
         });

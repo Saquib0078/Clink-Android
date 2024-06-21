@@ -286,7 +286,7 @@ public class VideoEditorActivity extends AppCompatActivity {
         Config.enableStatisticsCallback(statistics -> {
 
             if (loaderMessageTv != null) {
-                loaderMessageTv.setText(""+getPercentages(statistics.getTime()));
+                loaderMessageTv.setText(String.valueOf(getPercentages(statistics.getTime())));
             }
 
         });
@@ -389,7 +389,6 @@ public class VideoEditorActivity extends AppCompatActivity {
                     recyclerView.setAdapter(imageListAdapter);
                 }
             } else {
-                return;
             }
         }
     }
@@ -575,16 +574,16 @@ public class VideoEditorActivity extends AppCompatActivity {
 
                     finalCommand.add("-preset");
                     finalCommand.add("ultrafast");
-                    finalCommand.add(stringBuilder.toString());
+                    finalCommand.add(stringBuilder);
 
                 } catch (Exception e) {
-                    Log.d("FFMPEGException___", "" + e);
+                    Log.d("FFMPEGException___", String.valueOf(e));
                 }
 
                 cmd = new String[finalCommand.size()];
                 cmd = finalCommand.toArray(cmd);
 
-                url = stringBuilder.toString();
+                url = stringBuilder;
                 if (cmd.length != 0) {
                     execureCommand(cmd);
                 } else {

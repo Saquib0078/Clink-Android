@@ -210,9 +210,9 @@ public class BroadCastFragment extends PegaFragment {
 
 
                     } catch (IOException e) {
-                        Toast.makeText(requireContext(), "" + e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(requireContext(), e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                     } catch (JSONException e) {
-                        Toast.makeText(requireContext(), "" + e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(requireContext(), e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                     }
 
                 }
@@ -220,7 +220,7 @@ public class BroadCastFragment extends PegaFragment {
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
-                Toast.makeText(requireContext(), "" + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(requireContext(), t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }

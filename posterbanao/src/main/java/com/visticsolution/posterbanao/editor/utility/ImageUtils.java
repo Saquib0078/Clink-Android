@@ -51,7 +51,7 @@ public class ImageUtils {
                 BitmapFactory.Options resampling = getResampling(decodeFile.getWidth(), decodeFile.getHeight(), i);
                 matrix.postScale(((float) resampling.outWidth) / ((float) decodeFile.getWidth()), ((float) resampling.outHeight) / ((float) decodeFile.getHeight()));
             }
-            if (new Integer(Build.VERSION.SDK).intValue() > 4 && (exifRotation = ExifUtils.getExifRotation(str)) != 0) {
+            if (Integer.parseInt(Build.VERSION.SDK) > 4 && (exifRotation = ExifUtils.getExifRotation(str)) != 0) {
                 matrix.postRotate((float) exifRotation);
             }
             return Bitmap.createBitmap(decodeFile, 0, 0, decodeFile.getWidth(), decodeFile.getHeight(), matrix, true);

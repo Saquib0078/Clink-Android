@@ -18,7 +18,7 @@ public class ScaleGestureDetector {
     private float mCurrFingerDiffY;
     private float mCurrLen;
     private float mCurrPressure;
-    private Vector2D mCurrSpanVector = new Vector2D();
+    private final Vector2D mCurrSpanVector = new Vector2D();
     private float mFocusX;
     private float mFocusY;
     private boolean mGestureInProgress;

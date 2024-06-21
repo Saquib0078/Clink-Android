@@ -22,18 +22,18 @@ public class PhotoSource implements PhotoData.OnDataLoadListener {
      */
     protected static final int REPEAT_COUNT = 2;
 
-    private List<PhotoData> mPhotoDataList = new Vector<PhotoData>();
+    private final List<PhotoData> mPhotoDataList = new Vector<PhotoData>();
     /**
      * 保存下载进度
      */
-    private SparseArray<Float> mProgressArray = new SparseArray<Float>();
+    private final SparseArray<Float> mProgressArray = new SparseArray<Float>();
     /**
      * 保存下载失败的情况
      */
-    private Map<PhotoData, Integer> mErrorMap = new ConcurrentHashMap<PhotoData, Integer>();
+    private final Map<PhotoData, Integer> mErrorMap = new ConcurrentHashMap<PhotoData, Integer>();
 
     private OnSourcePrepareListener mOnSourcePrepareListener;
-    private AtomicInteger mDiskPrepared = new AtomicInteger(0);
+    private final AtomicInteger mDiskPrepared = new AtomicInteger(0);
 
     private int mRequiredDiskPrepareNum;
 

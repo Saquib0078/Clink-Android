@@ -102,14 +102,14 @@ com.nirmiteepublic.clink.databinding.ActivityGraphicsFilterBinding binding;
 
                         } catch (JSONException e) {
                             hideProgressDialog();
-                            Toast.makeText(GraphicsFilterActivity.this, "" + e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(GraphicsFilterActivity.this, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                         }
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 hideProgressDialog();
-                Toast.makeText(GraphicsFilterActivity.this, "" + error.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(GraphicsFilterActivity.this, error.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 

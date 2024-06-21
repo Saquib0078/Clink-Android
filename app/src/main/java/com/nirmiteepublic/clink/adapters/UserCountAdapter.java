@@ -18,7 +18,7 @@ import java.util.List;
 public class UserCountAdapter extends RecyclerView.Adapter<UserCountAdapter.UserCountViewHolder> {
 
     private Context mContext;
-    private List<ResultItem> mUserCounts;
+    private final List<ResultItem> mUserCounts;
 
     public UserCountAdapter( List<ResultItem> userCounts) {
         mUserCounts = userCounts;

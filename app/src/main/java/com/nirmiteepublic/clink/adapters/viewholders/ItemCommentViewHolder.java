@@ -67,7 +67,7 @@ public class ItemCommentViewHolder extends RecyclerView.ViewHolder {
         binding.time.setText(Utils.getTimeAgo(commentModel.getTime()));
         binding.comments.setText(commentModel.getComment());
         Glide.with(context)
-                .load(commentModel.getProfileDP())
+                .load(dp)
                 .placeholder(R.drawable.default_image)
                 .error(R.drawable.default_image)
                 .into(binding.userImage);
@@ -76,7 +76,7 @@ public class ItemCommentViewHolder extends RecyclerView.ViewHolder {
             binding.viewReplyText.setText("View " + commentModel.getReplies() + " Replies");
             binding.viewReplies.setOnClickListener(v -> loadReplies(commentModel.getCommentID()));
             Glide.with(context)
-                    .load(UserUtils.getUserDp())
+                    .load(dp)
                     .placeholder(R.drawable.default_image)
                     .into(binding.userImage);
         }

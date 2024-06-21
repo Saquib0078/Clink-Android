@@ -63,9 +63,8 @@ public class GraphicsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         context = parent.getContext();
-        switch (graphicModelList.get(viewType).getType()) {
-            case "image-graphic":
-                return new ItemGraphicImageViewHolder(ItemGraphicsImageBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false), parent.getContext(), graphicModelList.get(viewType));
+        if (graphicModelList.get(viewType).getType().equals("image-graphic")) {
+            return new ItemGraphicImageViewHolder(ItemGraphicsImageBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false), parent.getContext(), graphicModelList.get(viewType));
         }
         return new ItemGraphicImageViewHolder(ItemGraphicsImageBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false), parent.getContext(), graphicModelList.get(viewType));
     }
@@ -110,7 +109,7 @@ public class GraphicsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                                 if (itemClickListener != null) {
                                     itemClickListener.onGraphicItemClicked(graphicModel.getId(),graphicModel.getGraphicID());
                                 }
-                                Toast.makeText(context, ""+graphicModel.getId(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(context, graphicModel.getId(), Toast.LENGTH_SHORT).show();
 
                                 Toast.makeText(context, "Delete option selected", Toast.LENGTH_SHORT).show();
                             }

@@ -72,7 +72,6 @@ public class TwoTextureMovieFilter extends BaseMovieFilter {
 
         FloatBuffer cubeBuffer = mCubeBuffer;
         FloatBuffer textureCubeBuffer = mTextureCubeBuffer;
-        ;
 
         if (mIsOpaque) {
             GLES20.glDisable(GLES20.GL_BLEND);

@@ -120,7 +120,7 @@ public class EditGraphicsActivity extends AppCompatActivity {
             public void onFailure(Call<ResponseBody> call, Throwable t) {
                 hideProgressDialog();
                 binding.progressBar.setVisibility(View.GONE);
-                Toast.makeText(EditGraphicsActivity.this, "" + t.getLocalizedMessage().toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(EditGraphicsActivity.this, t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -149,7 +149,7 @@ public class EditGraphicsActivity extends AppCompatActivity {
                     } catch (IOException e) {
                         hideProgressDialog();
                         binding.progressBar.setVisibility(View.GONE);
-                        Toast.makeText(EditGraphicsActivity.this, ""+e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();                    }
+                        Toast.makeText(EditGraphicsActivity.this, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();                    }
                     Toast.makeText(EditGraphicsActivity.this, "Error" + response.errorBody(), Toast.LENGTH_SHORT).show();
                 }
             }
@@ -158,7 +158,7 @@ public class EditGraphicsActivity extends AppCompatActivity {
             public void onFailure(Call<ResponseBody> call, Throwable t) {
                 binding.progressBar.setVisibility(View.GONE);
                 hideProgressDialog();
-                Toast.makeText(EditGraphicsActivity.this, "" + t.getLocalizedMessage().toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(EditGraphicsActivity.this, t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }

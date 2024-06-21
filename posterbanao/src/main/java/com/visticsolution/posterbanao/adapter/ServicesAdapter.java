@@ -19,8 +19,8 @@ import java.util.List;
 
 public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.ViewHolder> {
 
-    private List<ServicesModel> list;
-    private AdapterClickListener listener;
+    private final List<ServicesModel> list;
+    private final AdapterClickListener listener;
     Context context;
 
     public ServicesAdapter(Context context, List<ServicesModel> list, AdapterClickListener listener) {

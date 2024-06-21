@@ -101,7 +101,7 @@ public class StringTexture extends CanvasTexture {
             // last line
             if (paraStartIndex < text.length() - 1) {
                 paraCount++;
-                String para = text.substring(paraStartIndex, text.length());
+                String para = text.substring(paraStartIndex);
                 textList.add(para);
                 int paraWidth = (int) Math.ceil(paint.measureText(para));
                 if (paraWidth > width) {
@@ -184,9 +184,9 @@ public class StringTexture extends CanvasTexture {
     }
 
     public static class StringArray {
-        private List<String> strings;
-        private List<Integer> paintSizes;
-        private List<Integer> paintColors;
+        private final List<String> strings;
+        private final List<Integer> paintSizes;
+        private final List<Integer> paintColors;
 
         public StringArray() {
             strings = new ArrayList<String>();

@@ -175,7 +175,7 @@ public class DemoPresenter implements IMovieTimer.MovieListener{
         if (!dir.exists()) {
             dir = mDemoView.getActivity().getCacheDir();
         }
-        return new File(dir, String.format(mDemoView.getActivity().getString(R.string.app_name)+"%s.mp4",""+System.currentTimeMillis()));
+        return new File(dir, String.format(mDemoView.getActivity().getString(R.string.app_name)+"%s.mp4", String.valueOf(System.currentTimeMillis())));
     }
 
     public void onPause() {

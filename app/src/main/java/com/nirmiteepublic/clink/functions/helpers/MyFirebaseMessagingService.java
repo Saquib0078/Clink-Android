@@ -17,7 +17,6 @@ import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
-import androidx.core.content.ContextCompat;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.CustomTarget;
@@ -26,13 +25,9 @@ import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 import com.nirmiteepublic.clink.R;
 import com.nirmiteepublic.clink.ui.activity.MainActivity;
-import com.nirmiteepublic.clink.ui.activity.pages.CreateMeetActivity;
-import com.nirmiteepublic.clink.ui.activity.pages.FilterUserActivity;
+import com.nirmiteepublic.clink.ui.activity.pages.MeetdescryptionActivity;
+import com.nirmiteepublic.clink.ui.activity.pages.TaskDescryptionActivity;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.Map;
 
 import javax.annotation.Nullable;
@@ -44,45 +39,34 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     public void onMessageReceived(@NonNull RemoteMessage message) {
         super.onMessageReceived(message);
         if (message.getNotification() != null) {
-            Map<String, String> data = message.getData();
-            String title = message.getNotification().getTitle(); // Get notification title
-            String body = message.getNotification().getBody();
-            String imageUrl = data.get("imageUrl");
 
-//            String type = data.get("msgtype");
-//
-//            System.out.println(type);
+            String meetingType = message.getData().get("meetingType");
+            if ("meeting".equals(meetingType) || "task".equals(meetingType)) {
+                String title = message.getNotification().getTitle();
+                String body = message.getNotification().getBody();
+                String imageUrl = message.getData().get("imageUrl");
 
-            showNotification(imageUrl,title,body);
+                showNotification(imageUrl, title, body, meetingType);
+            }
 
             SharedPreferences prefs = getSharedPreferences("NotificationPrefs", MODE_PRIVATE);
             prefs.edit().putBoolean("notificationStatus", true).apply();
-            getFirebaseMessage(message.getNotification().getTitle(), message.getNotification().getBody(),imageUrl);
-
         }
-
     }
 
-    public void getFirebaseMessage(String title, String msg,String img) {
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "C-Link")
-                .setSmallIcon(R.drawable.broadcast)
-                .setContentTitle(title)
-                .setContentText(msg)
-                .setAutoCancel(true);
-        NotificationManagerCompat compat = NotificationManagerCompat.from(this);
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
-            Toast.makeText(this, "Permission Granted", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        compat.notify(101, builder.build());
-    }
-
-    private void showNotification(String imageUrl ,String title ,String body) {
+    private void showNotification(String imageUrl, String title, String body, String meetingType) {
         // Create a notification channel (only needs to be done once)
         createNotificationChannel();
 
         // Create an Intent for the notification tap action
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent;
+        if ("meeting".equals(meetingType)) {
+            intent = new Intent(this, MeetdescryptionActivity.class);
+        } else if ("task".equals(meetingType)) {
+            intent = new Intent(this, TaskDescryptionActivity.class);
+        } else {
+            intent = new Intent(this, MainActivity.class);
+        }
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
         PendingIntent pendingIntent = PendingIntent.getActivity(
@@ -99,8 +83,6 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 .into(new CustomTarget<Bitmap>() {
                     @Override
                     public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
-
-
                         // Build your notification with the loaded image
                         NotificationCompat.Builder builder = new NotificationCompat.Builder(MyFirebaseMessagingService.this, CHANNEL_ID)
                                 .setSmallIcon(R.drawable.broadcast)
@@ -115,13 +97,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                         // Show the notification
                         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(MyFirebaseMessagingService.this);
                         if (ActivityCompat.checkSelfPermission(MyFirebaseMessagingService.this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
-                            // TODO: Consider calling
-                            //    ActivityCompat#requestPermissions
-                            // here to request the missing permissions, and then overriding
-                            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                            //                                          int[] grantResults)
-                            // to handle the case where the user grants the permission. See the documentation
-                            // for ActivityCompat#requestPermissions for more details.
+                            // TODO: Handle permission request and result
                             return;
                         }
                         notificationManager.notify(123, builder.build());
@@ -146,9 +122,5 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             NotificationManager notificationManager = getSystemService(NotificationManager.class);
             notificationManager.createNotificationChannel(channel);
         }
-
     }
-
-
-
 }

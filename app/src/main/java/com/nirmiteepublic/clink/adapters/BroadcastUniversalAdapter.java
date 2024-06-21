@@ -1,7 +1,9 @@
 package com.nirmiteepublic.clink.adapters;
 
 import android.annotation.SuppressLint;
+import android.graphics.Rect;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -37,6 +39,7 @@ public class BroadcastUniversalAdapter extends RecyclerView.Adapter<RecyclerView
         return new ItemBroadcastMediaViewHolder(ItemBroadcastMediaBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false), parent.getContext(), broadcastModelList.get(viewType));
     }
 
+
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
@@ -51,6 +54,8 @@ public class BroadcastUniversalAdapter extends RecyclerView.Adapter<RecyclerView
 
     }
 
+
+
     @Override
     public int getItemViewType(int position) {
         return position;
@@ -61,4 +66,48 @@ public class BroadcastUniversalAdapter extends RecyclerView.Adapter<RecyclerView
         return broadcastModelList.size();
     }
 
+    @Override
+    public void onViewRecycled(@NonNull RecyclerView.ViewHolder holder) {
+        super.onViewRecycled(holder);
+        if (holder instanceof ItemBroadcastMediaViewHolder) {
+            ((ItemBroadcastMediaViewHolder) holder).stopVideo();
+        }
+    }
+    public void setRecyclerView(RecyclerView recyclerView) {
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                // Loop through all visible child views in the RecyclerView
+                for (int i = 0; i < recyclerView.getChildCount(); i++) {
+                    View child = recyclerView.getChildAt(i);
+                    RecyclerView.ViewHolder viewHolder = recyclerView.getChildViewHolder(child);
+
+                    // Check if the view holder is an instance of ItemBroadcastMediaViewHolder
+                    if (viewHolder instanceof ItemBroadcastMediaViewHolder) {
+                        ItemBroadcastMediaViewHolder mediaViewHolder = (ItemBroadcastMediaViewHolder) viewHolder;
+
+                        // Check if the view is not visible
+                        if (!isViewVisible(recyclerView, child)) {
+                            // Stop and mute the video
+                            mediaViewHolder.stopVideo();
+                            mediaViewHolder.muteVideo();
+                        } else {
+                            // Unmute the video if it's visible again (optional)
+                            mediaViewHolder.unmuteVideo();
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    private boolean isViewVisible(RecyclerView recyclerView, View view) {
+        RecyclerView.LayoutManager layoutManager = recyclerView.getLayoutManager();
+        if (layoutManager == null) return false;
+
+        Rect bounds = new Rect();
+        view.getHitRect(bounds);
+        return layoutManager.isViewPartiallyVisible(view, true, true);
+    }
 }

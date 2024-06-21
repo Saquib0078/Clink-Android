@@ -38,6 +38,8 @@ public class AdminGraphActivity extends PegaAppCompatActivity {
     private DatabaseReference mDatabase;
     DatabaseReference onlineStatusRef;
     BarChart lineChart;
+    private DatabaseReference usersRef;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,29 +60,9 @@ public class AdminGraphActivity extends PegaAppCompatActivity {
                 startActivity(new Intent(AdminGraphActivity.this,UsersCountActivity.class));
             }
         });
+        usersRef = FirebaseDatabase.getInstance().getReference("users");
 
-        DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference().child("online_status");
 
-        onlineStatusRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                int onlineUsersCount = 0;
-                for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
-                    // Get the online status of each user
-                    Boolean isOnline = userSnapshot.child("online").getValue(Boolean.class);
-                    if (isOnline != null && isOnline  != false) {
-                        onlineUsersCount++;
-                    }
-                }
-//                Toast.makeText(AdminGraphActivity.this, "Number of online users: " + onlineUsersCount, Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                // Handle errors
-                Log.e("Firebase", "Error fetching online status: " + databaseError.getMessage());
-            }
-        });
 
 
         RetrofitClient.getInstance(this).getApiInterfaces().getUserCount().enqueue(new Callback<UserCountResponse>() {
@@ -90,7 +72,7 @@ public class AdminGraphActivity extends PegaAppCompatActivity {
                     UserCountResponse userCountResponse = response.body();
                     if (userCountResponse != null) {
                         int userCount = userCountResponse.getTotalusers();
-                        binding.userCount.setText(userCount + "");
+                        binding.userCount.setText(String.valueOf(userCount));
                     }
                 } else {
                     Toast.makeText(AdminGraphActivity.this, "Error", Toast.LENGTH_SHORT).show();
@@ -100,13 +82,35 @@ public class AdminGraphActivity extends PegaAppCompatActivity {
 
             @Override
             public void onFailure(Call<UserCountResponse> call, Throwable t) {
-                Toast.makeText(AdminGraphActivity.this, "" + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(AdminGraphActivity.this, t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 
         fetchAndDisplayAverageTime();
+        countOnlineUsers();
     }
 
+    private void countOnlineUsers() {
+        usersRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                int onlineCount = 0;
+                for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
+                    DataSnapshot totalTimeOnlineSnapshot = userSnapshot.child("totalTimeOnline");
+
+                    Boolean online = totalTimeOnlineSnapshot.child("online").getValue(Boolean.class);
+                    if (online != null && online.equals(true)) {
+                        onlineCount++;
+                    }
+                }
+                binding.onlineusers.setText(String.valueOf(onlineCount));
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(AdminGraphActivity.this, String.valueOf(databaseError), Toast.LENGTH_SHORT).show();            }
+        });
+    }
 
     private void fetchAndDisplayAverageTime() {
         DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference().child("users");

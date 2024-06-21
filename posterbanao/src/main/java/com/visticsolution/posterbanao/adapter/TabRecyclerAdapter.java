@@ -15,8 +15,8 @@ import java.util.List;
 
 public class TabRecyclerAdapter extends RecyclerView.Adapter<TabRecyclerAdapter.ViewHolder> {
 
-    private List<String> titles;
-    private AdapterClickListener listener;
+    private final List<String> titles;
+    private final AdapterClickListener listener;
     Context context;
     int selectedPosition = 0;
 
@@ -36,11 +36,7 @@ public class TabRecyclerAdapter extends RecyclerView.Adapter<TabRecyclerAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
-        if (this.selectedPosition == position) {
-            viewHolder.binding.titleTv.setActivated(true);
-        } else {
-            viewHolder.binding.titleTv.setActivated(false);
-        }
+        viewHolder.binding.titleTv.setActivated(this.selectedPosition == position);
         viewHolder.binding.titleTv.setText(titles.get(position));
         viewHolder.binding.getRoot().setOnClickListener(view -> {
             TabRecyclerAdapter recyclerOverLayAdapter = TabRecyclerAdapter.this;

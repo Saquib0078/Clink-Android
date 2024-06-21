@@ -101,10 +101,7 @@ public class PreviewActivity extends AppCompatActivity implements RewardedAdapte
                 @Override
                 public void onPlayerStateChanged(boolean playWhenReady, int playbackState) {
                     Player.EventListener.super.onPlayerStateChanged(playWhenReady, playbackState);
-                    switch (playbackState) {
-                        case ExoPlayer.STATE_ENDED:
-//                            ivPlayVideo.setVisibility(View.VISIBLE);
-                            break;
+                    if (playbackState == ExoPlayer.STATE_ENDED) {//                            ivPlayVideo.setVisibility(View.VISIBLE);
                     }
                 }
             });
@@ -184,10 +181,10 @@ public class PreviewActivity extends AppCompatActivity implements RewardedAdapte
         }
 
         rewardedAdapter = new RewardedAdapter(this, this);
-        rewardedAdapter.LoadAds();
+        RewardedAdapter.LoadAds();
     }
 
-    private ActivityResultLauncher<String[]> mPermissionResult = registerForActivityResult(
+    private final ActivityResultLauncher<String[]> mPermissionResult = registerForActivityResult(
             new ActivityResultContracts.RequestMultiplePermissions(), new ActivityResultCallback<Map<String, Boolean>>() {
                 @RequiresApi(api = Build.VERSION_CODES.M)
                 @Override
@@ -289,7 +286,7 @@ public class PreviewActivity extends AppCompatActivity implements RewardedAdapte
                         try {
                             moveFile(file, outfile);
                         } catch (IOException e) {
-                            Toast.makeText(this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     } else {
                         Intent intent = new Intent(Intent.ACTION_SEND);
@@ -368,7 +365,7 @@ public class PreviewActivity extends AppCompatActivity implements RewardedAdapte
 
                 public void onError(ANError aNError) {
                     Functions.cancelLoader();
-                    Toast.makeText(PreviewActivity.this, "" + aNError.getErrorDetail(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PreviewActivity.this, aNError.getErrorDetail(), Toast.LENGTH_SHORT).show();
                 }
             });
         }
@@ -453,7 +450,7 @@ public class PreviewActivity extends AppCompatActivity implements RewardedAdapte
                         }
                     });
         }catch (Exception e){
-            Toast.makeText(this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
         }finally {
             savedSuccessfull();
             if (inputChannel != null) inputChannel.close();

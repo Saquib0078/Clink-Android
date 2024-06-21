@@ -29,9 +29,9 @@ public class MoneyUtilTest {
 
     private Object[] parametersForGetMonthlyEMI_ValidParams_ReturnsExpectedEMI() {
         return new Object[]{
-                new Object[]{1000.0, new BigDecimal(10.0), 12, 87.92},
-                new Object[]{5000.0, new BigDecimal(15.0), 9, 590.85},
-                new Object[]{10000.0, new BigDecimal(13.0), 3, 3405.81}
+                new Object[]{1000.0, new BigDecimal("10.0"), 12, 87.92},
+                new Object[]{5000.0, new BigDecimal("15.0"), 9, 590.85},
+                new Object[]{10000.0, new BigDecimal("13.0"), 3, 3405.81}
         };
     }
 

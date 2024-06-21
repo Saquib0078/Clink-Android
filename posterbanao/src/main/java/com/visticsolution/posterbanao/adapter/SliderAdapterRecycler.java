@@ -17,8 +17,8 @@ import java.util.List;
 
 public class SliderAdapterRecycler extends RecyclerView.Adapter<SliderAdapterRecycler.ViewHolder> {
 
-    private List<SliderModel> list;
-    private AdapterClickListener listener;
+    private final List<SliderModel> list;
+    private final AdapterClickListener listener;
     Context context;
 
     public SliderAdapterRecycler(Context context, List<SliderModel> list, AdapterClickListener listener) {

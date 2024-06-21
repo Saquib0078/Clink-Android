@@ -9,8 +9,8 @@ public class FitCenterScaleSegment extends FitCenterSegment {
     /**
      * 缩放动画范围
      */
-    private float mScaleFrom;
-    private float mScaleTo;
+    private final float mScaleFrom;
+    private final float mScaleTo;
 
     private float mProgress;
 

@@ -10,13 +10,13 @@ public class RepeatListener implements View.OnTouchListener {
     public final int normalInterval;
     public View downView;
     public Handler handler = new Handler();
-    private Runnable handlerRunnable = new Runnable() {
+    private final Runnable handlerRunnable = new Runnable() {
         public void run() {
             RepeatListener.this.handler.postDelayed(this, (long) RepeatListener.this.normalInterval);
             RepeatListener.this.clickListener.onClick(RepeatListener.this.downView);
         }
     };
-    private int initialInterval;
+    private final int initialInterval;
 
     public RepeatListener(int i, int i2, View.OnClickListener onClickListener) {
         if (onClickListener == null) {

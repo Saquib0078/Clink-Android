@@ -1482,7 +1482,7 @@ public class EditorActivity extends AppCompatActivity implements View.OnClickLis
 //        musicPlayer = ExoPlayerFactory.newSimpleInstance(this, trackSelectorDef);
         musicPlayer = new SimpleExoPlayer.Builder(this)
                 .setTrackSelector(trackSelectorDef)
-                .build();;
+                .build();
         int appNameStringRes = R.string.app_name;
         String userAgent = com.google.android.exoplayer2.util.Util.getUserAgent(this, this.getString(appNameStringRes));
         DefaultDataSourceFactory defdataSourceFactory = new DefaultDataSourceFactory(this, userAgent);
@@ -1567,7 +1567,6 @@ public class EditorActivity extends AppCompatActivity implements View.OnClickLis
     public void onClick(View view) {
         int id = view.getId();
         if (id == R.id.lay_music) {
-            return;
         } else if (id == R.id.bckprass_music) {
             this.layMusic.startAnimation(this.animSlideDown);
             layMusic.setVisibility(View.GONE);
@@ -1575,7 +1574,6 @@ public class EditorActivity extends AppCompatActivity implements View.OnClickLis
             this.imgOK.setVisibility(View.VISIBLE);
             this.btnUndo.setVisibility(View.VISIBLE);
             this.btnRedo.setVisibility(View.VISIBLE);
-            return;
         } else if (id == R.id.add_sticker) {
             removeImageViewControll();
             hideSlideBar();
@@ -1606,7 +1604,6 @@ public class EditorActivity extends AppCompatActivity implements View.OnClickLis
             this.layStkrMain.setVisibility(View.GONE);
             this.layBackground.setVisibility(View.GONE);
             this.layTextMain.setVisibility(View.GONE);
-            return;
         } else if (id == R.id.select_music) {
             removeImageViewControll();
             hideSlideBar();
@@ -1631,7 +1628,6 @@ public class EditorActivity extends AppCompatActivity implements View.OnClickLis
             this.layStkrMain.setVisibility(View.GONE);
             this.layBackground.setVisibility(View.GONE);
             this.layTextMain.setVisibility(View.GONE);
-            return;
         } else if (id == R.id.add_text) {
             removeImageViewControll();
             hideSlideBar();
@@ -1653,64 +1649,44 @@ public class EditorActivity extends AppCompatActivity implements View.OnClickLis
             this.btnUndo.setVisibility(View.VISIBLE);
             this.btnRedo.setVisibility(View.VISIBLE);
             addTextDialog(null);
-            return;
         } else if (id == R.id.btnAlignMentFont) {
             setLeftAlignMent();
-            return;
         } else if (id == R.id.btnBoldFont) {
             setBoldFonts();
-            return;
         } else if (id == R.id.btnCapitalFont) {
             setCapitalFont();
-            return;
         } else if (id == R.id.btnCenterFont) {
             setCenterAlignMent();
-            return;
         } else if (id == R.id.btnColorBackgroundPic) {
             colorPickerDialog(false);
-            return;
         } else if (id == R.id.btnEditControlBg) {
             mainControlBgPickerDialog(false);
-            return;
         } else if (id == R.id.btnEditControlColor) {
             mainControlcolorPickerDialog(false);
-            return;
         } else if (id == R.id.btnEditControlOutlineColor) {
             mainControlOutlinePickerDialog(false);
-            return;
         } else if (id == R.id.btnEditControlShadowColor) {
             mainControlShadowPickerDialog(false);
-            return;
         } else if (id == R.id.btnImgBackground) {
             onGalleryBackground();
-            return;
         } else if (id == R.id.sticker_gallery_change) {
             onGalleryButtonClick_forChangeSticker();
-            return;
         } else if (id == R.id.btnItalicFont) {
             setItalicFont();
-            return;
         } else if (id == R.id.btnRightFont) {
             setRightAlignMent();
-            return;
         } else if (id == R.id.btnShadowBottom) {
             setBottomShadow();
-            return;
         } else if (id == R.id.btnShadowLeft) {
             setLeftShadow();
-            return;
         } else if (id == R.id.btnShadowRight) {
             setRightShadow();
-            return;
         } else if (id == R.id.btnShadowTop) {
             setTopShadow();
-            return;
         } else if (id == R.id.btnUnderlineFont) {
             setUnderLineFont();
-            return;
         } else if (id == R.id.btn_bckprass) {
             onBackPressed();
-            return;
         } else if (id == R.id.btn_done) {
             hideSlideBar();
             findViewById(R.id.remove_watermark_tv).setVisibility(View.GONE);
@@ -1738,7 +1714,6 @@ public class EditorActivity extends AppCompatActivity implements View.OnClickLis
             }
             exportBtnDone();
 
-            return;
         } else if (id == R.id.btn_erase) {
             int childCount = txtStkrRel.getChildCount();
             for (int i = 0; i < childCount; i++) {
@@ -1824,7 +1799,6 @@ public class EditorActivity extends AppCompatActivity implements View.OnClickLis
                 }
             }
             Toast.makeText(this, "Select sticker to perform erase operation..", Toast.LENGTH_SHORT).show();
-            return;
         } else if (id == R.id.btn_layControls) {
             removeImageViewControll();
             if (this.layTextMain.getVisibility() == View.VISIBLE) {
@@ -1847,13 +1821,10 @@ public class EditorActivity extends AppCompatActivity implements View.OnClickLis
                 EditorActivity.layContainer.setVisibility(View.GONE);
             }, 200);
 
-            return;
         } else if (id == R.id.btn_redo) {
             redo();
-            return;
         } else if (id == R.id.btn_undo) {
             undo();
-            return;
         } else if (id == R.id.btn_up_down) {
             this.focusedCopy = this.focusedView;
             this.layStkrMain.requestLayout();
@@ -1863,17 +1834,14 @@ public class EditorActivity extends AppCompatActivity implements View.OnClickLis
             } else {
                 showResContainer();
             }
-            return;
         } else if (id == R.id.btn_up_down1) {
             this.focusedCopy = this.focusedView;
             this.layTextMain.requestLayout();
             this.layTextMain.postInvalidate();
             if (this.layTextedit.getVisibility() == View.VISIBLE) {
                 hideTextResContainer();
-                return;
             } else {
                 showTextResContainer();
-                return;
             }
         } else if (id == R.id.center_rel || id == R.id.lay_remove) {
             this.layVideoAnimation.setVisibility(View.GONE);
@@ -1885,7 +1853,6 @@ public class EditorActivity extends AppCompatActivity implements View.OnClickLis
             this.laySticker.setVisibility(View.GONE);
             this.layBackground.setVisibility(View.GONE);
             onTouchApply();
-            return;
         } else if (id == R.id.lay_backgnd_control) {
             this.fontsShow.setVisibility(View.GONE);
             this.fontsSpacing.setVisibility(View.GONE);
@@ -1896,7 +1863,6 @@ public class EditorActivity extends AppCompatActivity implements View.OnClickLis
             this.bgShow.setVisibility(View.VISIBLE);
             this.controlsShow.setVisibility(View.GONE);
             selectControl8();
-            return;
         } else if (id == R.id.lay_colors_control) {
             this.fontsShow.setVisibility(View.GONE);
             this.fontsSpacing.setVisibility(View.GONE);
@@ -1907,7 +1873,6 @@ public class EditorActivity extends AppCompatActivity implements View.OnClickLis
             this.bgShow.setVisibility(View.GONE);
             this.controlsShow.setVisibility(View.GONE);
             selectControl6();
-            return;
         } else if (id == R.id.lay_controls_control) {
             this.fontsShow.setVisibility(View.GONE);
             this.fontsSpacing.setVisibility(View.GONE);
@@ -1918,7 +1883,6 @@ public class EditorActivity extends AppCompatActivity implements View.OnClickLis
             this.bgShow.setVisibility(View.GONE);
             this.controlsShow.setVisibility(View.VISIBLE);
             selectControl1();
-            return;
         } else if (id == R.id.lay_dupliStkr) {
             int childCount2 = txtStkrRel.getChildCount();
             for (int i2 = 0; i2 < childCount2; i2++) {
@@ -1937,7 +1901,6 @@ public class EditorActivity extends AppCompatActivity implements View.OnClickLis
                     }
                 }
             }
-            return;
         } else if (id == R.id.lay_dupliText) {
             int childCount3 = txtStkrRel.getChildCount();
             for (int i3 = 0; i3 < childCount3; i3++) {
@@ -1955,10 +1918,8 @@ public class EditorActivity extends AppCompatActivity implements View.OnClickLis
                     }
                 }
             }
-            return;
         } else if (id == R.id.lay_edit) {
             doubleTabPrass();
-            return;
         } else if (id == R.id.lay_fonts_Curve) {
             this.fontsSpacing.setVisibility(View.GONE);
             this.fontsCurve.setVisibility(View.VISIBLE);
@@ -1969,7 +1930,6 @@ public class EditorActivity extends AppCompatActivity implements View.OnClickLis
             this.bgShow.setVisibility(View.GONE);
             this.controlsShow.setVisibility(View.GONE);
             selectControl5();
-            return;
         } else if (id == R.id.lay_fonts_Spacing) {
             this.fontsSpacing.setVisibility(View.VISIBLE);
             this.fontsCurve.setVisibility(View.GONE);
@@ -1980,7 +1940,6 @@ public class EditorActivity extends AppCompatActivity implements View.OnClickLis
             this.bgShow.setVisibility(View.GONE);
             this.controlsShow.setVisibility(View.GONE);
             selectControl4();
-            return;
         } else if (id == R.id.lay_fonts_control) {
             this.fontsShow.setVisibility(View.VISIBLE);
             this.fontsSpacing.setVisibility(View.GONE);
@@ -1991,7 +1950,6 @@ public class EditorActivity extends AppCompatActivity implements View.OnClickLis
             this.bgShow.setVisibility(View.GONE);
             this.controlsShow.setVisibility(View.GONE);
             selectControl2();
-            return;
         } else if (id == R.id.lay_fonts_style) {
             this.fontsSpacing.setVisibility(View.GONE);
             this.fontsCurve.setVisibility(View.GONE);
@@ -2002,7 +1960,6 @@ public class EditorActivity extends AppCompatActivity implements View.OnClickLis
             this.bgShow.setVisibility(View.GONE);
             this.controlsShow.setVisibility(View.GONE);
             selectControl3();
-            return;
         } else if (id == R.id.lay_outline_control) {
             this.fontsShow.setVisibility(View.GONE);
             this.fontsSpacing.setVisibility(View.GONE);
@@ -2013,7 +1970,6 @@ public class EditorActivity extends AppCompatActivity implements View.OnClickLis
             this.bgShow.setVisibility(View.GONE);
             this.controlsShow.setVisibility(View.GONE);
             selectControl9();
-            return;
         } else if (id == R.id.lay_shadow_control) {
             this.fontsShow.setVisibility(View.GONE);
             this.fontsSpacing.setVisibility(View.GONE);
@@ -2024,7 +1980,6 @@ public class EditorActivity extends AppCompatActivity implements View.OnClickLis
             this.bgShow.setVisibility(View.GONE);
             this.controlsShow.setVisibility(View.GONE);
             selectControl7();
-            return;
         } else if (id == R.id.select_artwork) {
             removeImageViewControll();
             hideSlideBar();
@@ -2038,7 +1993,6 @@ public class EditorActivity extends AppCompatActivity implements View.OnClickLis
             this.laySticker.setVisibility(View.GONE);
             showPicImageDialog();
 
-            return;
         } else if (id == R.id.select_backgnd) {
             hideSlideBar();
             if (this.layBackground.getVisibility() != View.VISIBLE) {
@@ -2064,7 +2018,6 @@ public class EditorActivity extends AppCompatActivity implements View.OnClickLis
             this.imgOK.setVisibility(View.VISIBLE);
             this.btnUndo.setVisibility(View.VISIBLE);
             this.btnRedo.setVisibility(View.VISIBLE);
-            return;
         } else if (id == R.id.select_effect) {
             removeImageViewControll();
             hideSlideBar();
@@ -2087,7 +2040,6 @@ public class EditorActivity extends AppCompatActivity implements View.OnClickLis
             this.imgOK.setVisibility(View.VISIBLE);
             this.btnUndo.setVisibility(View.VISIBLE);
             this.btnRedo.setVisibility(View.VISIBLE);
-            return;
         } else if (id == R.id.select_frame) {
             removeImageViewControll();
             hideSlideBar();
@@ -2110,7 +2062,6 @@ public class EditorActivity extends AppCompatActivity implements View.OnClickLis
             this.imgOK.setVisibility(View.VISIBLE);
             this.btnUndo.setVisibility(View.VISIBLE);
             this.btnRedo.setVisibility(View.VISIBLE);
-            return;
         } else if (id == R.id.select_border) {
             removeImageViewControll();
             hideSlideBar();
@@ -2133,7 +2084,6 @@ public class EditorActivity extends AppCompatActivity implements View.OnClickLis
             this.imgOK.setVisibility(View.VISIBLE);
             this.btnUndo.setVisibility(View.VISIBLE);
             this.btnRedo.setVisibility(View.VISIBLE);
-            return;
         } else if (id == R.id.video_filter) {
             removeImageViewControll();
             hideSlideBar();
@@ -2156,7 +2106,6 @@ public class EditorActivity extends AppCompatActivity implements View.OnClickLis
             this.imgOK.setVisibility(View.VISIBLE);
             this.btnUndo.setVisibility(View.VISIBLE);
             this.btnRedo.setVisibility(View.VISIBLE);
-            return;
         } else if (id == R.id.video_animation) {
             removeImageViewControll();
             hideSlideBar();
@@ -2179,7 +2128,6 @@ public class EditorActivity extends AppCompatActivity implements View.OnClickLis
             this.imgOK.setVisibility(View.VISIBLE);
             this.btnUndo.setVisibility(View.VISIBLE);
             this.btnRedo.setVisibility(View.VISIBLE);
-            return;
         }
     }
 
@@ -3272,15 +3220,12 @@ public class EditorActivity extends AppCompatActivity implements View.OnClickLis
                 this.alpha = i;
                 if (Build.VERSION.SDK_INT >= 16) {
                     this.transImg.setImageAlpha(this.alpha);
-                    return;
                 } else {
                     this.transImg.setAlpha(this.alpha);
-                    return;
                 }
             } else if (id == R.id.seek_border) {
                 this.alpha = i;
                 this.shapeRel.setPadding(i, i, i, i);
-                return;
             } else if (id == R.id.seekBar2) {
                 this.processs = i;
                 int childCount2 = txtStkrRel.getChildCount();
@@ -3294,7 +3239,6 @@ public class EditorActivity extends AppCompatActivity implements View.OnClickLis
                     }
                     i2++;
                 }
-                return;
             } else if (id == R.id.seekBar3) {
                 int childCount3 = txtStkrRel.getChildCount();
                 while (i2 < childCount3) {
@@ -3308,7 +3252,6 @@ public class EditorActivity extends AppCompatActivity implements View.OnClickLis
                     }
                     i2++;
                 }
-                return;
             } else if (id == R.id.seekBar_shadow) {
                 int childCount4 = txtStkrRel.getChildCount();
                 while (i2 < childCount4) {
@@ -3322,15 +3265,12 @@ public class EditorActivity extends AppCompatActivity implements View.OnClickLis
                     }
                     i2++;
                 }
-                return;
             } else if (id == R.id.seekLetterSpacing) {
                 this.letterSpacing = (float) (i / 3);
                 setLetterApacing();
-                return;
             } else if (id == R.id.seekLineSpacing) {
                 this.lineSpacing = (float) (i / 2);
                 setLineApacing();
-                return;
             } else if (id == R.id.seekOutlineSize) {
                 int childCount5 = txtStkrRel.getChildCount();
                 while (i2 < childCount5) {
@@ -3343,7 +3283,6 @@ public class EditorActivity extends AppCompatActivity implements View.OnClickLis
                     }
                     i2++;
                 }
-                return;
             } else if (id == R.id.seekShadowBlur) {
                 int childCount6 = txtStkrRel.getChildCount();
                 while (i2 < childCount6) {
@@ -3356,7 +3295,6 @@ public class EditorActivity extends AppCompatActivity implements View.OnClickLis
                     }
                     i2++;
                 }
-                return;
             } else if (id == R.id.seekTextCurve) {
                 mRadius = seekBar.getProgress() - 360;
                 int i3 = mRadius;
@@ -3374,7 +3312,6 @@ public class EditorActivity extends AppCompatActivity implements View.OnClickLis
                     }
                     i2++;
                 }
-                return;
             }
         } else {
             int childCount8 = txtStkrRel.getChildCount();
@@ -3414,7 +3351,6 @@ public class EditorActivity extends AppCompatActivity implements View.OnClickLis
         int id = seekBar.getId();
         if (id == R.id.alpha_seekBar || id == R.id.hue_seekBar || id == R.id.seekBar2) {
             saveBitmapUndu();
-            return;
         }
     }
 
@@ -3756,7 +3692,6 @@ public class EditorActivity extends AppCompatActivity implements View.OnClickLis
                 }
                 if (i3 == 4) {
                     Toast.makeText(context, "Custom", Toast.LENGTH_SHORT).show();
-                    return;
                 }
             }
         }
@@ -4386,7 +4321,7 @@ public class EditorActivity extends AppCompatActivity implements View.OnClickLis
         this.btnRedo.setVisibility(View.GONE);
         this.btnUndo.setVisibility(View.GONE);
         LoadStickersAsyncUR loadStickersAsyncUR = new LoadStickersAsyncUR();
-        loadStickersAsyncUR.execute("" + this.tempID);
+        loadStickersAsyncUR.execute(String.valueOf(this.tempID));
     }
 
     public void undo() {

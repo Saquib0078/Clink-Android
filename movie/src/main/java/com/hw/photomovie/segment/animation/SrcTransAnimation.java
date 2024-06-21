@@ -9,14 +9,15 @@ import com.hw.photomovie.util.PhotoUtil;
  */
 public class SrcTransAnimation extends SrcAnimation {
 
-    private RectF mMaxShowRect = new RectF();
+    private final RectF mMaxShowRect = new RectF();
     /**
      * 转移开始前的初始位置
      */
-    private RectF mInitRect = new RectF();
+    private final RectF mInitRect = new RectF();
 
     private float mTransDisX, mTransDisY;
-    private float mTransX, mTransY;
+    private final float mTransX;
+    private final float mTransY;
 
     public SrcTransAnimation(Rect srcRect, RectF srcShowRect, RectF dstRect, float transX, float transY) {
         super(srcRect, srcShowRect, dstRect);

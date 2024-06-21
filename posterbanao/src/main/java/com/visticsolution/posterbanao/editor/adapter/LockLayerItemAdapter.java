@@ -26,8 +26,8 @@ import java.util.ArrayList;
 public class LockLayerItemAdapter extends DragItemAdapter<Pair<Long, View>, LockLayerItemAdapter.ViewHolder> {
     private final int mLayoutId;
     Activity activity;
-    private boolean mDragOnLongPress;
-    private int mGrabHandleId;
+    private final boolean mDragOnLongPress;
+    private final int mGrabHandleId;
 
     public LockLayerItemAdapter(Activity activity2, ArrayList<Pair<Long, View>> arrayList, int i, int i2, boolean z) {
         this.mLayoutId = i;

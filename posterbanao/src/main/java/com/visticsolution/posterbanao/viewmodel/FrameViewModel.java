@@ -8,7 +8,7 @@ import com.visticsolution.posterbanao.respository.FrameRespository;
 
 public class FrameViewModel extends ViewModel {
 
-    private FrameRespository respository;
+    private final FrameRespository respository;
 
     public FrameViewModel(){
         respository = new FrameRespository();

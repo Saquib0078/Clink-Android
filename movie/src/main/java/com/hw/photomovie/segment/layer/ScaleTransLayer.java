@@ -18,7 +18,8 @@ public class ScaleTransLayer extends MovieLayer {
 
     private SrcAnimation mSrcAnimation;
     private DstAnimation mTransAnimation;
-    private float mFrom, mTo;
+    private final float mFrom;
+    private final float mTo;
     private float mScaleRate = 0.5f;
     private BitmapInfo mBitmapInfo;
     /**

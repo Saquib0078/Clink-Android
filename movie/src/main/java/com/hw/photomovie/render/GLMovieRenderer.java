@@ -24,8 +24,8 @@ public abstract class GLMovieRenderer extends MovieRenderer<GLESCanvas> {
     private FboTexture mFboTexture;
     private FboTexture mFilterTexture;
     protected IMovieFilter mMovieFilter;
-    private Object mPrepareLock = new Object();
-    private Object mSetFilterLock = new Object();
+    private final Object mPrepareLock = new Object();
+    private final Object mSetFilterLock = new Object();
     protected volatile boolean mPrepared;
     private volatile OnGLPrepareListener mOnGLPrepareListener;
     protected float[] mClearColor = new float[]{0f,0f,0f,1f};
@@ -204,7 +204,7 @@ public abstract class GLMovieRenderer extends MovieRenderer<GLESCanvas> {
         }
     }
 
-    public static interface OnGLPrepareListener {
+    public interface OnGLPrepareListener {
         void onGLPrepared();
     }
 }

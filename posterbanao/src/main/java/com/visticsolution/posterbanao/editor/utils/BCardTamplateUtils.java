@@ -205,7 +205,7 @@ public class BCardTamplateUtils {
                 textInfo.setTxt_y_pos(realY);
                 textInfo.setTxt_rotation(rotation);
                 textInfo.setTxt_color(color.replace("0x", "#"));
-                textInfo.setTxt_order("" + i);
+                textInfo.setTxt_order(String.valueOf(i));
                 textInfo.setFont_family(font);
                 textInfo.setTxt_weight(weight);
                 textInfo.setTxt_justification(justification);
@@ -217,9 +217,9 @@ public class BCardTamplateUtils {
 
     private void gotoEditorActivity(Context context) {
         Log.d("gotoEditorActivity___",backgroundImage);
-        Log.d("gotoEditorActivity___",""+textInfoArrayList.size());
-        Log.d("gotoEditorActivity___",""+stickerInfoArrayList.size());
-        Log.d("gotoEditorActivity___",""+template_w_h_ratio);
+        Log.d("gotoEditorActivity___", String.valueOf(textInfoArrayList.size()));
+        Log.d("gotoEditorActivity___", String.valueOf(stickerInfoArrayList.size()));
+        Log.d("gotoEditorActivity___", template_w_h_ratio);
 
         Intent intent = new Intent(context, EditorActivity.class);
         intent.putParcelableArrayListExtra("text", textInfoArrayList);

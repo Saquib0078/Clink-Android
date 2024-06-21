@@ -49,7 +49,7 @@ public class CashfreeActivity extends AppCompatActivity {
             }
             @Override
             public void onFailure(Call<SimpleResponse> call, Throwable t) {
-                Toast.makeText(context, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
                 Functions.cancelLoader();
             }
         });

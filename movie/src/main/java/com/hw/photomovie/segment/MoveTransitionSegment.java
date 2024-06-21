@@ -12,10 +12,10 @@ public class MoveTransitionSegment extends TransitionSegment<FitCenterSegment, F
     public static int DIRECTION_HORIZON = 0;
     public static int DIRECTION_VERTICAL = 1;
 
-    private float mScaleFrom = 1f;
-    private float mScaleTo = 0.7f;
-    private int mDirection;
-    private TimeInterpolator mInterpolator = new DecelerateInterpolator(1);
+    private final float mScaleFrom = 1f;
+    private final float mScaleTo = 0.7f;
+    private final int mDirection;
+    private final TimeInterpolator mInterpolator = new DecelerateInterpolator(1);
 
     public MoveTransitionSegment(int direction, int duration) {
         mDirection = direction;

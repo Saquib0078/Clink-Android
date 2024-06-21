@@ -12,7 +12,7 @@ import java.io.IOException;
  */
 
 class PcmToWavUtil {
-    private int mBufferSize;  //缓存的音频大小
+    private final int mBufferSize;  //缓存的音频大小
     private int mSampleRate = 8000;// 8000|16000
     private int mChannelConfig = AudioFormat.CHANNEL_IN_STEREO;   //立体声
     private int mChannelCount = 2;
@@ -48,7 +48,7 @@ class PcmToWavUtil {
         long totalDataLen;
         long longSampleRate = mSampleRate;
         int channels = mChannelCount;
-        long byteRate = 16 * mSampleRate * channels / 8;
+        long byteRate = 16L * mSampleRate * channels / 8;
         byte[] data = new byte[mBufferSize];
         try {
             in = new FileInputStream(inFilename);

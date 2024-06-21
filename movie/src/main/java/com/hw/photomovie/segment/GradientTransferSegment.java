@@ -10,10 +10,10 @@ public class GradientTransferSegment extends TransitionSegment<FitCenterScaleSeg
     /**
      * 缩放动画范围
      */
-    private float mPreScaleFrom;
-    private float mPreScaleTo;
-    private float mNextScaleFrom;
-    private float mNextScaleTo;
+    private final float mPreScaleFrom;
+    private final float mPreScaleTo;
+    private final float mNextScaleFrom;
+    private final float mNextScaleTo;
 
     public GradientTransferSegment(int duration,
                                    float preScaleFrom, float preScaleTo,

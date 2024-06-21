@@ -24,8 +24,8 @@ public class MultipartRequest extends Request<JSONObject> {
 
     private final Response.Listener<JSONObject> mListener;
     private final Response.ErrorListener mErrorListener;
-    private Map<String, String> mParams;
-    private Map<String, DataPart> mData;
+    private final Map<String, String> mParams;
+    private final Map<String, DataPart> mData;
     private static final String TWO_HYPHENS = "--";
     private static final String BOUNDARY = "your_boundary_string";
     private static final String LINE_END = "\r\n";
@@ -135,9 +135,9 @@ public class MultipartRequest extends Request<JSONObject> {
     }
 
     static class DataPart {
-        private String fileName;
-        private byte[] data;
-        private String type;
+        private final String fileName;
+        private final byte[] data;
+        private final String type;
 
         DataPart(String fileName, byte[] data, String type) {
             this.fileName = fileName;

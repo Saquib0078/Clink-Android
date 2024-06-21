@@ -25,13 +25,13 @@ public enum CardType {
 
     private final int cvvLength
             ;
-    private String displayName;
+    private final String displayName;
 
-    private int imageResource;
+    private final int imageResource;
 
-    private int numberLength;
+    private final int numberLength;
 
-    private String numberPattern;
+    private final String numberPattern;
 
     CardType(String displayName, int imageResource, int numberLength, String numberPattern,int cvvLength) {
         this.displayName = displayName;

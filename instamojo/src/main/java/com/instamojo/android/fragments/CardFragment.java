@@ -160,7 +160,7 @@ public class CardFragment extends BaseFragment implements View.OnClickListener, 
                     if (date.length() == 2) {
                         modifiedDate = date + MONTH_YEAR_SEPARATOR;
                     } else if (previousLength == 2) {
-                        modifiedDate = date.substring(0, 2) + MONTH_YEAR_SEPARATOR + date.substring(2, date.length());
+                        modifiedDate = date.substring(0, 2) + MONTH_YEAR_SEPARATOR + date.substring(2);
                     }
                 }
 
@@ -248,6 +248,7 @@ public class CardFragment extends BaseFragment implements View.OnClickListener, 
             for (METValidator validator : cvvBox.getValidators()) {
                 if (validator instanceof Validators.EmptyFieldValidator) {
                     emptyFieldValidatorAddedCvv = true;
+                    break;
                 }
             }
             if (!emptyFieldValidatorAddedCvv) {

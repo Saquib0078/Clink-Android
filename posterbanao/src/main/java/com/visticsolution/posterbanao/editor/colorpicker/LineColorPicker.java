@@ -20,8 +20,8 @@ public class LineColorPicker extends View {
     public OnColorChangedListener onColorChanged;
     int[] colors;
     boolean isColorSelected = false;
-    private Paint paint;
-    private Rect rect = new Rect();
+    private final Paint paint;
+    private final Rect rect = new Rect();
     private int cellSize;
     private int mOrientation = HORIZONTAL;
     private boolean isClick = false;

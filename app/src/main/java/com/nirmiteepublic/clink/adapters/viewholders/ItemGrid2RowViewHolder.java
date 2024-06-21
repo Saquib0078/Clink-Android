@@ -64,7 +64,7 @@ public class ItemGrid2RowViewHolder extends RecyclerView.ViewHolder {
                 Intent intent=new Intent(context, UploadGraphicsActivity.class);
                 intent.putExtra("id",universalModel.getId());
                 context.startActivity(intent);
-                Toast.makeText(context, ""+universalModel.getId(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, universalModel.getId(), Toast.LENGTH_SHORT).show();
             }
         });
         binding.edit.setOnClickListener(new View.OnClickListener() {
@@ -92,12 +92,12 @@ public class ItemGrid2RowViewHolder extends RecyclerView.ViewHolder {
 
                         @Override
                         public void onFailure(Call<ResponseBody> call, Throwable t) {
-                            Toast.makeText(context, "" + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                         }
                     });
 
                 } catch (Exception e) {
-                    Toast.makeText(context, "" + e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
         });

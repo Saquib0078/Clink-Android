@@ -33,7 +33,7 @@ public class InstamojoActivity extends AppCompatActivity implements Instamojo.In
     private Context context;
     private ProgressDialog dialog;
     private static final String TAG = PaymentDetailsActivity.class.getSimpleName();
-    private String currentEnv = null;
+    private final String currentEnv = null;
     private String accessToken = null;
     String price = "";
 
@@ -89,7 +89,7 @@ public class InstamojoActivity extends AppCompatActivity implements Instamojo.In
                 map.put("grant_type", "client_credentials");
                 map.put("client_id", Functions.getSharedPreference(context).getString("client_id",""));
                 map.put("client_secret", Functions.getSharedPreference(context).getString("client_secret",""));
-                System.out.println(map.toString());
+                System.out.println(map);
                 return map;
             }
         };
@@ -123,7 +123,7 @@ public class InstamojoActivity extends AppCompatActivity implements Instamojo.In
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("Authorization", "Bearer " + accessToken);
-                System.out.println("From Header:----" + params.toString());
+                System.out.println("From Header:----" + params);
                 return params;
             }
 
@@ -138,7 +138,7 @@ public class InstamojoActivity extends AppCompatActivity implements Instamojo.In
                 map.put("redirect_url", "https://test.instamojo.com/integrations/android/redirect/");
                 map.put("webhook", "");
                 map.put("allow_repeated_payments", "False");
-                System.out.println(map.toString());
+                System.out.println(map);
                 return map;
             }
         };
@@ -174,7 +174,7 @@ public class InstamojoActivity extends AppCompatActivity implements Instamojo.In
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("Authorization", "Bearer " + accessToken);
-                System.out.println("From Header:----" + params.toString());
+                System.out.println("From Header:----" + params);
                 return params;
             }
 
@@ -182,7 +182,7 @@ public class InstamojoActivity extends AppCompatActivity implements Instamojo.In
             protected Map<String, String> getParams() {
                 HashMap<String, String> map = new HashMap<>();
                 map.put("id", id);
-                System.out.println(map.toString());
+                System.out.println(map);
                 return map;
             }
         };
@@ -193,7 +193,7 @@ public class InstamojoActivity extends AppCompatActivity implements Instamojo.In
 
 
     private void initiateSDKPayment(String orderID) {
-        Log.e("RRRR", orderID.toString());
+        Log.e("RRRR", orderID);
         dialog.dismiss();
         Instamojo.getInstance().initiatePayment(this, orderID, this);
     }

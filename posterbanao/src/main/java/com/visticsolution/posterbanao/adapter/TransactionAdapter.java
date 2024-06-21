@@ -19,8 +19,8 @@ import java.util.List;
 
 public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.ViewHolder> {
 
-    private List<TransactionModel> list;
-    private AdapterClickListener listener;
+    private final List<TransactionModel> list;
+    private final AdapterClickListener listener;
     Context context;
 
     public TransactionAdapter(Context context, List<TransactionModel> list, AdapterClickListener listener) {
@@ -40,7 +40,7 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         TransactionModel model = list.get(position);
-        holder.binding.idTv.setText(""+position+1);
+        holder.binding.idTv.setText(String.valueOf(position)+1);
         holder.binding.titleTv.setText(model.getTitle());
         holder.binding.amountTv.setText(context.getString(R.string.currency)+" "+model.getAmount());
         holder.binding.dateTv.setText(Functions.getFormatedDate(model.getCreated_at()));

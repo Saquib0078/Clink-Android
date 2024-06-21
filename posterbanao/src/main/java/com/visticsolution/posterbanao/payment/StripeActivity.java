@@ -91,7 +91,7 @@ public class StripeActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<StripeResponse> call, Throwable t) {
-                Toast.makeText(StripeActivity.this, "" + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(StripeActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
                 Functions.cancelLoader();
             }
         });

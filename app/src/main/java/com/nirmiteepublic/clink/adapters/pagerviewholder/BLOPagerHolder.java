@@ -51,7 +51,7 @@ public class BLOPagerHolder {
                     binding.option4Input.setTextColor(Color.BLACK);
                     binding.option4Input.setText(selected);
                     data.put("booth", selected);
-                    Toast.makeText(context, ""+selected, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, selected, Toast.LENGTH_SHORT).show();
                 } catch (JSONException e) {
                     throw new RuntimeException(e);
                 }

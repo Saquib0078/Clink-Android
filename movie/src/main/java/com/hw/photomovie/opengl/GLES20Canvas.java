@@ -60,23 +60,20 @@ public class GLES20Canvas implements GLESCanvas {
     private static final String ALPHA_UNIFORM = "uAlpha";
     private static final String TEXTURE_COORD_ATTRIBUTE = "aTextureCoordinate";
 
-    private static final String DRAW_VERTEX_SHADER = ""
-            + "uniform mat4 " + MATRIX_UNIFORM + ";\n"
+    private static final String DRAW_VERTEX_SHADER = "uniform mat4 " + MATRIX_UNIFORM + ";\n"
             + "attribute vec2 " + POSITION_ATTRIBUTE + ";\n"
             + "void main() {\n"
             + "  vec4 pos = vec4(" + POSITION_ATTRIBUTE + ", 0.0, 1.0);\n"
             + "  gl_Position = " + MATRIX_UNIFORM + " * pos;\n"
             + "}\n";
 
-    private static final String DRAW_FRAGMENT_SHADER = ""
-            + "precision mediump float;\n"
+    private static final String DRAW_FRAGMENT_SHADER = "precision mediump float;\n"
             + "uniform vec4 " + COLOR_UNIFORM + ";\n"
             + "void main() {\n"
             + "  gl_FragColor = " + COLOR_UNIFORM + ";\n"
             + "}\n";
 
-    private static final String TEXTURE_VERTEX_SHADER = ""
-            + "uniform mat4 " + MATRIX_UNIFORM + ";\n"
+    private static final String TEXTURE_VERTEX_SHADER = "uniform mat4 " + MATRIX_UNIFORM + ";\n"
             + "uniform mat4 " + TEXTURE_MATRIX_UNIFORM + ";\n"
             + "attribute vec2 " + POSITION_ATTRIBUTE + ";\n"
             + "varying vec2 vTextureCoord;\n"
@@ -86,8 +83,7 @@ public class GLES20Canvas implements GLESCanvas {
             + "  vTextureCoord = (" + TEXTURE_MATRIX_UNIFORM + " * pos).xy;\n"
             + "}\n";
 
-    private static final String MESH_VERTEX_SHADER = ""
-            + "uniform mat4 " + MATRIX_UNIFORM + ";\n"
+    private static final String MESH_VERTEX_SHADER = "uniform mat4 " + MATRIX_UNIFORM + ";\n"
             + "attribute vec2 " + POSITION_ATTRIBUTE + ";\n"
             + "attribute vec2 " + TEXTURE_COORD_ATTRIBUTE + ";\n"
             + "varying vec2 vTextureCoord;\n"
@@ -97,8 +93,7 @@ public class GLES20Canvas implements GLESCanvas {
             + "  vTextureCoord = " + TEXTURE_COORD_ATTRIBUTE + ";\n"
             + "}\n";
 
-    private static final String TEXTURE_FRAGMENT_SHADER = ""
-            + "precision mediump float;\n"
+    private static final String TEXTURE_FRAGMENT_SHADER = "precision mediump float;\n"
             + "varying vec2 vTextureCoord;\n"
             + "uniform float " + ALPHA_UNIFORM + ";\n"
             + "uniform sampler2D " + TEXTURE_SAMPLER_UNIFORM + ";\n"
@@ -107,8 +102,7 @@ public class GLES20Canvas implements GLESCanvas {
             + "  gl_FragColor *= " + ALPHA_UNIFORM + ";\n"
             + "}\n";
 
-    private static final String OES_TEXTURE_FRAGMENT_SHADER = ""
-            + "#extension GL_OES_EGL_image_external : require\n"
+    private static final String OES_TEXTURE_FRAGMENT_SHADER = "#extension GL_OES_EGL_image_external : require\n"
             + "precision mediump float;\n"
             + "varying vec2 vTextureCoord;\n"
             + "uniform float " + ALPHA_UNIFORM + ";\n"
@@ -124,7 +118,7 @@ public class GLES20Canvas implements GLESCanvas {
     // Keep track of restore state
     private float[] mMatrices = new float[INITIAL_RESTORE_STATE_SIZE * MATRIX_SIZE];
     private float[] mAlphas = new float[INITIAL_RESTORE_STATE_SIZE];
-    private IntArray mSaveFlags = new IntArray();
+    private final IntArray mSaveFlags = new IntArray();
 
     private int mCurrentAlphaIndex = 0;
     private int mCurrentMatrixIndex = 0;
@@ -134,20 +128,20 @@ public class GLES20Canvas implements GLESCanvas {
     private int mHeight;
 
     // Projection matrix
-    private float[] mProjectionMatrix = new float[MATRIX_SIZE];
+    private final float[] mProjectionMatrix = new float[MATRIX_SIZE];
 
     // Screen size for when we aren't bound to a texture
     private int mScreenWidth;
     private int mScreenHeight;
 
     // GL programs
-    private int mDrawProgram;
-    private int mTextureProgram;
-    private int mOesTextureProgram;
-    private int mMeshProgram;
+    private final int mDrawProgram;
+    private final int mTextureProgram;
+    private final int mOesTextureProgram;
+    private final int mMeshProgram;
 
     // GL buffer containing BOX_COORDINATES
-    private int mBoxCoordinates;
+    private final int mBoxCoordinates;
 
     // Handle indices -- common
     private static final int INDEX_POSITION = 0;
@@ -237,10 +231,10 @@ public class GLES20Canvas implements GLESCanvas {
 
     // Buffer for framebuffer IDs -- we keep track so we can switch the attached
     // texture.
-    private int[] mFrameBuffer = new int[1];
+    private final int[] mFrameBuffer = new int[1];
 
     // Bound textures.
-    private ArrayList<RawTexture> mTargetTextures = new ArrayList<RawTexture>();
+    private final ArrayList<RawTexture> mTargetTextures = new ArrayList<RawTexture>();
 
     // Temporary variables used within calculations
     private final float[] mTempMatrix = new float[32];
@@ -386,7 +380,7 @@ public class GLES20Canvas implements GLESCanvas {
     public void translate(float x, float y) {
         int index = mCurrentMatrixIndex;
         float[] m = mMatrices;
-        m[index + 12] += m[index + 0] * x + m[index + 4] * y;
+        m[index + 12] += m[index] * x + m[index + 4] * y;
         m[index + 13] += m[index + 1] * x + m[index + 5] * y;
         m[index + 14] += m[index + 2] * x + m[index + 6] * y;
         m[index + 15] += m[index + 3] * x + m[index + 7] * y;

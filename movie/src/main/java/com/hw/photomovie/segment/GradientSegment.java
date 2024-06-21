@@ -9,12 +9,12 @@ public class GradientSegment extends FitCenterSegment {
     /**
      * 缩放动画范围
      */
-    private float mScaleFrom;
-    private float mScaleTo;
+    private final float mScaleFrom;
+    private final float mScaleTo;
     /**
      * 开始做alpha动画的进度
      */
-    private float mAlphaStartProgress;
+    private final float mAlphaStartProgress;
     private float mProgress;
 
     /**

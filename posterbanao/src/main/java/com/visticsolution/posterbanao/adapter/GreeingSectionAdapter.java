@@ -33,7 +33,7 @@ public class GreeingSectionAdapter extends RecyclerView.Adapter<GreeingSectionAd
     public GreeingSectionAdapter(Context context, List<SectionModel> arrayList, OnItemClickListener listener) {
         this.context = context;
         datalist = arrayList;
-        this.listener = listener;
+        GreeingSectionAdapter.listener = listener;
     }
 
 

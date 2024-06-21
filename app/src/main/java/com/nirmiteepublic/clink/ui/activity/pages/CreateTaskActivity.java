@@ -42,7 +42,7 @@ public class CreateTaskActivity extends AppCompatActivity {
     String SelectedDate;
     String SelectedTime;
     String radioButtonValue;
-
+    byte[] byteArray;
     ActivityCreateTaskBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +55,7 @@ public class CreateTaskActivity extends AppCompatActivity {
             if (checkedId == R.id.limited) {
                 radioButtonValue = "Limited Users";
                 binding.invite.setVisibility(View.VISIBLE);
-                binding.selectedUsers.setVisibility(View.VISIBLE);
+//                binding.selectedUsers.setVisibility(View.VISIBLE);
                 binding.invite.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -63,7 +63,11 @@ public class CreateTaskActivity extends AppCompatActivity {
                             @Override
                             public void onClick(View view) {
                                 Intent intent = new Intent(CreateTaskActivity.this, FilterUserActivity.class);
-                                intent.putExtra("taskActivity", "task");
+                                intent.putExtra("taskActivity", true);
+                                intent.putExtra("taskType", "task");
+                                intent.putExtra("title", binding.editMeetName.getText().toString());
+                                intent.putExtra("body", binding.editMeetDesc.getText().toString());
+                                intent.putExtra("imageUrl", byteArray);
                                 startActivity(intent);
                             }
                         });
@@ -91,6 +95,7 @@ public class CreateTaskActivity extends AppCompatActivity {
             public void onClick(View view) {
                 binding.progressBar.setVisibility(View.VISIBLE);
                 ConvertImage();
+                finish();
             }
         });
 
@@ -115,7 +120,7 @@ public class CreateTaskActivity extends AppCompatActivity {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         if (bitmap != null) {
             bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
-            byte[] byteArray = byteArrayOutputStream.toByteArray();
+             byteArray = byteArrayOutputStream.toByteArray();
             String base64Image = Base64.encodeToString(byteArray, Base64.DEFAULT);
 
             // Create RequestBody for text data

@@ -1,6 +1,7 @@
 package com.nirmiteepublic.clink.ui.activity.pages.broadcast;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -31,13 +32,13 @@ public class PublishBroadcastActivity extends PegaAppCompatActivity {
     private Uri uri;
     private String filePath;
     private boolean isVideo;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityPublishBroadcastBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
         setWindowThemeThird();
         setBackWithRightAnim();
 
@@ -54,14 +55,27 @@ public class PublishBroadcastActivity extends PegaAppCompatActivity {
         binding.publish.setOnClickListener(v -> {
             String description = binding.description.getText().toString().trim();
             if (description.isEmpty()) {
-                Toast.makeText(this, "Please Give a Description about this Broadcast", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Please give a description about this Broadcast", Toast.LENGTH_SHORT).show();
                 return;
             }
 
+            showProgressDialog();
             publishBroadcast(description);
-
         });
 
+    }
+
+    private void showProgressDialog() {
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Publishing Broadcast...");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+    }
+
+    private void dismissProgressDialog() {
+        if (progressDialog != null && progressDialog.isShowing()) {
+            progressDialog.dismiss();
+        }
     }
 
     private void publishBroadcast(String description) {
@@ -71,14 +85,18 @@ public class PublishBroadcastActivity extends PegaAppCompatActivity {
 
         RequestBody descriptionPart = RequestBody.create(MediaType.parse("multipart/form-data"), description);
 
-        RetrofitClient.getInstance(this).getApiInterfaces().publishBroadcast("broadcasts", filePart, descriptionPart).enqueue(new PegaResponseManager(new PegaCallback(this) {
-            @Override
-            public void onSuccess(@Nullable JSONObject data) {
-                Toast.makeText(PublishBroadcastActivity.this, "Broadcast Published Successfully", Toast.LENGTH_SHORT).show();
-                setResult(Activity.RESULT_OK, new Intent().putExtra("status", true));
-                finish();
-            }
-        }));
+        RetrofitClient.getInstance(this).getApiInterfaces()
+                .publishBroadcast("broadcasts", filePart, descriptionPart)
+                .enqueue(new PegaResponseManager(new PegaCallback(this) {
+                    @Override
+                    public void onSuccess(@Nullable JSONObject data) {
+                        dismissProgressDialog();
+                        Toast.makeText(PublishBroadcastActivity.this, "Broadcast Published Successfully", Toast.LENGTH_SHORT).show();
+                        setResult(Activity.RESULT_OK, new Intent().putExtra("status", true));
+                        finish();
+                    }
+
+                }));
     }
 
     private void loadData() {
@@ -91,16 +109,14 @@ public class PublishBroadcastActivity extends PegaAppCompatActivity {
         if (!isVideo) {
             binding.image.setVisibility(View.VISIBLE);
             Glide.with(this).load(uri).placeholder(R.drawable.round_image_placeholder).into(binding.image);
-            return;
+        } else {
+            binding.image.setVisibility(View.GONE);
+            binding.video.setVisibility(View.VISIBLE);
+            binding.video.setVideoURI(uri);
+            binding.video.setOnPreparedListener(mp -> {
+                mp.setLooping(true);
+                binding.video.start();
+            });
         }
-
-        binding.image.setVisibility(View.GONE);
-        binding.video.setVisibility(View.VISIBLE);
-        binding.video.setVideoURI(uri);
-        binding.video.setOnPreparedListener(mp -> {
-            mp.setLooping(true);
-            binding.video.start();
-        });
-
     }
 }

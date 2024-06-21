@@ -17,6 +17,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 
 public class TehsilActivity extends AppCompatActivity {
 
@@ -48,7 +49,7 @@ public class TehsilActivity extends AppCompatActivity {
             String selectedTehsil = adapter.getItem(position);
             Intent resultIntent = new Intent();
             resultIntent.putExtra("selectedTehsil", selectedTehsil);
-            Toast.makeText(this, ""+selectedTehsil, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, selectedTehsil, Toast.LENGTH_SHORT).show();
             setResult(Activity.RESULT_OK, resultIntent);
             finish();
         });
@@ -64,7 +65,7 @@ public class TehsilActivity extends AppCompatActivity {
             byte[] buffer = new byte[size];
             inputStream.read(buffer);
             inputStream.close();
-            String jsonString = new String(buffer, "UTF-8");
+            String jsonString = new String(buffer, StandardCharsets.UTF_8);
 
             // Parse the JSON data
             JSONObject districtsData = new JSONObject(jsonString);

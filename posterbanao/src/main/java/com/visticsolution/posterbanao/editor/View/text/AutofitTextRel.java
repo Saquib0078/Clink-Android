@@ -85,9 +85,9 @@ public class AutofitTextRel extends RelativeLayout implements MultiTouchListener
     private int capitalFlage;
     private Context context;
     private ImageView delete_iv;
-    private String field_four = "";
-    private int field_one = 0;
-    private String field_three = "";
+    private final String field_four = "";
+    private final int field_one = 0;
+    private final String field_three = "";
     private String fontName = "";
     private GestureDetector gd = null;
     private boolean isBold;
@@ -95,13 +95,13 @@ public class AutofitTextRel extends RelativeLayout implements MultiTouchListener
     private boolean isItalic = false;
     private boolean isUnderLine = false;
     private float leftRightShadow = 0.0f;
-    private OnTouchListener mTouchListener1 = new Touch();
+    private final OnTouchListener mTouchListener1 = new Touch();
     private int outercolor = 0;
     private int outersize = 0;
-    private int progress = 0;
+    private final int progress = 0;
     public boolean isFrameItem = false;
 
-    private OnTouchListener rTouchListener = (view, motionEvent) -> {
+    private final OnTouchListener rTouchListener = (view, motionEvent) -> {
 
 
         AutofitTextRel autofitTextRel = (AutofitTextRel) view.getParent();
@@ -159,9 +159,9 @@ public class AutofitTextRel extends RelativeLayout implements MultiTouchListener
     private String text = "";
     private Path textPath;
     private float topBottomShadow = 0.0f;
-    private int xRotateProg = 0;
-    private int yRotateProg = 0;
-    private int zRotateProg = 0;
+    private final int xRotateProg = 0;
+    private final int yRotateProg = 0;
+    private final int zRotateProg = 0;
 
 
     public AutofitTextRel(Context context2) {
@@ -327,7 +327,7 @@ public class AutofitTextRel extends RelativeLayout implements MultiTouchListener
             StringBuilder sb = new StringBuilder();
             int i = 0;
             while (i < this.text.length()) {
-                sb.append("" + this.text.charAt(i));
+                sb.append(String.valueOf(this.text.charAt(i)));
                 i++;
                 if (i < this.text.length()) {
                     sb.append(" ");
@@ -636,7 +636,7 @@ public class AutofitTextRel extends RelativeLayout implements MultiTouchListener
     }
 
     public void setTextInfo(TextInfo textInfo, boolean z) {
-        Log.e("set Text value", textInfo.getTEXT() + "" + textInfo.getPOS_X() + " ," + textInfo.getPOS_Y() + " ," + textInfo.getWIDTH() + " ," + textInfo.getHEIGHT() + " ," + textInfo.getFIELD_TWO());
+        Log.e("set Text value", textInfo.getTEXT() + textInfo.getPOS_X() + " ," + textInfo.getPOS_Y() + " ," + textInfo.getWIDTH() + " ," + textInfo.getHEIGHT() + " ," + textInfo.getFIELD_TWO());
         this.wi = textInfo.getWIDTH();
         this.he = textInfo.getHEIGHT();
         this.text = textInfo.getTEXT();
@@ -853,7 +853,7 @@ public class AutofitTextRel extends RelativeLayout implements MultiTouchListener
                 AutofitTextRel autofitTextRel7 = AutofitTextRel.this;
                 autofitTextRel7.topMargin = ((LayoutParams) autofitTextRel7.getLayoutParams()).topMargin;
                 AutofitTextRel autofitTextRel8 = AutofitTextRel.this;
-                autofitTextRel8.field_two = String.valueOf(AutofitTextRel.this.leftMargin) + "," + String.valueOf(AutofitTextRel.this.topMargin);
+                autofitTextRel8.field_two = AutofitTextRel.this.leftMargin + "," + AutofitTextRel.this.topMargin;
                 if (AutofitTextRel.this.currentState == 3) {
                     AutofitTextRel.this.clickToSaveWork();
                 }

@@ -7,9 +7,9 @@ import android.graphics.RectF;
  */
 public class DstTransAnimation extends DstAnimation {
 
-    private float mTransX;
-    private float mTransY;
-    private RectF mProgressDstRect = new RectF();
+    private final float mTransX;
+    private final float mTransY;
+    private final RectF mProgressDstRect = new RectF();
     private float mProgress;
 
     public DstTransAnimation(RectF dstRect, float transX, float transY) {

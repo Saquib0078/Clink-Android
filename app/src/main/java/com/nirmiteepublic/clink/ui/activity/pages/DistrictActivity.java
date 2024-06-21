@@ -54,7 +54,7 @@ ActivityDistrictBinding binding;
                 // Set the selected district to the previous activity's TextView
                 Intent resultIntent = new Intent();
                 resultIntent.putExtra("selectedDistrict", selectedDistrict);
-                Toast.makeText(this, ""+selectedDistrict, Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, selectedDistrict, Toast.LENGTH_SHORT).show();
                 setResult(Activity.RESULT_OK, resultIntent);
 
                 finish();

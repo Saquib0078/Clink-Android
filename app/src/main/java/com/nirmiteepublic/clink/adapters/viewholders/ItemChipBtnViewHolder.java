@@ -145,10 +145,10 @@ if(UserUtils.isSuperAdmin()){
                             } else {
                                 // Check if response code indicates that the button text is not unique
                                 try {
-                                    Toast.makeText(context, ""+response.errorBody().string(), Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(context, response.errorBody().string(), Toast.LENGTH_SHORT).show();
                                     Log.d("ResponseBody", response.errorBody().string());
                                 } catch (IOException e) {
-                                    Toast.makeText(context, ""+e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();                                }
+                                    Toast.makeText(context, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();                                }
 
                             }
                         }
@@ -201,10 +201,10 @@ if(UserUtils.isSuperAdmin()){
                             } else {
                                 // Check if response code indicates that the button text is not unique
                                 try {
-                                    Toast.makeText(context, ""+response.errorBody().string(), Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(context, response.errorBody().string(), Toast.LENGTH_SHORT).show();
                                     Log.d("ResponseBody", response.errorBody().string());
                                 } catch (IOException e) {
-                                    Toast.makeText(context, ""+e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();                                }
+                                    Toast.makeText(context, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();                                }
 
                             }
                         }
@@ -236,7 +236,7 @@ if(UserUtils.isSuperAdmin()){
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-                Toast.makeText(context, ""+t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }

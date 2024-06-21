@@ -61,6 +61,7 @@ public class MeetingFragment extends PegaFragment {
         progressDialog = new PegaProgressDialog(requireActivity());
 
         binding.progressBar.setVisibility(View.VISIBLE);
+        progressDialog.setMessage("Loading...");
         showProgressDialog();
         ApiManager.getLiveMeetings(requireContext(), new ApiManager.VolleyCallback() {
             @Override
@@ -95,12 +96,11 @@ public class MeetingFragment extends PegaFragment {
 
                             taskModelList.add(new MeetModel(meetName, meetDescription, date, time, image, id, live));
                         }
-                        adapter.notifyDataSetChanged();
-
+adapter.notifyDataSetChanged();
                     }
                 } catch (JSONException e) {
                     hideProgressDialog();
-                    Toast.makeText(requireContext(), ""+e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(requireContext(), e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -135,6 +135,7 @@ public class MeetingFragment extends PegaFragment {
 
     private void showProgressDialog() {
         if (!progressDialog.isShowing()) {
+
             progressDialog.ShowProgress(DialogData.UN_CANCELABLE); // Show the progress dialog
         }
     }

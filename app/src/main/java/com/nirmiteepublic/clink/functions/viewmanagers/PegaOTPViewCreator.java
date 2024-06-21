@@ -119,8 +119,8 @@ public class PegaOTPViewCreator {
                     textView.setText("0");
                     relativeLayout.setTag("0");
                 } else {
-                    textView.setText("" + key);
-                    relativeLayout.setTag("" + key);
+                    textView.setText(String.valueOf(key));
+                    relativeLayout.setTag(String.valueOf(key));
                 }
                 textView.setTextColor(ContextCompat.getColor(context, R.color.charcoal));
                 textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, context.getResources().getDimension(com.intuit.ssp.R.dimen._15ssp));

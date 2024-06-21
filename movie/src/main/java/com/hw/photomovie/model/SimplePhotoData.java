@@ -18,9 +18,9 @@ import java.util.concurrent.Executors;
  */
 public class SimplePhotoData extends PhotoData {
 
-    private ExecutorService mPool = Executors.newFixedThreadPool(4);
-    private Context mContext;
-    private Handler mHandler = new Handler(Looper.getMainLooper());
+    private final ExecutorService mPool = Executors.newFixedThreadPool(4);
+    private final Context mContext;
+    private final Handler mHandler = new Handler(Looper.getMainLooper());
 
     public SimplePhotoData(Context context, String uri, int state) {
         super(uri, state);

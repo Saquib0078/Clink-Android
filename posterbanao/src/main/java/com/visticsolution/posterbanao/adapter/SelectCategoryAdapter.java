@@ -20,8 +20,8 @@ public class SelectCategoryAdapter extends RecyclerView.Adapter<SelectCategoryAd
         void onSelect(CategoryModel model);
     }
 
-    private List<CategoryModel> list;
-    private OnCategorySelect listener;
+    private final List<CategoryModel> list;
+    private final OnCategorySelect listener;
     Context context;
     int selectedPosition = 500;
 

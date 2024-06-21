@@ -15,7 +15,7 @@ import retrofit2.Response;
 public class FrameRespository {
 
 
-    private ApiService apiService;
+    private final ApiService apiService;
     public FrameRespository(){
         apiService = ApiClient.getRetrofit().create(ApiService.class);
     }

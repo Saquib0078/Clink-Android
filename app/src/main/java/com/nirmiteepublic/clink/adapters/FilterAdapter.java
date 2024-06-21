@@ -61,7 +61,7 @@ public class FilterAdapter extends RecyclerView.Adapter<FilterAdapter.ViewHolder
 
         holder.binding.checkbox.setOnCheckedChangeListener((compoundButton, isChecked) -> {
             model.setSelected(isChecked);
-            Toast.makeText(context, "" + model.getNum(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, model.getNum(), Toast.LENGTH_SHORT).show();
         });
 
 

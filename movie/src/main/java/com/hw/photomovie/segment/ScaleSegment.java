@@ -57,7 +57,7 @@ public class ScaleSegment extends SingleBitmapSegment {
     }
 
     private class PluginListener extends PhotoData.SimpleOnDataLoadListener {
-        private ScaleSegment segment;
+        private final ScaleSegment segment;
 
         public PluginListener(ScaleSegment segment) {
             this.segment = segment;

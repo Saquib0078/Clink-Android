@@ -305,7 +305,7 @@ public class AddBussinessActivity extends AppCompatActivity {
         }
     }
 
-    private ActivityResultLauncher<String[]> mPermissionResult = registerForActivityResult(
+    private final ActivityResultLauncher<String[]> mPermissionResult = registerForActivityResult(
             new ActivityResultContracts.RequestMultiplePermissions(), new ActivityResultCallback<Map<String, Boolean>>() {
                 @RequiresApi(api = Build.VERSION_CODES.M)
                 @Override
@@ -340,23 +340,23 @@ public class AddBussinessActivity extends AppCompatActivity {
             Functions.showLoader(context);
             JSONObject parameters = new JSONObject();
             try {
-                parameters.put("user_id", ""+Functions.getSharedPreference(context).getString(Variables.U_ID,""));
-                parameters.put("id", ""+bussiness_id);
-                parameters.put("image", ""+path);
-                parameters.put("company", ""+binding.companyEdit.getText().toString());
-                parameters.put("name", ""+binding.ownerEdit.getText().toString());
-                parameters.put("number", ""+binding.numberEdit.getText().toString());
-                parameters.put("designation", ""+binding.designationEdit.getText().toString());
+                parameters.put("user_id", Functions.getSharedPreference(context).getString(Variables.U_ID, ""));
+                parameters.put("id", bussiness_id);
+                parameters.put("image", path);
+                parameters.put("company", binding.companyEdit.getText().toString());
+                parameters.put("name", binding.ownerEdit.getText().toString());
+                parameters.put("number", binding.numberEdit.getText().toString());
+                parameters.put("designation", binding.designationEdit.getText().toString());
                 parameters.put("category_id", categoryID);
-                parameters.put("email", ""+binding.emailEdit.getText().toString());
-                parameters.put("address", ""+binding.addressEdit.getText().toString());
-                parameters.put("website", ""+binding.websiteName.getText().toString());
-                parameters.put("youtube", ""+binding.youtubeEdit.getText().toString());
-                parameters.put("instagram", ""+binding.instaEdit.getText().toString());
-                parameters.put("about", ""+binding.aboutEdit.getText().toString());
-                parameters.put("facebook", ""+binding.facebookEdit.getText().toString());
-                parameters.put("twitter", ""+binding.twitterEdit.getText().toString());
-                parameters.put("whatsapp", ""+binding.whatsappEdit.getText().toString());
+                parameters.put("email", binding.emailEdit.getText().toString());
+                parameters.put("address", binding.addressEdit.getText().toString());
+                parameters.put("website", binding.websiteName.getText().toString());
+                parameters.put("youtube", binding.youtubeEdit.getText().toString());
+                parameters.put("instagram", binding.instaEdit.getText().toString());
+                parameters.put("about", binding.aboutEdit.getText().toString());
+                parameters.put("facebook", binding.facebookEdit.getText().toString());
+                parameters.put("twitter", binding.twitterEdit.getText().toString());
+                parameters.put("whatsapp", binding.whatsappEdit.getText().toString());
                 parameters.put("type", "business");
             } catch (Exception e) {
                 e.printStackTrace();

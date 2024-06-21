@@ -32,28 +32,26 @@ public class InterstitialAdapter {
         if (Functions.getSharedPreference(mcontext).getString("show_ads","false").equals("true")
                 && Functions.getSharedPreference(mcontext).getString("show_admob_interstital","false").equals("true")
                 && !Functions.IsPremiumEnable(mcontext)) {
-            switch (Constants.AD_NETWORK) {
-                case Constants.ADMOB:
-                    AdRequest.Builder builder = new AdRequest.Builder();
+            if (Constants.AD_NETWORK.equals(Constants.ADMOB)) {
+                AdRequest.Builder builder = new AdRequest.Builder();
 
-                    InterstitialAd.load(mcontext, Functions.getSharedPreference(mcontext).getString("admob_interstitial_ad","false"), builder.build(),
-                            new InterstitialAdLoadCallback() {
-                                @Override
-                                public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
-                                    // The mInterstitialAd reference will be null until
-                                    // an ad is loaded.
-                                    mInterstitialAd = interstitialAd;
-                                    listener.onAdLoaded();
-                                }
+                InterstitialAd.load(mcontext, Functions.getSharedPreference(mcontext).getString("admob_interstitial_ad", "false"), builder.build(),
+                        new InterstitialAdLoadCallback() {
+                            @Override
+                            public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
+                                // The mInterstitialAd reference will be null until
+                                // an ad is loaded.
+                                mInterstitialAd = interstitialAd;
+                                listener.onAdLoaded();
+                            }
 
-                                @Override
-                                public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
-                                    // Handle the error
-                                    mInterstitialAd = null;
-                                    listener.onAdFailedToLoad();
-                                }
-                            });
-                    break;
+                            @Override
+                            public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                                // Handle the error
+                                mInterstitialAd = null;
+                                listener.onAdFailedToLoad();
+                            }
+                        });
             }
         } else {
             mInterstitialAd = null;
@@ -61,7 +59,7 @@ public class InterstitialAdapter {
     }
 
     public static boolean isLoaded() {
-        return mInterstitialAd == null ? false : true;
+        return mInterstitialAd != null;
     }
 
     public static void showAds() {

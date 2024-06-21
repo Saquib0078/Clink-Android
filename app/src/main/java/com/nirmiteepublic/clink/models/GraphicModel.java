@@ -1,7 +1,9 @@
 package com.nirmiteepublic.clink.models;
 
 public class GraphicModel {
-    private  String type, graphicID,id;
+    private final String type;
+    private final String graphicID;
+    private String id;
 
 
     public GraphicModel(String type, String graphicID, String id) {

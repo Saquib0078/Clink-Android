@@ -75,9 +75,9 @@ public class WithdrawFragment extends Fragment {
             public void onChanged(UserResponse userResponse) {
                 if (userResponse != null){
                     balance = userResponse.getBalance();
-                    binding.balanceTv.setText(context.getString(R.string.currency)+""+userResponse.getBalance());
-                    binding.totalWithdraw.setText(context.getString(R.string.currency)+""+userResponse.getTotal_withdraw());
-                    binding.totalEarning.setText(context.getString(R.string.currency)+""+(userResponse.getBalance()+userResponse.getTotal_withdraw()));
+                    binding.balanceTv.setText(context.getString(R.string.currency)+userResponse.getBalance());
+                    binding.totalWithdraw.setText(context.getString(R.string.currency)+userResponse.getTotal_withdraw());
+                    binding.totalEarning.setText(context.getString(R.string.currency)+(userResponse.getBalance()+userResponse.getTotal_withdraw()));
                     if (userResponse.getWithdrawlist().size() > 0){
                         binding.userList.setAdapter(new WithdrawAdapter(context, userResponse.getWithdrawlist(), new AdapterClickListener() {
                             @Override

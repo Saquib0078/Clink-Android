@@ -22,11 +22,11 @@ public class BrushView extends ImageView {
     int alpga = 200;
     int density;
     DisplayMetrics metrics;
-    private int ERASE = 1;
-    private int LASSO = 3;
+    private final int ERASE = 1;
+    private final int LASSO = 3;
     private int MODE = 1;
-    private int NONE = 0;
-    private int TARGET = 2;
+    private final int NONE = 0;
+    private final int TARGET = 2;
 
     public BrushView(Context context) {
         super(context);
@@ -104,7 +104,7 @@ public class BrushView extends ImageView {
                 paint4.setStyle(Paint.Style.STROKE);
                 paint4.setStrokeWidth((float) (this.density * 4));
                 paint4.setAntiAlias(true);
-                paint4.setStrokeWidth((float) (this.density * 1));
+                paint4.setStrokeWidth((float) (this.density));
                 float f = this.centerx;
                 float f2 = this.largeRadious;
                 float f3 = this.centery;
@@ -121,7 +121,7 @@ public class BrushView extends ImageView {
                 paint5.setStyle(Paint.Style.STROKE);
                 paint5.setStrokeWidth((float) (this.density * 4));
                 paint5.setAntiAlias(true);
-                paint5.setStrokeWidth((float) (this.density * 1));
+                paint5.setStrokeWidth((float) (this.density));
                 float f9 = this.centerx;
                 float f10 = this.largeRadious;
                 float f11 = this.centery;

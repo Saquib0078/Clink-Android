@@ -34,8 +34,8 @@ public abstract class BasicTexture implements Texture {
     private boolean mHasBorder;
 
     protected GLESCanvas mCanvasRef = null;
-    private static WeakHashMap<BasicTexture, Object> sAllTextures = new WeakHashMap<BasicTexture, Object>();
-    private static ThreadLocal sInFinalizer = new ThreadLocal();
+    private static final WeakHashMap<BasicTexture, Object> sAllTextures = new WeakHashMap<BasicTexture, Object>();
+    private static final ThreadLocal sInFinalizer = new ThreadLocal();
 
     protected BasicTexture(GLESCanvas canvas, int id, int state) {
         setAssociatedCanvas(canvas);

@@ -310,9 +310,9 @@ public class FilterUserFragment extends BottomSheetDialogFragment {
 
                             MergedUsersItem user = gson.fromJson(element, MergedUsersItem.class);
                             userList.add(user);
-                            Log.d("", jsonArray + "");
+                            Log.d("", String.valueOf(jsonArray));
                         }
-                        Toast.makeText(requireContext(), ""+date, Toast.LENGTH_LONG).show();
+                        Toast.makeText(requireContext(), date, Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(requireContext(), FilterUserActivity.class);
                         intent.putExtra("json", String.valueOf(jsonArray));
                         startActivity(intent);

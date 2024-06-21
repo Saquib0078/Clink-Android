@@ -230,7 +230,7 @@ public class PersonalActivity extends AppCompatActivity {
                 }
                 Functions.cancelLoader();
             } catch (Exception e) {
-                Toast.makeText(context, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
             }
 
             if (success) {
@@ -296,7 +296,7 @@ public class PersonalActivity extends AppCompatActivity {
         startActivity(new Intent(this,PremiumActivity.class));
     }
 
-    private ActivityResultLauncher<String[]> mPermissionResult = registerForActivityResult(
+    private final ActivityResultLauncher<String[]> mPermissionResult = registerForActivityResult(
             new ActivityResultContracts.RequestMultiplePermissions(), new ActivityResultCallback<Map<String, Boolean>>() {
                 @RequiresApi(api = Build.VERSION_CODES.M)
                 @Override

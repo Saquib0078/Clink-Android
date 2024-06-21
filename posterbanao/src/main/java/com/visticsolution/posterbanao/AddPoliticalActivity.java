@@ -282,7 +282,7 @@ public class AddPoliticalActivity extends AppCompatActivity {
         }
     }
 
-    private ActivityResultLauncher<String[]> mPermissionResult = registerForActivityResult(
+    private final ActivityResultLauncher<String[]> mPermissionResult = registerForActivityResult(
             new ActivityResultContracts.RequestMultiplePermissions(), new ActivityResultCallback<Map<String, Boolean>>() {
                 @RequiresApi(api = Build.VERSION_CODES.M)
                 @Override
@@ -317,24 +317,24 @@ public class AddPoliticalActivity extends AppCompatActivity {
             Functions.showLoader(context);
             JSONObject parameters = new JSONObject();
             try {
-                parameters.put("user_id", ""+Functions.getSharedPreference(context).getString(Variables.U_ID,""));
-                parameters.put("id", ""+bussiness_id);
-                parameters.put("image", ""+path);
+                parameters.put("user_id", Functions.getSharedPreference(context).getString(Variables.U_ID, ""));
+                parameters.put("id", bussiness_id);
+                parameters.put("image", path);
                 parameters.put("company", "");
-                parameters.put("name", ""+binding.companyEdit.getText().toString());
-                parameters.put("number", ""+binding.numberEdit.getText().toString());
-                parameters.put("designation", ""+binding.designationEdit.getText().toString());
+                parameters.put("name", binding.companyEdit.getText().toString());
+                parameters.put("number", binding.numberEdit.getText().toString());
+                parameters.put("designation", binding.designationEdit.getText().toString());
                 parameters.put("type", "political");
                 parameters.put("category_id", categoryID);
                 parameters.put("email", "");
                 parameters.put("address", "");
                 parameters.put("website", "");
-                parameters.put("youtube", ""+binding.youtubeEdit.getText().toString());
-                parameters.put("instagram", ""+binding.instaEdit.getText().toString());
+                parameters.put("youtube", binding.youtubeEdit.getText().toString());
+                parameters.put("instagram", binding.instaEdit.getText().toString());
                 parameters.put("about", "");
-                parameters.put("twitter", ""+binding.twitterEdit.getText().toString());
-                parameters.put("facebook", ""+binding.facebookEdit.getText().toString());
-                parameters.put("whatsapp", ""+binding.whatsappEdit.getText().toString());
+                parameters.put("twitter", binding.twitterEdit.getText().toString());
+                parameters.put("facebook", binding.facebookEdit.getText().toString());
+                parameters.put("whatsapp", binding.whatsappEdit.getText().toString());
             } catch (Exception e) {
                 e.printStackTrace();
             }

@@ -58,7 +58,7 @@ public class PaytmActivity extends AppCompatActivity {
             }
             @Override
             public void onFailure(Call<PaytmResponse> call, Throwable t) {
-                Toast.makeText(context, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
                 Functions.cancelLoader();
             }
         });
@@ -120,7 +120,7 @@ public class PaytmActivity extends AppCompatActivity {
     }
 
     private void showError(String respmsg) {
-        Toast.makeText(context, ""+respmsg, Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, respmsg, Toast.LENGTH_SHORT).show();
     }
 
 
@@ -147,7 +147,7 @@ public class PaytmActivity extends AppCompatActivity {
             }
             @Override
             public void onFailure(Call<SimpleResponse> call, Throwable t) {
-                Toast.makeText(context, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
                 Functions.cancelLoader();
             }
         });

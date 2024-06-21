@@ -12,7 +12,7 @@ import com.hw.photomovie.segment.animation.SrcTransAnimation;
 public class ThawSegment extends SingleBitmapSegment {
 
     private SegmentAnimation mSrcAnimation;
-    private int mType;
+    private final int mType;
 
     public ThawSegment(int duration, int type) {
         mDuration = duration;

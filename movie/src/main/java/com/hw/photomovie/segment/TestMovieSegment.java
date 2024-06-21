@@ -18,7 +18,7 @@ import com.hw.photomovie.util.Utils;
 public class TestMovieSegment extends GLMovieSegment {
 
     private BitmapTexture mBitmapTexture;
-    private MovieFilter movieFilter;
+    private final MovieFilter movieFilter;
 
     public TestMovieSegment(int i) {
         mDuration = 2200;
@@ -28,11 +28,11 @@ public class TestMovieSegment extends GLMovieSegment {
         movieFilter = new OldMovieFilter();
     }
 
-    private RectF mSrcRect = new RectF();
-    private RectF mDstRect = new RectF();
+    private final RectF mSrcRect = new RectF();
+    private final RectF mDstRect = new RectF();
 
     private int getRanColor() {
-        int colors[] = new int[]{Color.BLUE, Color.RED, Color.DKGRAY, Color.GREEN, Color.YELLOW, Color.MAGENTA, Color.WHITE};
+        int[] colors = new int[]{Color.BLUE, Color.RED, Color.DKGRAY, Color.GREEN, Color.YELLOW, Color.MAGENTA, Color.WHITE};
         int i = (int) (Math.random() * colors.length);
         return colors[i];
     }

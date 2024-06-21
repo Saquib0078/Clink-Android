@@ -153,9 +153,9 @@ class JavaBlurProcess implements BlurProcess {
 					if (i <= wm) src_i += 1;
 					stack_i = i + radius;
 					stack[stack_i] = src[src_i];
-					sum_r += ((src[src_i] >>> 16) & 0xff) * (radius + 1 - i);
-					sum_g += ((src[src_i] >>> 8) & 0xff) * (radius + 1 - i);
-					sum_b += (src[src_i] & 0xff) * (radius + 1 - i);
+					sum_r += (long) ((src[src_i] >>> 16) & 0xff) * (radius + 1 - i);
+					sum_g += (long) ((src[src_i] >>> 8) & 0xff) * (radius + 1 - i);
+					sum_b += (long) (src[src_i] & 0xff) * (radius + 1 - i);
 					sum_in_r += ((src[src_i] >>> 16) & 0xff);
 					sum_in_g += ((src[src_i] >>> 8) & 0xff);
 					sum_in_b += (src[src_i] & 0xff);
@@ -248,9 +248,9 @@ class JavaBlurProcess implements BlurProcess {
 
 					stack_i = i + radius;
 					stack[stack_i] = src[src_i];
-					sum_r += ((src[src_i] >>> 16) & 0xff) * (radius + 1 - i);
-					sum_g += ((src[src_i] >>> 8) & 0xff) * (radius + 1 - i);
-					sum_b += (src[src_i] & 0xff) * (radius + 1 - i);
+					sum_r += (long) ((src[src_i] >>> 16) & 0xff) * (radius + 1 - i);
+					sum_g += (long) ((src[src_i] >>> 8) & 0xff) * (radius + 1 - i);
+					sum_b += (long) (src[src_i] & 0xff) * (radius + 1 - i);
 					sum_in_r += ((src[src_i] >>> 16) & 0xff);
 					sum_in_g += ((src[src_i] >>> 8) & 0xff);
 					sum_in_b += (src[src_i] & 0xff);

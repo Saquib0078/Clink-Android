@@ -57,13 +57,10 @@ public class SizeSelection extends BottomSheetDialogFragment implements View.OnC
         } else if (id == R.id.size_btn01 || id == R.id.size_btn02 || id == R.id.size_btn03 || id == R.id.size_btn04 || id == R.id.size_btn05 || id == R.id.size_btn06) {
             this.getSizeOptions.ratioOptions(view2.getTag().toString());
             dismiss();
-            return;
         } else if (id == R.id.size_btn1 || id == R.id.size_btn10 || id == R.id.size_btn11 || id == R.id.size_btn12 || id == R.id.size_btn13 || id == R.id.size_btn14 || id == R.id.size_btn15 || id == R.id.size_btn16 || id == R.id.size_btn17 || id == R.id.size_btn18 || id == R.id.size_btn2 || id == R.id.size_btn3 || id == R.id.size_btn4 || id == R.id.size_btn5 || id == R.id.size_btn6 || id == R.id.size_btn7 || id == R.id.size_btn8 || id == R.id.size_btn9) {
             this.getSizeOptions.sizeOptions(view2.getTag().toString());
             dismiss();
-            return;
         } else {
-            return;
         }
     }
 

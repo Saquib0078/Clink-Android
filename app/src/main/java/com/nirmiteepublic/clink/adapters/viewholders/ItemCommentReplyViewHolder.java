@@ -32,7 +32,7 @@ public class ItemCommentReplyViewHolder extends RecyclerView.ViewHolder {
         String dp = RetrofitClient.PROFILE_IMAGE+commentModel.getProfileDP();
 
         Glide.with(context)
-                .load(UserUtils.getUserDp())
+                .load(dp)
                 .fitCenter()
                 .error(R.drawable.default_image) // Error image if loading fails
                 .placeholder(R.drawable.default_image) // Placeholder image while loading

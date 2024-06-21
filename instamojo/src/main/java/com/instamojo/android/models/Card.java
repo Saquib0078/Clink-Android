@@ -17,7 +17,7 @@ public class Card {
 
     private String cvv;
 
-    private boolean saveCard = false;
+    private final boolean saveCard = false;
 
     /**
      * Constructor for Card.

@@ -558,7 +558,7 @@ public class OpenPostActivity extends AppCompatActivity {
                 }
 
             } catch (Exception e) {
-                Toast.makeText(context, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
             }
 
             if (success) {
@@ -668,7 +668,7 @@ public class OpenPostActivity extends AppCompatActivity {
             @Override
             public void onAdLoaded() {
                 Functions.cancelLoader();
-                rewardedAdapter.showAds();
+                RewardedAdapter.showAds();
             }
 
             @Override
@@ -694,7 +694,7 @@ public class OpenPostActivity extends AppCompatActivity {
                 }
             }
         });
-        rewardedAdapter.LoadAds();
+        RewardedAdapter.LoadAds();
     }
 
     private void showPremiumFragment() {
@@ -891,7 +891,7 @@ public class OpenPostActivity extends AppCompatActivity {
             Integer.parseInt(split[0]);
             Integer.parseInt(split[1]);
 
-            String str4 = "" + (Integer.parseInt(split[0]) / gcd) + ":" + (Integer.parseInt(split[1]) / gcd);
+            String str4 = (Integer.parseInt(split[0]) / gcd) + ":" + (Integer.parseInt(split[1]) / gcd);
             Log.d("editorActivity___", "2 -> " + str4);
 
             if (Functions.getSharedPreference(context).getString(Variables.ACTIVE_PROFILE_TYPE,"").equals("")){

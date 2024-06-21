@@ -5,8 +5,7 @@ package com.hw.photomovie.filter;
  */
 public class GrayFilter extends MovieFilter {
 
-    protected static final String FRAGMENT_SHADER = "" +
-            "varying highp vec2 textureCoordinate;\n" +
+    protected static final String FRAGMENT_SHADER = "varying highp vec2 textureCoordinate;\n" +
             " \n" +
             "uniform sampler2D inputImageTexture;\n" +
             " \n" +

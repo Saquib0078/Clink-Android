@@ -19,8 +19,8 @@ import java.util.List;
 
 public class WithdrawAdapter extends RecyclerView.Adapter<WithdrawAdapter.ViewHolder> {
 
-    private List<WithdrawModel> list;
-    private AdapterClickListener listener;
+    private final List<WithdrawModel> list;
+    private final AdapterClickListener listener;
     Context context;
 
     public WithdrawAdapter(Context context, List<WithdrawModel> list, AdapterClickListener listener) {
@@ -39,7 +39,7 @@ public class WithdrawAdapter extends RecyclerView.Adapter<WithdrawAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         WithdrawModel model = list.get(position);
-        holder.binding.idTv.setText(""+position+1);
+        holder.binding.idTv.setText(String.valueOf(position)+1);
         holder.binding.amountTv.setText(context.getString(R.string.currency)+" "+model.getAmount());
         holder.binding.dateTv.setText(Functions.getFormatedDate(model.getCreated_at()));
         if (model.getStatus().equals("pending")){

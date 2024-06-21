@@ -10,7 +10,7 @@ import java.util.List;
 
 public class SettingsViewModel extends ViewModel {
 
-    private SettingRespository respository;
+    private final SettingRespository respository;
 
     public SettingsViewModel(){
         respository = new SettingRespository();

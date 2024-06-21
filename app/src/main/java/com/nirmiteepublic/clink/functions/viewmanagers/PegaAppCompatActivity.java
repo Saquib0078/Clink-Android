@@ -86,6 +86,13 @@ public class PegaAppCompatActivity extends AppCompatActivity {
         window.setNavigationBarColor(ContextCompat.getColor(this, R.color.white));
         manageStatusBarColor(window, R.color.cyan_process);
     }
+    public void setWindowThemeBlack() {
+        /* For Window Color Adjustments */
+        Window window = getDefaultWindow();
+        window.setStatusBarColor(ContextCompat.getColor(this, R.color.blackShade));
+        window.setNavigationBarColor(ContextCompat.getColor(this, R.color.white));
+        manageStatusBarColor(window, R.color.blackShade);
+    }
 
     public void setWindowThemeMain() {
         /* For Window Color Adjustments */

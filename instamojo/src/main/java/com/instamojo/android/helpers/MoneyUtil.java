@@ -5,6 +5,7 @@ import android.os.Bundle;
 import com.instamojo.android.models.GatewayOrder;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class MoneyUtil {
 
@@ -16,7 +17,7 @@ public class MoneyUtil {
      */
     public static double getRoundedValue(double value, int precision) {
         BigDecimal bigDecimal = new BigDecimal(value);
-        bigDecimal = bigDecimal.setScale(precision, BigDecimal.ROUND_HALF_DOWN);
+        bigDecimal = bigDecimal.setScale(precision, RoundingMode.HALF_DOWN);
         return bigDecimal.doubleValue();
     }
 

@@ -99,7 +99,7 @@ public class ViewRequestedUsers extends AppCompatActivity {
 //                        System.out.println(responseBody);
 //                        UserUtils.setSecondaryUserid(id);
                         if (binding.profileImage != null) {
-                            Toast.makeText(ViewRequestedUsers.this, "" + Image, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ViewRequestedUsers.this, Image, Toast.LENGTH_SHORT).show();
                             Glide.with(ViewRequestedUsers.this)
                                     .load(RetrofitClient.PROFILE_IMAGE + Image)
                                     .placeholder(R.drawable.default_image)
@@ -128,7 +128,7 @@ public class ViewRequestedUsers extends AppCompatActivity {
 
                     } catch (IOException e) {
                         hideProgressDialog();
-                        Toast.makeText(ViewRequestedUsers.this, "" + e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ViewRequestedUsers.this, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                     }
 
                 } else {
@@ -141,7 +141,7 @@ public class ViewRequestedUsers extends AppCompatActivity {
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
                 hideProgressDialog();
-                Toast.makeText(ViewRequestedUsers.this, "" + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(ViewRequestedUsers.this, t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
 
             }
         });

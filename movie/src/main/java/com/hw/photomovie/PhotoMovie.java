@@ -16,10 +16,10 @@ import java.util.List;
  */
 public class PhotoMovie<T> {
     private static final String TAG = "PhotoMovie";
-    private PhotoSource mPhotoSource;
-    private List<MovieSegment<T>> mMovieSegments = new LinkedList<MovieSegment<T>>();
-    private SegmentPicker<T> mSegmentPicker;
-    private PhotoAllocator mPhotoAllocator;
+    private final PhotoSource mPhotoSource;
+    private final List<MovieSegment<T>> mMovieSegments = new LinkedList<MovieSegment<T>>();
+    private final SegmentPicker<T> mSegmentPicker;
+    private final PhotoAllocator mPhotoAllocator;
 
     private int mMovieDuration;
 
@@ -89,8 +89,8 @@ public class PhotoMovie<T> {
         //        private MovieSegment mPreSegment;
         private MovieSegment<T> mCurSegment;
 
-        private List<MovieSegment<T>> mMovieSegments;
-        private PhotoMovie<T> mPhotoMovie;
+        private final List<MovieSegment<T>> mMovieSegments;
+        private final PhotoMovie<T> mPhotoMovie;
 
         public SegmentPicker(PhotoMovie<T> photoMovie) {
             mMovieSegments = photoMovie.getMovieSegments();

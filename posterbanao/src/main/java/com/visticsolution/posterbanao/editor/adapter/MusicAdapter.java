@@ -18,8 +18,8 @@ import java.util.List;
 
 public class MusicAdapter extends RecyclerView.Adapter<MusicAdapter.ViewHolder> {
 
-    private List<MusicModel> list;
-    private MusicPagerAdapter.OnMusicSelect listener;
+    private final List<MusicModel> list;
+    private final MusicPagerAdapter.OnMusicSelect listener;
     Activity context;
     int selectedPosition = 500;
 
