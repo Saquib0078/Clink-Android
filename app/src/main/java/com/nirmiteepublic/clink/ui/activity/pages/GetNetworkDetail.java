@@ -1,9 +1,9 @@
 package com.nirmiteepublic.clink.ui.activity.pages;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,12 +15,8 @@ import com.nirmiteepublic.clink.R;
 import com.nirmiteepublic.clink.databinding.ActivityGetNetworkDetailBinding;
 import com.nirmiteepublic.clink.functions.retrofit.req.RetrofitClient;
 import com.nirmiteepublic.clink.functions.utils.UserUtils;
-import com.nirmiteepublic.clink.models.CategoryList;
-import com.pegalite.popups.PegaProgressDialog;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -37,8 +33,14 @@ public class GetNetworkDetail extends AppCompatActivity {
         binding = ActivityGetNetworkDetailBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-   binding.progressBar.setVisibility(View.VISIBLE);
+        binding.progressBar.setVisibility(View.VISIBLE);
 
+        binding.back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
 
         Intent intent = getIntent();
@@ -82,26 +84,65 @@ public class GetNetworkDetail extends AppCompatActivity {
                                 String ward = findNumObject.has("ward") ? findNumObject.getAsJsonPrimitive("ward").getAsString() : "";
                                 String id = findNumObject.has("_id") ? findNumObject.getAsJsonPrimitive("_id").getAsString() : "";
                                 String dp = findNumObject1.has("dp") ? findNumObject1.getAsJsonPrimitive("dp").getAsString() : "";
-                                Toast.makeText(GetNetworkDetail.this, dp, Toast.LENGTH_SHORT).show();
+//                                Toast.makeText(GetNetworkDetail.this, dp, Toast.LENGTH_SHORT).show();
                                 UserUtils.setSecondaryUserid(id);
-                                binding.fname.setText(fname);
-                                binding.lname.setText(lname);
+                                binding.fname.setText(fname + " " + lname);
+//                                binding.lname.setText(lname);
                                 binding.district.setText(dist);
                                 binding.tehsil.setText(teh);
                                 binding.village.setText(vill);
-                                binding.whatsapp.setText(wpn);
+//                                binding.whatsapp.setText(wpn);
                                 binding.area.setText(lMark);
                                 binding.education.setText(edu);
                                 binding.intrest.setText(intr);
                                 binding.mobile.setText(num);
                                 binding.language.setText(lang);
-                                binding.facebook.setText(fb);
-                                binding.insta.setText(insta);
+//                                binding.facebook.setText(fb);
+//                                binding.insta.setText(insta);
                                 binding.ward.setText(ward);
 
+                                binding.whatsappBtn.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        if (wpn != null && !wpn.isEmpty()) {
+                                            openWhatsApp(wpn);
+                                        }else{
+                                            Toast.makeText(GetNetworkDetail.this, "Please Update your WhatsApp Number", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                });
+                                binding.phone.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        if (num != null && !num.isEmpty()) {
+                                            openDialer(num);
+                                        }
+                                    }
+                                });
+                                binding.facebookBtn.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        if (fb != null && !fb.isEmpty()) {
+                                            openFacebook(fb);
+                                        }else{
+                                            Toast.makeText(GetNetworkDetail.this, "Please Update your Facebook Url", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+
+
+                                });  binding.instagramBtn.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        if (insta != null && !insta.isEmpty()) {
+                                            openInstagram(insta);
+                                        }else{
+                                            Toast.makeText(GetNetworkDetail.this, "Please Update your Instagram Url", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                });
 
                                 Glide.with(GetNetworkDetail.this)
-                                        .load(RetrofitClient.VIDEO_BASE_URL+dp)
+                                        .load(RetrofitClient.VIDEO_BASE_URL + dp)
                                         .placeholder(R.drawable.default_image)
                                         .into(binding.profileImage);
                             } else {
@@ -133,6 +174,49 @@ public class GetNetworkDetail extends AppCompatActivity {
     }
 
     // Function to load JSON from asset
+    private void openWhatsApp(String phoneNumber) {
+        try {
+            Intent sendIntent = new Intent(Intent.ACTION_VIEW);
+            sendIntent.setData(Uri.parse("https://wa.me/" + phoneNumber));
+            startActivity(sendIntent);
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(this, "WhatsApp not installed.", Toast.LENGTH_SHORT).show();
+        }
+    }
 
+    private void openFacebook(String url) {
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse(url));
+        intent.setPackage("com.facebook.katana");
+        try {
+            startActivity(intent);
+        } catch (Exception e) {
+            e.printStackTrace();
+            // If the Facebook app is not installed, open the URL in the browser
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+            startActivity(browserIntent);
+        }
+    }
+
+    private void openInstagram(String url) {
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse(url));
+        intent.setPackage("com.instagram.android");
+        try {
+            startActivity(intent);
+        } catch (Exception e) {
+            e.printStackTrace();
+            // If the Instagram app is not installed, open the URL in the browser
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+            startActivity(browserIntent);
+        }
+    }
+
+    private void openDialer(String phoneNumber) {
+        Intent intent = new Intent(Intent.ACTION_DIAL);
+        intent.setData(Uri.parse("tel:" + phoneNumber));
+        startActivity(intent);
+    }
 
 }

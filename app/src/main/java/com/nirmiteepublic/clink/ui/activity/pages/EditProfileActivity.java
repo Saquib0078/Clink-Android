@@ -550,7 +550,7 @@ public class EditProfileActivity extends PegaAppCompatActivity {
                                     .into(binding.profileImage);
                         }
 
-                        binding.fname.setText(fname);
+                        binding.fname.setText(fname );
                         binding.lname.setText(lname);
                         binding.tehsil.setText(teh);
                         binding.village.setText(vill);

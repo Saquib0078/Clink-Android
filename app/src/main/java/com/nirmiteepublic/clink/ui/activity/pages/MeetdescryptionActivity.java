@@ -38,7 +38,20 @@ public class MeetdescryptionActivity extends PegaAppCompatActivity {
         binding=ActivityMeetdescryptionBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         Intent intent=getIntent();
+
+
         setWindowThemeSecond();
+
+        binding.edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent sendIntent=new Intent(MeetdescryptionActivity.this,CreateMeetActivity.class);
+                sendIntent.putExtra("EDIT",true);
+                sendIntent.putExtra("meetid",meetId);
+                startActivity(sendIntent);
+            }
+        });
+
         if(intent !=null){
             String meetName=intent.getStringExtra("meetName");
             String meetTime=intent.getStringExtra("meetTime");
@@ -57,7 +70,7 @@ public class MeetdescryptionActivity extends PegaAppCompatActivity {
             binding.title.setText(meetName);
             binding.date.setText(meetTime);
             binding.descryption.setText(meetDescryption);
-            binding.btncomplete.setText("Meeting is Completed At"+""+meetDate);
+            binding.btncomplete.setText("Meeting is Ended At"+" "+meetDate);
             Glide.with(this)
                     .load(meetImage)
                     .placeholder(R.drawable.meet)

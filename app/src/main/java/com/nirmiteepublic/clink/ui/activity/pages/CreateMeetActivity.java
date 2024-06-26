@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
@@ -20,11 +21,15 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bumptech.glide.Glide;
 import com.nirmiteepublic.clink.R;
 import com.nirmiteepublic.clink.databinding.ActivityCreateMeetBinding;
 import com.nirmiteepublic.clink.functions.retrofit.req.RetrofitClient;
+import com.nirmiteepublic.clink.functions.utils.Utils;
+import com.nirmiteepublic.clink.models.MeetModel;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.util.Calendar;
 import java.util.Locale;
@@ -38,214 +43,273 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class CreateMeetActivity extends AppCompatActivity {
+    private static final String TAG = "CreateMeetActivity";
     String SelectedDate;
     String SelectedTime;
     Bitmap bitmap;
-    String radioButtonValue;
+    String radioButtonValue = "Open for All"; // Default value
     ActivityCreateMeetBinding binding;
     MultipartBody.Part imageID;
+
+    boolean EditMode;
+    String meetId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityCreateMeetBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        Intent intent = getIntent();
+        if (intent != null) {
+            EditMode = intent.getBooleanExtra("EDIT", false);
+            meetId = intent.getStringExtra("meetid");
+        }
 
+        if (EditMode) {
+            binding.radiogrp.setVisibility(View.GONE);
+            loadExistingMeetData();
+        }
+
+        setupRadioGroup();
+        setupImageUpload();
+        setupDateTimePickers();
+        setupUploadButton();
+    }
+
+    private void loadExistingMeetData() {
+        RetrofitClient.getInstance(this).getApiInterfaces().getMeetById(meetId).enqueue(new Callback<MeetModel>() {
+            @Override
+            public void onResponse(Call<MeetModel> call, Response<MeetModel> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    MeetModel meetModel = response.body();
+                    binding.editMeetDesc.setText(meetModel.getMeetDescription());
+                    binding.editMeetName.setText(meetModel.getMeetName());
+                    binding.btnDatePicker.setText(meetModel.getTime());
+                    binding.btnTimePicker.setText(meetModel.getDate());
+                    Glide.with(CreateMeetActivity.this)
+                            .load(RetrofitClient.MEETIMAGE_BASE_URL + meetModel.getImageID())
+                            .into(binding.img);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<MeetModel> call, Throwable t) {
+                Log.e(TAG, "Failed to load meet data", t);
+                Toast.makeText(CreateMeetActivity.this, "Failed to load meet data: " + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        binding.upload.setOnClickListener(v -> updateMeet(meetId));
+    }
+
+    private void setupRadioGroup() {
         binding.radiogrp.setOnCheckedChangeListener((group, checkedId) -> {
             if (checkedId == R.id.limited) {
                 radioButtonValue = "Limited Users";
                 binding.invite.setVisibility(View.VISIBLE);
-//                binding.selectedUsers.setVisibility(View.VISIBLE);
-                binding.invite.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-                        byte[] byteArray = stream.toByteArray();
-                        Intent intent = new Intent(CreateMeetActivity.this, FilterUserActivity.class);
-                        intent.putExtra("meetActivity", true);
-                        intent.putExtra("type", "meeting");
-                        intent.putExtra("title", binding.editMeetName.getText().toString());
-                        intent.putExtra("body", binding.editMeetDesc.getText().toString());
-                        intent.putExtra("imageUrl", byteArray);
-                        startActivity(intent);
-                    }
-                });
-            } else if (checkedId == R.id.openall) {
-                radioButtonValue = "Open for All";
-                binding.invite.setVisibility(View.GONE);
-
+                binding.invite.setOnClickListener(this::handleInviteClick);
             } else {
                 radioButtonValue = "Open for All";
+                binding.invite.setVisibility(View.GONE);
             }
         });
-
-
-
-        binding.btnUploadImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Intent.ACTION_PICK);
-                intent.setData(MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                activityResultLauncher.launch(intent);
-            }
-        });
-        binding.upload.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ConvertImage();
-
-                binding.progressBar.setVisibility(View.VISIBLE);
-
-            }
-        });
-
-        binding.btnDatePicker.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showDatePicker();
-            }
-        });
-
-
-        binding.btnTimePicker.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showTimePicker();
-            }
-        });
-
     }
 
-    ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
-        @Override
-        public void onActivityResult(ActivityResult result) {
-            if (result.getResultCode() == Activity.RESULT_OK) {
-                Intent data = result.getData();
-                Uri uri = data.getData();
-                try {
-                    bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
-                    binding.img.setImageBitmap(bitmap);
-
-                } catch (IOException e) {
-                    Toast.makeText(CreateMeetActivity.this, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();                }
-
-            }
-
+    private void handleInviteClick(View view) {
+        if (bitmap != null) {
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+            byte[] byteArray = stream.toByteArray();
+            Intent intent = new Intent(CreateMeetActivity.this, FilterUserActivity.class);
+            intent.putExtra("meetActivity", true);
+            intent.putExtra("type", "meeting");
+            intent.putExtra("title", binding.editMeetName.getText().toString());
+            intent.putExtra("body", binding.editMeetDesc.getText().toString());
+            intent.putExtra("imageUrl", byteArray);
+            startActivity(intent);
+        } else {
+            Toast.makeText(this, "Please select an image first", Toast.LENGTH_SHORT).show();
         }
-    });
+    }
+
+    private void setupImageUpload() {
+        binding.btnUploadImage.setOnClickListener(view -> {
+            Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+            activityResultLauncher.launch(intent);
+        });
+    }
+
+    private void setupDateTimePickers() {
+        binding.btnDatePicker.setOnClickListener(view -> showDatePicker());
+        binding.btnTimePicker.setOnClickListener(view -> showTimePicker());
+    }
+
+    private void setupUploadButton() {
+        binding.upload.setOnClickListener(view -> {
+            if (EditMode) {
+                updateMeet(meetId);
+            } else {
+                ConvertImage();
+            }
+        });
+    }
+
+    ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+                if (result.getResultCode() == Activity.RESULT_OK && result.getData() != null) {
+                    Uri uri = result.getData().getData();
+                    try {
+                        bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
+                        binding.img.setImageBitmap(bitmap);
+                    } catch (IOException e) {
+                        Log.e(TAG, "Error loading image", e);
+                        Toast.makeText(CreateMeetActivity.this, "Error loading image: " + e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
 
     private void showDatePicker() {
-        // Get the current date
         Calendar calendar = Calendar.getInstance();
-        int year = calendar.get(Calendar.YEAR);
-        int month = calendar.get(Calendar.MONTH);
-        int dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
-
-        // Create a DatePickerDialog and show it
-        DatePickerDialog datePickerDialog = new DatePickerDialog(CreateMeetActivity.this, new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                // Handle the selected date
-                // You can update a TextView or do any other action here
-                SelectedDate = dayOfMonth + "/" + (monthOfYear + 1) + "/" + year;
-                binding.btnDatePicker.setText(SelectedDate);
-                // Update your UI or perform an action with the selected date
-            }
-        }, year, month, dayOfMonth);
-
+        DatePickerDialog datePickerDialog = new DatePickerDialog(
+                CreateMeetActivity.this,
+                (view, year, monthOfYear, dayOfMonth) -> {
+                    SelectedDate = dayOfMonth + "/" + (monthOfYear + 1) + "/" + year;
+                    binding.btnDatePicker.setText(SelectedDate);
+                },
+                calendar.get(Calendar.YEAR),
+                calendar.get(Calendar.MONTH),
+                calendar.get(Calendar.DAY_OF_MONTH)
+        );
         datePickerDialog.show();
     }
 
     private void showTimePicker() {
-        // Get the current time
         Calendar calendar = Calendar.getInstance();
-        int hourOfDay = calendar.get(Calendar.HOUR_OF_DAY);
-        int minute = calendar.get(Calendar.MINUTE);
-
-        // Create a TimePickerDialog and show it
-        TimePickerDialog timePickerDialog = new TimePickerDialog(CreateMeetActivity.this, new TimePickerDialog.OnTimeSetListener() {
-            @Override
-            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                // Convert 24-hour format to 12-hour format with AM/PM
-                String amPm;
-                if (hourOfDay >= 12) {
-                    amPm = "PM";
-                    hourOfDay -= 12;
-                } else {
-                    amPm = "AM";
-                }
-
-                // Adjust 12-hour format when hour is 0
-                if (hourOfDay == 0) {
-                    hourOfDay = 12;
-                }
-
-                SelectedTime = String.format(Locale.getDefault(), "%02d:%02d %s", hourOfDay, minute, amPm);
-                binding.btnTimePicker.setText(SelectedTime);
-            }
-        }, hourOfDay, minute, false);
-
+        TimePickerDialog timePickerDialog = new TimePickerDialog(
+                CreateMeetActivity.this,
+                (view, hourOfDay, minute) -> {
+                    String amPm = hourOfDay >= 12 ? "PM" : "AM";
+                    int hour = hourOfDay % 12;
+                    hour = hour == 0 ? 12 : hour;
+                    SelectedTime = String.format(Locale.getDefault(), "%02d:%02d %s", hour, minute, amPm);
+                    binding.btnTimePicker.setText(SelectedTime);
+                },
+                calendar.get(Calendar.HOUR_OF_DAY),
+                calendar.get(Calendar.MINUTE),
+                false
+        );
         timePickerDialog.show();
-
     }
 
     private void ConvertImage() {
+        if (bitmap == null) {
+            Toast.makeText(this, "Please select an image", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        binding.progressBar.setVisibility(View.VISIBLE);
+
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
+        byte[] byteArray = byteArrayOutputStream.toByteArray();
+        String base64Image = Base64.encodeToString(byteArray, Base64.DEFAULT);
+
+        RequestBody meetNameRequestBody = RequestBody.create(MediaType.parse("text/plain"), binding.editMeetName.getText().toString());
+        RequestBody meetDescriptionRequestBody = RequestBody.create(MediaType.parse("text/plain"), binding.editMeetDesc.getText().toString());
+        RequestBody dateRequestBody = RequestBody.create(MediaType.parse("text/plain"), binding.btnDatePicker.getText().toString());
+        RequestBody timeRequestBody = RequestBody.create(MediaType.parse("text/plain"), binding.btnTimePicker.getText().toString());
+        RequestBody imageRequestBody = RequestBody.create(MediaType.parse("image/jpeg"), Base64.decode(base64Image, Base64.DEFAULT));
+        RequestBody radioRequestBody = RequestBody.create(MediaType.parse("text/plain"), radioButtonValue);
+
+        imageID = MultipartBody.Part.createFormData("imageID", "image.jpg", imageRequestBody);
+
+        RetrofitClient.getInstance(this).getApiInterfaces().publishMeet(
+                meetNameRequestBody,
+                meetDescriptionRequestBody,
+                dateRequestBody,
+                timeRequestBody,
+                radioRequestBody,
+                imageID
+        ).enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                binding.progressBar.setVisibility(View.GONE);
+                if (response.isSuccessful()) {
+                    Toast.makeText(CreateMeetActivity.this, "Uploaded successfully", Toast.LENGTH_SHORT).show();
+                } else {
+                    handleErrorResponse(response);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                binding.progressBar.setVisibility(View.GONE);
+                Log.e(TAG, "Upload failed", t);
+                Toast.makeText(CreateMeetActivity.this, "Upload failed: " + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void updateMeet(String meetId) {
+        binding.progressBar.setVisibility(View.VISIBLE);
+
+        MultipartBody.Part imagePart = null;
         if (bitmap != null) {
+            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
             bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
             byte[] byteArray = byteArrayOutputStream.toByteArray();
-            String base64Image = Base64.encodeToString(byteArray, Base64.DEFAULT);
+            RequestBody imageRequestBody = RequestBody.create(MediaType.parse("image/jpeg"), byteArray);
+            imagePart = MultipartBody.Part.createFormData("imageID", "image.jpg", imageRequestBody);
+        }
 
+        RequestBody meetNameRequestBody = RequestBody.create(MediaType.parse("text/plain"), binding.editMeetName.getText().toString());
+        RequestBody meetDescriptionRequestBody = RequestBody.create(MediaType.parse("text/plain"), binding.editMeetDesc.getText().toString());
+        RequestBody dateRequestBody = RequestBody.create(MediaType.parse("text/plain"), binding.btnDatePicker.getText().toString());
+        RequestBody timeRequestBody = RequestBody.create(MediaType.parse("text/plain"), binding.btnTimePicker.getText().toString());
+        RequestBody radioRequestBody = RequestBody.create(MediaType.parse("text/plain"), radioButtonValue);
 
-            // Create RequestBody for text data
-            RequestBody meetNameRequestBody = RequestBody.create(MediaType.parse("text/plain"), binding.editMeetName.getText().toString());
-            RequestBody meetDescriptionRequestBody = RequestBody.create(MediaType.parse("text/plain"), binding.editMeetDesc.getText().toString());
-            RequestBody dateRequestBody = RequestBody.create(MediaType.parse("text/plain"), SelectedDate);
-            RequestBody timeRequestBody = RequestBody.create(MediaType.parse("text/plain"), SelectedTime);
-            RequestBody imageRequestBody = RequestBody.create(MediaType.parse("image/jpeg"), Base64.decode(base64Image, Base64.DEFAULT));
-            RequestBody radioRequestBody = RequestBody.create(MediaType.parse("text/plain"), radioButtonValue);
-
-            // Create MultipartBody.Part for the image
-             imageID = MultipartBody.Part.createFormData("imageID", "image.jpg", imageRequestBody);
-
-            // Assuming you have a Retrofit instance named retrofit
-            RetrofitClient.getInstance(this).getApiInterfaces().publishMeet(
-                    meetNameRequestBody,
-                    meetDescriptionRequestBody,
-                    dateRequestBody,
-                    timeRequestBody,
-                    radioRequestBody,
-                    imageID
-            ).enqueue(new Callback<ResponseBody>() {
-                @Override
-                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                    if (response.isSuccessful()) {
-
-                        binding.progressBar.setVisibility(View.GONE);
-                        Toast.makeText(CreateMeetActivity.this, "Uploaded", Toast.LENGTH_SHORT).show();
-                    } else {
-                        try {
-                            String res = response.errorBody().string();
-                            System.out.println(res);
-                            binding.progressBar.setVisibility(View.GONE);
-
-                        } catch (IOException e) {
-                            binding.progressBar.setVisibility(View.GONE);
-
-                            Toast.makeText(CreateMeetActivity.this, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();                        }
-
-                        Toast.makeText(CreateMeetActivity.this, "Error" + response.errorBody(), Toast.LENGTH_SHORT).show();
-                    }
+        RetrofitClient.getInstance(this).getApiInterfaces().updateMeet(
+                meetId,
+                meetNameRequestBody,
+                meetDescriptionRequestBody,
+                dateRequestBody,
+                timeRequestBody,
+                radioRequestBody,
+                imagePart
+        ).enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                binding.progressBar.setVisibility(View.GONE);
+                if (response.isSuccessful()) {
+                    Toast.makeText(CreateMeetActivity.this, "Updated Successfully", Toast.LENGTH_SHORT).show();
+                } else {
+                    handleErrorResponse(response);
                 }
+            }
 
-                @Override
-                public void onFailure(Call<ResponseBody> call, Throwable t) {
-                    binding.progressBar.setVisibility(View.GONE);
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                binding.progressBar.setVisibility(View.GONE);
+                Log.e(TAG, "Update failed", t);
+                Toast.makeText(CreateMeetActivity.this, "Update failed: " + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 
-                    Toast.makeText(CreateMeetActivity.this, t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-                }
-            });
+    private void handleErrorResponse(Response<?> response) {
+        if (response.errorBody() != null) {
+            try {
+                String errorBody = response.errorBody().string();
+                Log.e(TAG, "Error response: " + errorBody);
+                Toast.makeText(CreateMeetActivity.this, "Error: " + errorBody, Toast.LENGTH_SHORT).show();
+            } catch (IOException e) {
+                Log.e(TAG, "Error reading error body", e);
+                Toast.makeText(CreateMeetActivity.this, "Error occurred. Please try again.", Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            Toast.makeText(CreateMeetActivity.this, "Unknown error occurred", Toast.LENGTH_SHORT).show();
         }
     }
 }

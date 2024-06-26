@@ -67,6 +67,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/downlaodbtn"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -135,6 +136,7 @@
 
         </LinearLayout>
 
+
         <LinearLayout
             android:id="@+id/unpin"
             android:layout_width="match_parent"
@@ -192,6 +194,34 @@
 
         </LinearLayout>
 
+        <LinearLayout
+            android:id="@+id/update_post"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_38sdp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="@dimen/_22sdp"
+                android:layout_height="@dimen/_22sdp"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:importantForAccessibility="no"
+                android:src="@drawable/upload"
+                app:tint="@color/green" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:text="Update Broadcast"
+                android:textColor="@color/green"
+                android:textSize="18sp" />
+
+        </LinearLayout>
 
     </LinearLayout>
 

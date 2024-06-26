@@ -1,7 +1,24 @@
 package com.nirmiteepublic.clink.models;
 
 public class BroadcastModel {
-    private String type, broadcastID, num, profileDP, username, description, time, pinned;
+    private String type;
+    private String broadcastID;
+    private String num;
+    private String profileDP;
+    private String username;
+    private String description;
+    private String time;
+    private String pinned;
+
+    public String get_id() {
+        return _id;
+    }
+
+    public void set_id(String _id) {
+        this._id = _id;
+    }
+
+    private String _id;
     private int likes, comments;
     private boolean isLiked;
 

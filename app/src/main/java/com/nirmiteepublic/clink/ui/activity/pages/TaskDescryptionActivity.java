@@ -21,7 +21,6 @@ import com.nirmiteepublic.clink.models.Task;
 import com.nirmiteepublic.clink.models.TaskModelResponse;
 import com.nirmiteepublic.clink.models.UserDataPrimary;
 import com.nirmiteepublic.clink.models.UserModelPrimary;
-import com.pegalite.popups.DialogData;
 import com.pegalite.popups.PegaProgressDialog;
 
 import org.json.JSONException;
@@ -43,6 +42,9 @@ public class TaskDescryptionActivity extends PegaAppCompatActivity {
     String taskID;
     boolean userCompletedTask = false;
 
+    boolean EditTask;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +54,10 @@ public class TaskDescryptionActivity extends PegaAppCompatActivity {
         binding.progressBar.setVisibility(View.VISIBLE);
 
 
+
+
+
+
         setWindowThemeSecond();
 
         Glide.with(this)
@@ -59,6 +65,17 @@ public class TaskDescryptionActivity extends PegaAppCompatActivity {
                 .placeholder(R.drawable.default_image)
                 .error(R.drawable.default_image)
                 .into(binding.imgProfile);
+
+        binding.edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent sendIntent=new Intent(TaskDescryptionActivity.this,CreateTaskActivity.class);
+                sendIntent.putExtra("EDITTASK",true);
+                sendIntent.putExtra("TaskId",taskID);
+                Toast.makeText(TaskDescryptionActivity.this, ""+taskID, Toast.LENGTH_SHORT).show();
+                startActivity(sendIntent);
+            }
+        });
 
         Intent intent = getIntent();
         if (intent.hasExtra("imageID") && intent.hasExtra("taskID")) {

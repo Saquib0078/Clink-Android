@@ -25,6 +25,15 @@ public class Task{
 	private String time;
 	private String status;
 	private String updatedAt;
+	private String imageID;
+
+	public String getImageID() {
+		return imageID;
+	}
+
+	public void setImageID(String imageID) {
+		this.imageID = imageID;
+	}
 
 	public void setDate(String date){
 		this.date = date;

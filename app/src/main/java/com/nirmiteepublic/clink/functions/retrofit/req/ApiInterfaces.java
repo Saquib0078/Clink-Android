@@ -6,6 +6,7 @@ import com.nirmiteepublic.clink.models.ApiResponse;
 import com.nirmiteepublic.clink.models.ChipBtnResponse;
 import com.nirmiteepublic.clink.models.GraphicModelResponse;
 import com.nirmiteepublic.clink.models.GraphicsModelGson;
+import com.nirmiteepublic.clink.models.MeetModel;
 import com.nirmiteepublic.clink.models.MergedUserResponse;
 import com.nirmiteepublic.clink.models.NotificationModel;
 import com.nirmiteepublic.clink.models.Response;
@@ -71,6 +72,10 @@ public interface ApiInterfaces {
             @Path("id") String meetid,
             @Body Map<String, Boolean> live
     );
+
+    @Headers("Content-Type: application/json")
+    @GET("/meeting/liveMeetings/{id}")
+    Call<MeetModel> getMeetById(@Path("id") String id);
 
     @Headers("Content-Type: application/json")
     @GET("/user/controllers/getUsers")
@@ -204,6 +209,30 @@ public interface ApiInterfaces {
     );
 
     @Multipart
+    @PUT("/meeting/updateMeet/{id}")
+    Call<ResponseBody> updateMeet(
+            @Path("id") String id,
+            @Part("meetName") RequestBody meetName,
+            @Part("meetDescription") RequestBody meetDescription,
+            @Part("time") RequestBody time,
+            @Part("date") RequestBody date,
+            @Part("radioButtonValue") RequestBody radioButtonValue,
+            @Part MultipartBody.Part imageID
+    );
+
+    @Multipart
+    @PUT("/task/task/{id}")
+    Call<ResponseBody> updateTask(
+            @Path("id") String id,
+            @Part("taskName") RequestBody meetName,
+            @Part("taskDescription") RequestBody meetDescription,
+            @Part("time") RequestBody time,
+            @Part("date") RequestBody date,
+            @Part("radioButtonValue") RequestBody radioButtonValue,
+            @Part MultipartBody.Part imageID
+    );
+
+    @Multipart
     @POST("/task/task")
     Call<ResponseBody> publishTask(
             @Part("taskName") RequestBody taskName,
@@ -271,6 +300,10 @@ public interface ApiInterfaces {
     @GET("/user/controllers/getUserDetails/{num}")
     Call<ResponseBody> getUserData(@Path("num") String num);
 
+
+    @Headers("Content-Type: application/json")
+    @GET("/user/getBroadcast/{id}")
+    Call<ResponseBody> getBroadcastById(@Path("id") String num);
     @Headers("Content-Type: application/json")
     @GET("/user/controllers/getUserAccepted")
     Call<Response> getUserAccepted();
@@ -324,6 +357,14 @@ public interface ApiInterfaces {
             @Path("sliderId") String sliderId,
             @Part MultipartBody.Part imageUrl
 
+    );
+
+    @Multipart
+    @PUT("/user/controllers/publishBroadcast/{broadcastID}")
+    Call<ResponseBody> UpdateBroadcast(
+            @Path("broadcastID") String broadcastID,
+            @Part("description") RequestBody description,
+            @Part MultipartBody.Part imageID
     );
 
 

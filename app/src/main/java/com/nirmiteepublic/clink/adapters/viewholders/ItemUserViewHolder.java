@@ -63,7 +63,7 @@ public class ItemUserViewHolder extends RecyclerView.ViewHolder {
                     Intent intent = new Intent(context, GetNetworkDetail.class);
                     intent.putExtra("userId", userModel.get_id());
                     context.startActivity(intent);
-                    Toast.makeText(context, userModel.get_id(), Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(context, userModel.get_id(), Toast.LENGTH_SHORT).show();
 
                 }
             });

@@ -90,15 +90,14 @@
                 android:layout_margin="@dimen/_5sdp"
                 android:layout_weight="1"
                 android:background="@drawable/input_box_bg"
-                android:gravity="center"
-                android:orientation="horizontal">
+                android:gravity="center_vertical"                android:orientation="horizontal">
 
-                <EditText
+                <TextView
                     android:id="@+id/fname"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@null"
-                    android:hint="First Name"
+                    android:gravity="center_vertical"                    android:hint="First Name"
                     android:inputType="text"
                     android:paddingStart="@dimen/_15sdp"
                     android:paddingEnd="@dimen/_11sdp"
@@ -113,16 +112,16 @@
                 android:layout_margin="@dimen/_5sdp"
                 android:layout_weight="1"
                 android:background="@drawable/input_box_bg"
-                android:gravity="center"
-                android:orientation="horizontal">
+                android:gravity="center_vertical"                android:orientation="horizontal">
 
-                <EditText
+                <TextView
                     android:id="@+id/lname"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:autofillHints="phone"
                     android:background="@null"
-                    android:hint="Last Name"
+                    android:gravity="center_vertical"                    android:hint="Last Name"
+
                     android:inputType="text"
                     android:paddingStart="@dimen/_15sdp"
                     android:paddingEnd="@dimen/_11sdp"
@@ -132,6 +131,8 @@
 
 
         </LinearLayout>
+
+
 
         <LinearLayout
             android:layout_width="match_parent"

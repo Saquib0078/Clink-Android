@@ -3,6 +3,7 @@ package com.nirmiteepublic.clink.adapters.viewholders;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.view.View;
 import android.widget.Toast;
 
@@ -51,10 +52,20 @@ public class ItemTaskViewHolder extends RecyclerView.ViewHolder {
             });
         }
 
+        itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent();
+                intent.putExtra("TaskId",taskModel.getId());
+                context.startActivity(intent);
+            }
+        });
         binding.taskName.setText(taskModel.getTaskName());
         binding.date.setText(taskModel.getDate());
         binding.taskDescription.setText(taskModel.getTaskDescription());
         binding.time.setText(taskModel.getTime());
+
+
     }
 
     private void showDeleteConfirmationDialog() {

@@ -66,21 +66,32 @@
                         android:text="Meeting Details"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_15sdp"
+
                         android:textStyle="bold" />
+
+
                 </LinearLayout>
 
-                <ImageView
-                    android:id="@+id/viewUsers"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/_40sdp"
-                    android:layout_weight="0.2"
-                    android:backgroundTint="@color/white"
-                    android:gravity="end"
-                    android:src="@drawable/group"
-                    android:text="View"
-                    android:visibility="gone"
+<!--                <ImageView-->
+<!--                    android:id="@+id/viewUsers"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="@dimen/_40sdp"-->
+<!--                    android:layout_weight="0.2"-->
+<!--                    android:gravity="end"-->
+<!--                    android:src="@drawable/group"-->
+<!--                    android:text="View"-->
+<!--                    android:visibility="visible"-->
 
-                    />
+<!--                    app:tint="@color/white" />-->
+                <ImageView
+                    android:id="@+id/edit"
+                    android:layout_width="@dimen/_30sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:src="@drawable/editing"
+                    android:layout_margin="@dimen/_5sdp"
+                    android:backgroundTint="@color/white"
+                    android:layout_gravity="end"
+                    app:tint="@color/white" />
             </LinearLayout>
 
             <ImageView

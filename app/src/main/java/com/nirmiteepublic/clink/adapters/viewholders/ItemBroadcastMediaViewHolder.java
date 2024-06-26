@@ -12,34 +12,22 @@ import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
-import android.media.MediaPlayer;
 import android.media.MediaScannerConnection;
-import android.media.browse.MediaBrowser;
 import android.net.Uri;
 import android.os.Environment;
-import android.support.v4.media.session.PlaybackStateCompat;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
-import android.widget.MediaController;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
-import androidx.lifecycle.DefaultLifecycleObserver;
-import androidx.lifecycle.LifecycleOwner;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -47,11 +35,8 @@ import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 import com.google.android.exoplayer2.ExoPlayer;
 import com.google.android.exoplayer2.MediaItem;
-import com.google.android.exoplayer2.PlaybackException;
 import com.google.android.exoplayer2.Player;
 import com.google.android.exoplayer2.SimpleExoPlayer;
-import com.google.android.exoplayer2.ui.PlayerView;
-import com.google.android.exoplayer2.video.VideoSize;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.nirmiteepublic.clink.R;
 import com.nirmiteepublic.clink.databinding.BottomSheetBroadcastThreeDotsBinding;
@@ -64,14 +49,19 @@ import com.nirmiteepublic.clink.functions.utils.Utils;
 import com.nirmiteepublic.clink.functions.viewmanagers.PegaAppCompatActivity;
 import com.nirmiteepublic.clink.models.BroadcastModel;
 import com.nirmiteepublic.clink.ui.activity.pages.broadcast.CommentBroadcastActivity;
+import com.nirmiteepublic.clink.ui.activity.pages.broadcast.UpdateBroadcast;
 import com.nirmiteepublic.clink.ui.activity.pages.broadcast.VideoPlayerActivity;
-
 
 import org.json.JSONObject;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ItemBroadcastMediaViewHolder extends RecyclerView.ViewHolder {
 
@@ -163,6 +153,7 @@ public class ItemBroadcastMediaViewHolder extends RecyclerView.ViewHolder {
             }
         });
 
+
         if (UserUtils.isAdmin()) {
             binding.threeDots.setVisibility(View.VISIBLE);
             binding.threeDots.setOnClickListener(v -> {
@@ -176,9 +167,12 @@ public class ItemBroadcastMediaViewHolder extends RecyclerView.ViewHolder {
 
                 if (UserUtils.isSuperAdmin() || UserUtils.getUserNumber().equals(model.getNum())) {
                     threeDotsBinding.deletePost.setVisibility(View.VISIBLE);
+                    threeDotsBinding.updatePost.setVisibility(View.VISIBLE);
                 }
 
                 if (UserUtils.isAdmin()) {
+
+
                     if (model.getPinned() == null) {
                         threeDotsBinding.pin.setVisibility(View.VISIBLE);
                         threeDotsBinding.unpin.setVisibility(View.GONE);
@@ -195,6 +189,20 @@ public class ItemBroadcastMediaViewHolder extends RecyclerView.ViewHolder {
                         });
                     }
                 }
+
+                threeDotsBinding.updatePost.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent=new Intent(context, UpdateBroadcast.class);
+                        intent.putExtra("desc",model.getDescription());
+                        intent.putExtra("type",model.getType());
+                        intent.putExtra("broadcastId",model.getBroadcastID());
+                        intent.putExtra("isImage",model.isImage());
+                        context.startActivity(intent);
+                        getBroadcastbyId(model.getBroadcastID());
+                    }
+                });
+
 
                 threeDotsBinding.deletePost.setOnClickListener(v13 -> {
                     bottomSheetDialog.cancel();
@@ -218,6 +226,29 @@ public class ItemBroadcastMediaViewHolder extends RecyclerView.ViewHolder {
                 });
             });
         }
+    }
+
+
+    private void getBroadcastbyId(String id) {
+        RetrofitClient.getInstance(context).getApiInterfaces().getBroadcastById(id).enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if (response.isSuccessful()) {
+                    Toast.makeText(context, "Success", Toast.LENGTH_SHORT).show();
+                    try {
+                        System.out.println(response.body().string());
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+
+            }
+        });
+
     }
 
     private void deleteBroadcast() {
@@ -471,6 +502,7 @@ public class ItemBroadcastMediaViewHolder extends RecyclerView.ViewHolder {
                 }
         );
     }
+
     private void clearDownloadView() {
         binding.progressBar.setVisibility(View.GONE);
         binding.postVideo.setVisibility(View.GONE);
@@ -498,6 +530,7 @@ public class ItemBroadcastMediaViewHolder extends RecyclerView.ViewHolder {
             binding.postVideo.setPlayer(null);
         }
     }
+
     public void muteVideo() {
         if (player != null) {
             player.setVolume(0f); // Set volume to 0 for muting

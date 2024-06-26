@@ -18,6 +18,7 @@ public class RetrofitClient {
 //    https://clink-production.up.railway.app/
     //"http://192.168.1.9:3000/"
 //    public static final String BASE_URL = "http://192.168.1.8:3000/";
+    //118.139.167.71
     public static final String BASE_URL = "http://118.139.167.71:3000/";
     public static final String MEDIA_BASE_URL = BASE_URL + "media/";
     public static final String USER_BASE_URL = BASE_URL + "user/";
@@ -27,6 +28,7 @@ public class RetrofitClient {
     public static final String MEETING_BASE_URL = BASE_URL + "meeting/";
     public static final String MEETIMAGE_BASE_URL = MEETING_BASE_URL + "getmeeting/";
     public static final String BROADCAST_URL = BASE_URL + "user/getUsermedia/";
+    public static final String BROADCAST_URL_1 = BASE_URL + "user/getBroadcastMedia/";
     public static final String TASK_BASE_URL = BASE_URL + "task/";
     public static final String TASKIMAGE_BASE_URL = TASK_BASE_URL + "getTask/";
     private static RetrofitClient retrofitClient;
