@@ -1,0 +1,61 @@
+<androidx.cardview.widget.CardView android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="@dimen/_6sdp"
+    app:cardElevation="@dimen/_3sdp"
+    android:layout_margin="@dimen/_2sdp"
+    android:padding="@dimen/_5sdp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- item_user_count.xml -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/text_district"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/_14ssp"
+
+            android:textStyle="bold"
+            android:padding="@dimen/_6sdp"/>
+
+        <TextView
+            android:id="@+id/text_tehsil"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/_12ssp"
+            android:padding="@dimen/_6sdp"/>
+
+        <TextView
+            android:id="@+id/text_village"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/_12ssp"
+            android:padding="@dimen/_6sdp"/>
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="horizontal">
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:textSize="@dimen/_12ssp"
+              android:text="Users:"
+              android:layout_marginStart="@dimen/_5sdp"
+              />
+          <TextView
+              android:id="@+id/text_count"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:textSize="@dimen/_12ssp"
+              android:textColor="@color/green"
+              android:padding="@dimen/_6sdp"/>
+      </LinearLayout>
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

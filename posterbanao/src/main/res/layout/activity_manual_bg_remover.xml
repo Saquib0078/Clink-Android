@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/mainLayOut"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="top"
+        android:orientation="vertical"
+        android:weightSum="10">
+
+        <LinearLayout
+            android:background="@color/backgroundColor"
+            android:id="@+id/topBar"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="top"
+            android:orientation="horizontal">
+            <ImageButton
+                android:id="@+id/back_btn"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:src="@drawable/ic_arrow_back" />
+            <ImageButton
+                android:id="@+id/resetBtn"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:padding="4dp"
+                android:src="@drawable/ic_restore" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+
+            <ImageButton
+                android:id="@+id/undoBtn"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:padding="4dp"
+                android:src="@drawable/ic_undo" />
+
+            <ImageButton
+                android:id="@+id/redoBtn"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:src="@drawable/ic_redo" />
+
+
+            <TextView
+                android:id="@+id/shareBtn"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn"
+                android:gravity="center"
+                android:onClick="use_poster"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="8dp"
+                android:text="@string/done"
+                android:textColor="@color/textColor"
+                android:textSize="17dp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/imageViewContainer"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="8"
+            android:background="@drawable/pattern">
+
+            <com.visticsolution.posterbanao.editor.imagecroper.views.TouchImageView
+                android:id="@+id/drawingImageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <com.visticsolution.posterbanao.editor.imagecroper.views.BrushView
+                android:id="@+id/brushContainingView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <ImageButton
+                android:id="@+id/fitBtn"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentRight="true"
+                android:background="@null"
+                android:src="@drawable/ic_fit_screen" />
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/bottomBar"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@color/backgroundColor"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center">
+
+                    <LinearLayout
+                        android:id="@+id/widthcontainer"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:weightSum="12">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="bottom"
+                            android:layout_weight="2"
+                            android:gravity="center"
+                            android:paddingLeft="2dp"
+                            android:text="Size"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:textColor="@color/textColor" />
+
+                        <app.minimize.com.seek_bar_compat.SeekBarCompat
+                            android:id="@+id/widthSeekBar"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="4"
+                            android:maxHeight="300sp"
+                            app:progressColor="@color/app_color"
+                            app:thumbColor="@color/app_color" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="bottom"
+                            android:layout_weight="2"
+                            android:gravity="center"
+                            android:paddingLeft="2dp"
+                            android:text="Offset"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:textColor="@color/textColor" />
+
+                        <app.minimize.com.seek_bar_compat.SeekBarCompat
+                            android:id="@+id/offsetSeekBar"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="4"
+                            android:maxHeight="300sp"
+                            app:progressColor="@color/app_color"
+                            app:thumbColor="@color/app_color" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/thresholdcontainer"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:visibility="gone"
+                        android:weightSum="10">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="bottom"
+                            android:layout_weight="3"
+                            android:gravity="center"
+                            android:paddingLeft="10dp"
+                            android:text="Threshold"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:textColor="@color/textColor" />
+
+                        <app.minimize.com.seek_bar_compat.SeekBarCompat
+                            android:id="@+id/thresholdSeekBar"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="7"
+                            android:maxHeight="300sp"
+                            app:progressColor="@color/app_color"
+                            app:thumbColor="@color/app_color" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/bg_buttons"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:visibility="invisible"
+                        android:weightSum="3">
+
+                        <ImageButton
+                            android:id="@+id/trans_button"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_margin="5dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:src="@drawable/ic_right_arrow" />
+
+                        <ImageButton
+                            android:id="@+id/white_button"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:src="@android:color/background_light" />
+
+                        <ImageButton
+                            android:id="@+id/black_button"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:src="@android:color/background_dark" />
+                    </LinearLayout>
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/bottomBar1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:weightSum="6">
+
+            <ImageButton
+                android:id="@+id/eraseBtn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:src="@drawable/ic_eraser"
+                app:tint="@color/textColor" />
+
+            <ImageButton
+                android:id="@+id/targetAreaBtn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:src="@drawable/ic_magic"
+                app:tint="@color/textColor" />
+
+            <ImageButton
+                android:id="@+id/lassoBtn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:src="@drawable/ic_lasso"
+                app:tint="@color/textColor" />
+
+            <ImageButton
+                android:id="@+id/restoreBtn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:src="@drawable/ic_restore_sim"
+                app:tint="@color/textColor" />
+
+            <ImageButton
+                android:id="@+id/softEdge"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:src="@drawable/ic_soft"
+                app:tint="@color/textColor" />
+
+            <ImageButton
+                android:id="@+id/zoomBtn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:src="@drawable/ic_zoom"
+                app:tint="@color/textColor" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
+</LinearLayout>

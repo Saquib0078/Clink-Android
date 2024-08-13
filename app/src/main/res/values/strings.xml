@@ -1,0 +1,81 @@
+<resources>
+    <string name="app_name">C Link</string>
+    <string name="network">Network</string>
+    <string name="broadcast">Broadcast</string>
+    <string name="graphics">Graphics</string>
+    <string name="task">Task</string>
+    <string name="meet">Meet</string>
+    <string name="msg_token_fmt">FCM Token: %s</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="view_all">View All</string>
+    <string name="live_now">Live Now</string>
+    <string name="app_description">Demo Description For App Clink</string>
+    <string name="amp"><![CDATA[&]]></string>
+    <string name="comments">Comments</string>
+    <string name="likes">Likes</string>
+
+    <string name="enter_password">Enter Password</string>
+    <string name="enter_number">Enter Number</string>
+    <string name="enter_first_name">First Name</string>
+    <string name="enter_last_name">Last Name</string>
+    <string name="enter_email">Enter Email</string>
+    <string name="enter_confirm_password">Enter Confirm Password</string>
+
+    <string name="need_help">Need Help ?</string>
+
+
+    <string name="register_description">Welcome, We are Happy to see yor here\nto continue please sign up first</string>
+    <string name="login_description">We are happy to see you again. To use your\naccount, you must Sign In first</string>
+    <string name="forgot_password_description">Don\'t worry! It happens. Please enter the phone number\nassociated with your account</string>
+    <string name="password_description">Complexity is the key to security, so forge a strong password like a master craftsman shaping a formidable shield</string>
+
+    <string name="create_new_account">Create New Account 🔥</string>
+    <string name="welcome_back">Welcome Back 👋</string>
+
+    <string name="register">Register</string>
+    <string name="login">Login</string>
+
+    <string name="submit">Submit</string>
+    <string name="confirm">Confirm</string>
+
+    <string name="already_have_an_account">Already have an Account? </string>
+    <string name="new_to_clink">New to Clink?</string>
+    <string name="set_password">Set Password</string>
+    <string name="average_engagement_time">Average Engagement Time: %d minutes</string>
+    <string name="user_activity_data">User Activity Data: %d</string>
+    <string name="enter_code">Enter Code</string>
+    <string name="activation_description">We\'ve sent an mail with activation code to the number</string>
+    <string name="default_timer">You can request to resend otp in : 2:30</string>
+    <string name="continue_next">Next</string>
+    <string name="view">View</string>
+    <string name="search_here">Search Here</string>
+    <string name="pin">Pin</string>
+    <string name="unpin">Unpin</string>
+    <string name="delete">Delete</string>
+    <string name="download">Download</string>
+    <string name="share">Share</string>
+    <string name="reply">Reply</string>
+    <string name="add_a_comment">Add a comment</string>
+    <string name="post">Post</string>
+    <string name="publish">Publish</string>
+    <string name="description">Description</string>
+    <string name="default_notification_channel_id">C-Link-Channel</string>
+
+    <string-array name="gender_array">
+        <item>Select Gender</item>
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+
+    <string-array name="age_range">
+        <item>Select Age Range</item>
+        <item>18-25</item>
+        <item>26-35</item>
+        <item>36-45</item>
+        <item>46-55</item>
+        <item>56-65</item>
+        <item>66-100</item>
+    </string-array>
+
+</resources>

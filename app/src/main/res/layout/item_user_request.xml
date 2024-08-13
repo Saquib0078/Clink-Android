@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/_6sdp"
+    android:background="@drawable/round_white_solid_bg"
+    android:baselineAligned="false"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:padding="@dimen/_10sdp">
+
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.2">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/userImage"
+            android:layout_width="@dimen/_45sdp"
+            android:layout_height="@dimen/_45sdp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/default_image" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.4"
+        android:id="@+id/linear"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/userName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:gravity="center"
+            android:textColor="@color/charcoal"
+            android:textSize="@dimen/_15sdp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/requesttype"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pending"
+            android:textSize="@dimen/_15sdp"
+            android:layout_marginStart="@dimen/_15sdp"
+            android:textColor="@color/green"
+             />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="0.5"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_5sdp"
+        >
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/accept"
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:background="@drawable/sign_enabled"
+            android:text="Accept"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:backgroundTint="@color/green"
+            android:textColor="@color/white"
+            />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/reject"
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:background="@drawable/sign_enabled"
+            android:backgroundTint="@color/red"
+            android:text="Reject"
+            android:textColor="@color/white"
+            />
+
+    </LinearLayout>
+
+
+</LinearLayout>

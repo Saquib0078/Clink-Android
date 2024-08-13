@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <ImageView
+        android:id="@+id/iv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:src="@drawable/btxt0"/>
+
+    <com.maggie.stroketextviewlibrary.StrokeTextView
+        android:layout_margin="@dimen/_15sdp"
+        android:id="@+id/number"
+        android:layout_centerHorizontal="true"
+        android:drawableLeft="@drawable/ic_call"
+        android:drawablePadding="@dimen/_5sdp"
+        android:layout_marginTop="-3dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0123456789"
+        android:textSize="15sp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/calibrid"
+        app:stroke="5.0"
+        app:strokeColor="#000000"/>
+
+
+    <LinearLayout
+        android:id="@+id/bgView"
+        android:layout_below="@+id/iv"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:paddingLeft="@dimen/_10sdp"
+        android:gravity="center_vertical"
+        android:background="#FFFFFF"
+        android:orientation="vertical">
+        <com.maggie.stroketextviewlibrary.StrokeTextView
+            android:id="@+id/user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" Hello Android! "
+            android:textSize="20sp"
+            android:textColor="#FFFFFF"
+            android:fontFamily="@font/calibrid"
+            app:stroke="5.0"
+            app:strokeColor="#000000"/>
+        <com.maggie.stroketextviewlibrary.StrokeTextView
+            android:id="@+id/designation"
+            android:layout_marginTop="-3dp"
+            android:layout_marginLeft="@dimen/_3sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" Hello Android! "
+            android:textSize="13sp"
+            android:textColor="#000000"
+            app:stroke="0.0"
+            app:strokeColor="#000000"
+            android:fontFamily="@font/calibrid"/>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/imgLay"
+        android:layout_alignBottom="@+id/bgView"
+        android:layout_width="@dimen/_100sdp"
+        android:layout_height="@dimen/_100sdp"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:layout_marginEnd="@dimen/_8sdp"
+        android:layout_marginBottom="@dimen/_8sdp">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="@dimen/_80sdp"
+            android:layout_centerInParent="true"
+            android:rotation="-15"
+            app:cardBackgroundColor="#4CAF50"
+            app:cardCornerRadius="@dimen/_8sdp" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="@dimen/_80sdp"
+            android:layout_centerInParent="true"
+            app:cardCornerRadius="@dimen/_8sdp">
+
+            <ImageView
+                android:id="@+id/profile_pic"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/flag_india" />
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+
+    <View
+        android:background="@drawable/right_rounded_bg"
+        android:backgroundTint="#FF9800"
+        android:layout_width="@dimen/_200sdp"
+        android:layout_height="@dimen/_5sdp"
+        android:layout_alignBottom="@+id/bgView"/>
+
+</RelativeLayout>

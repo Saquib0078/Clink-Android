@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+<ImageView
+    android:id="@+id/img"
+    android:layout_width="@dimen/_50sdp"
+    android:layout_height="@dimen/_50sdp"
+    android:src="@drawable/meet"/>
+
+    <Button
+        android:id="@+id/btnUploadImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Upload Image" />
+
+
+
+
+
+    <!-- Meet Name EditText -->
+    <EditText
+        android:id="@+id/editMeetName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Meet Name" />
+
+    <!-- Meet Description EditText -->
+    <EditText
+        android:id="@+id/editMeetDesc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Meet Description" />
+
+    <!-- Meet Date DatePicker -->
+    <Button
+        android:id="@+id/btnDatePicker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Pick Date" />
+
+    <!-- Button to open Time Picker -->
+    <Button
+        android:id="@+id/btnTimePicker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Pick Time" />
+    <Button
+        android:id="@+id/upload"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Upload" />
+    <!-- Toggle Button -->
+    <ToggleButton
+        android:id="@+id/toggleButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Live" />
+
+</LinearLayout>

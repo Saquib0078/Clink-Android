@@ -1,0 +1,152 @@
+plugins {
+    id 'com.onesignal.androidsdk.onesignal-gradle-plugin'
+    id 'com.android.application'
+    id 'com.google.gms.google-services'
+}
+
+android {
+    namespace 'com.nirmiteepublic.clink'
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "com.nirmiteepublic.clink"
+        minSdk 24
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+        renderscriptTargetApi 21
+        renderscriptSupportModeEnabled true
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    splits {
+        abi {
+            enable true
+            reset()
+            include 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64'
+//            include 'arm64-v8a','x86_64'
+            universalApk true
+        }
+    }
+
+
+    packagingOptions {
+//        exclude "lib/arm64-v8a/libc++_shared.so"
+        pickFirst "lib/arm64-v8a/libc++_shared.so"
+        pickFirst "lib/armeabi-v7a/libc++_shared.so"
+        pickFirst "lib/x86/libc++_shared.so"
+        pickFirst "lib/x86_64/libc++_shared.so"
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+//        debug {
+//            minifyEnabled true
+//            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+//        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    buildFeatures {
+        buildConfig true
+        dataBinding true
+        viewBinding true
+    }
+}
+
+dependencies {
+    implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.8.0"))
+    implementation "androidx.work:work-runtime:2.7.0" // Replace with the latest version
+
+//    implementation fileTree(dir: 'libs', include: ['*.jar'])
+//
+//    implementation files('libs/ds-photo-editor-sdk-v10.aar')
+
+    // SDK related dependencies
+    implementation 'org.jsoup:jsoup:1.14.3'
+
+
+    implementation 'com.facebook.shimmer:shimmer:0.5.0'
+
+    implementation 'io.github.ponnamkarthik:richlinkpreview:1.0.9'
+
+
+    implementation 'com.github.chrisbanes:PhotoView:2.3.0'
+
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.0'
+
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
+
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.5.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+
+    // For Server Connection
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+
+    // For JSON Processing
+    implementation 'com.google.code.gson:gson:2.10.1'
+
+    // For Popup Dialogs
+    implementation project(path: ':app:popups')
+    implementation 'com.github.dhaval2404:imagepicker:2.1'
+
+    // For Lottie Animation
+    implementation 'com.airbnb.android:lottie:6.0.0'
+
+    /* For Responsive Layout*/
+    implementation 'com.intuit.sdp:sdp-android:1.1.0'
+    implementation 'com.intuit.ssp:ssp-android:1.1.0'
+
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+    implementation "com.google.android.exoplayer:exoplayer:2.19.1"
+    implementation 'com.google.android.exoplayer:extension-mediasession:2.18.2'
+
+
+    /* Jitsi  */
+    implementation 'com.karumi:dexter:6.0.2'
+
+//    implementation 'org.jitsi.react:jitsi-meet-sdk:3.12.0'
+    // (other dependencies)
+    implementation('org.jitsi.react:jitsi-meet-sdk:+') { transitive = true }
+
+    /* Image Slider */
+    implementation 'com.github.smarteist:Android-Image-Slider:1.4.0'
+    implementation 'com.android.volley:volley:1.2.1'
+
+    /* Glide For Image Loading */
+    implementation 'com.github.bumptech.glide:glide:4.15.1'
+
+    // For Server Connection
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+
+    //YO-YO For Animations
+    implementation 'com.daimajia.androidanimations:library:2.4@aar'
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+
+    implementation 'com.github.marlonlom:timeago:4.0.3'
+    implementation 'com.google.firebase:firebase-messaging:23.4.0'
+    implementation 'com.google.firebase:firebase-analytics:21.5.1'
+    implementation 'com.google.firebase:firebase-inappmessaging-display:20.4.0'
+    implementation 'com.google.firebase:firebase-database:20.3.1'
+
+
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+
+    implementation project(':posterbanao')
+}
+
+configurations.implementation {
+    exclude group: 'org.jetbrains.kotlin', module: 'kotlin-stdlib-jdk8'
+}

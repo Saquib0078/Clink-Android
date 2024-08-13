@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/headerContainer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/_10sdp"
+    android:background="@drawable/header_bg"
+    android:gravity="center_vertical"
+    android:orientation="vertical"
+    android:paddingStart="@dimen/_11sdp"
+    android:paddingTop="@dimen/_5sdp"
+    android:paddingEnd="@dimen/_11sdp"
+    android:paddingBottom="@dimen/_10sdp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_15ssp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/greeting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_3sdp"
+                android:textColor="@color/white" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/broadcast"
+            android:layout_width="@dimen/_27sdp"
+            android:layout_height="@dimen/_27sdp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:background="@drawable/round_waterspout_bg"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/support"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="@dimen/_17sdp"
+                android:layout_height="@dimen/_17sdp"
+                android:layout_centerInParent="true"
+                android:importantForAccessibility="no"
+                android:src="@drawable/megaphone"
+                app:tint="@color/white" />
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/support"
+            android:layout_width="@dimen/_27sdp"
+            android:layout_height="@dimen/_27sdp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:background="@drawable/round_waterspout_bg"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/user"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="@dimen/_17sdp"
+                android:layout_height="@dimen/_17sdp"
+                android:layout_centerInParent="true"
+                android:importantForAccessibility="no"
+                android:src="@drawable/customer_service"
+                app:tint="@color/white" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/user"
+            android:layout_width="@dimen/_27sdp"
+            android:layout_height="@dimen/_27sdp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:background="@drawable/round_waterspout_bg"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/linear"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="@dimen/_17sdp"
+                android:layout_height="@dimen/_17sdp"
+                android:layout_centerInParent="true"
+                android:importantForAccessibility="no"
+                android:src="@drawable/user"
+                app:tint="@color/white" />
+
+        </RelativeLayout>
+
+       <LinearLayout
+           android:id="@+id/linear"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal"
+
+           app:layout_constraintBottom_toBottomOf="parent"
+           app:layout_constraintEnd_toEndOf="parent"
+           app:layout_constraintTop_toTopOf="parent">
+           <RelativeLayout
+               android:id="@+id/notification"
+               android:layout_width="@dimen/_27sdp"
+               android:layout_height="@dimen/_27sdp"
+               android:layout_toStartOf="@+id/user"
+               android:layout_marginEnd="@dimen/_10sdp"
+               android:background="@drawable/round_waterspout_bg"
+               app:layout_constraintBottom_toBottomOf="parent"
+               app:layout_constraintEnd_toEndOf="parent"
+               app:layout_constraintTop_toTopOf="parent">
+
+               <RelativeLayout
+                   android:layout_width="@dimen/_17sdp"
+                   android:layout_height="wrap_content"
+                   android:layout_centerInParent="true"
+                   tools:ignore="UselessParent">
+
+                   <ImageView
+                       android:id="@+id/bell"
+                       android:layout_width="@dimen/_17sdp"
+                       android:layout_height="@dimen/_17sdp"
+                       android:importantForAccessibility="no"
+                       android:src="@drawable/notification"
+                       app:tint="@color/white" />
+
+                   <RelativeLayout
+                       android:id="@+id/notificationdot"
+                       android:layout_width="@dimen/_6sdp"
+                       android:layout_height="@dimen/_6sdp"
+                       android:visibility="visible"
+                       android:layout_alignParentEnd="true"
+                       android:background="@drawable/red_dot" />
+               </RelativeLayout>
+
+           </RelativeLayout>
+
+           <RelativeLayout
+               android:id="@+id/request"
+               android:layout_width="@dimen/_27sdp"
+               android:layout_height="@dimen/_27sdp"
+               android:layout_alignParentEnd="true"
+               android:background="@drawable/round_waterspout_bg"
+               android:visibility="visible"
+               app:layout_constraintBottom_toBottomOf="parent"
+               app:layout_constraintStart_toStartOf="@+id/notification"
+               app:layout_constraintTop_toTopOf="parent">
+
+               <ImageView
+                   android:layout_width="@dimen/_17sdp"
+                   android:layout_height="@dimen/_17sdp"
+                   android:layout_centerInParent="true"
+                   android:importantForAccessibility="no"
+                   android:src="@drawable/request"
+                   app:tint="@color/white" />
+
+           </RelativeLayout>
+
+       </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</LinearLayout>
+

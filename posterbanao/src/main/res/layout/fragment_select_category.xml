@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".dialog.SelectCategoryFragment">
+    <RelativeLayout
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/app_color">
+
+        <ImageButton
+            android:id="@+id/back_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:padding="15dp"
+            android:src="@drawable/ic_arrow_back"
+            app:tint="@color/white" />
+
+        <TextView
+            android:id="@+id/title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/back_btn"
+            android:text="@string/withdraw"
+            android:textColor="@color/white"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/save_btn"
+            android:textStyle="bold"
+            android:paddingHorizontal="@dimen/_20sdp"
+            android:paddingVertical="@dimen/_8sdp"
+            android:layout_marginRight="@dimen/_8sdp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn"
+            android:backgroundTint="@color/white"
+            android:gravity="center"
+            android:text="@string/next"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_15sdp" />
+
+    </RelativeLayout>
+    <LinearLayout
+        android:background="@color/backgroundColor"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <EditText
+            android:layout_margin="@dimen/_8sdp"
+            android:id="@+id/search_et"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn"
+            android:backgroundTint="#408C8C8C"
+            android:hint="@string/search_hint"
+            android:textColor="@color/textColor"
+            android:textColorHint="@color/hintColor"
+            android:paddingVertical="@dimen/_10sdp"
+            android:paddingHorizontal="@dimen/_15sdp"
+            android:inputType="text"
+            android:imeOptions="actionSearch"
+            android:drawableLeft="@drawable/ic_search"
+            android:drawableTint="@color/textColor"
+            android:drawablePadding="@dimen/_12sdp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_category_list" />
+
+    </LinearLayout>
+</LinearLayout>

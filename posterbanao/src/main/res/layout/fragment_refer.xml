@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:background="@color/backgroundColor"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.ReferFragment">
+    <RelativeLayout
+        android:background="@color/app_color"
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <ImageButton
+            android:id="@+id/back_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:padding="15dp"
+            android:src="@drawable/ic_arrow_back"
+            app:tint="@color/white" />
+
+        <TextView
+            android:id="@+id/title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/back_btn"
+            android:text="@string/refer_earn"
+            android:textColor="@color/white"
+            android:textSize="16dp"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_200sdp">
+        <LinearLayout
+            android:padding="@dimen/_10sdp"
+            android:gravity="center_vertical"
+            android:layout_toLeftOf="@id/referimg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:textStyle="bold"
+                android:textAllCaps="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/refer_earn"
+                android:textColor="@color/textColor"
+                android:textSize="16dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Invite your friend and earn money"
+                android:textColor="@color/hintColor"
+                android:textSize="12dp"/>
+
+            <LinearLayout
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <LinearLayout
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:src="@drawable/ic_share"
+                        android:padding="@dimen/_3sdp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/circle_drawable"
+                        app:tint="@color/white" />
+                    <TextView
+                        android:gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/share_link_amp_refer_user"
+                        android:textColor="@color/hintColor"
+                        android:textSize="7dp"/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:src="@drawable/ic_down_open"
+                        android:padding="@dimen/_3sdp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/circle_drawable"
+                        app:tint="@color/white" />
+                    <TextView
+                        android:id="@+id/install_v"
+                        android:gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/install_enter_your_refer_code"
+                        android:textColor="@color/hintColor"
+                        android:textSize="7dp"/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:src="@drawable/ic_king"
+                        android:padding="@dimen/_3sdp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/circle_drawable"
+                        app:tint="@color/white" />
+                    <TextView
+                        android:id="@+id/subscription_tv"
+                        android:gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/now_reward_on_your_wallet"
+                        android:textColor="@color/hintColor"
+                        android:textSize="7dp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+        <ImageView
+            android:id="@+id/referimg"
+            android:padding="@dimen/_10sdp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:adjustViewBounds="true"
+            android:layout_width="@dimen/_200sdp"
+            android:layout_height="match_parent"
+            android:src="@drawable/refer_and_earn"/>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tvReferraltext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="Copy Your Referral Code Here: "
+        android:textColor="@color/black"
+        android:textIsSelectable="true"
+        android:textSize="@dimen/_15sdp" />
+
+    <LinearLayout
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/refer_code"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:background="@drawable/rounded_dash_bg"
+            android:text="FF45A8X"
+            android:paddingHorizontal="@dimen/_18sdp"
+            android:textSize="@dimen/_18sdp"
+            android:textStyle="bold"
+            android:letterSpacing="0.5"/>
+        <ImageView
+            android:id="@+id/copyBtn"
+            android:layout_marginLeft="@dimen/_5sdp"
+            android:background="@drawable/rounded_dash_bg"
+            android:backgroundTint="@color/app_color"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:src="@drawable/ic_copy"
+            android:padding="@dimen/_10sdp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:padding="@dimen/_8sdp"
+        android:gravity="center_vertical"
+        android:background="@drawable/full_rounded_bg"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+        <ImageView
+            android:padding="@dimen/_2sdp"
+            android:layout_marginLeft="@dimen/_5sdp"
+            android:src="@drawable/ic_whatsapp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            app:tint="@color/white" />
+        <ImageView
+            android:layout_marginLeft="@dimen/_5sdp"
+            android:src="@drawable/ic_facebook"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            app:tint="@color/white"/>
+        <ImageView
+            android:layout_marginLeft="@dimen/_5sdp"
+            android:src="@drawable/ic_instagram"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            app:tint="@color/white"/>
+
+        <LinearLayout
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Click invite to share"
+                android:drawablePadding="@dimen/_5sdp"
+                android:textColor="@color/white"
+                android:textSize="13sp" />
+
+        </LinearLayout>
+        <TextView
+            android:id="@+id/inviteBtn"
+            android:layout_marginRight="@dimen/_8sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/invite"
+            android:textSize="@dimen/_12sdp"
+            android:background="@drawable/full_rounded_bg"
+            android:backgroundTint="#5CFFFFFF"
+            android:paddingHorizontal="@dimen/_20sdp"
+            android:paddingVertical="@dimen/_8sdp"
+            android:textColor="@color/white"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_margin="@dimen/_10sdp"
+        android:background="@drawable/btn"
+        android:backgroundTint="@color/editor_controller_bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/text"
+            android:layout_margin="@dimen/_10sdp"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/invited_users"
+            android:textColor="@color/textColor"
+            android:textSize="16dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_below="@id/text"
+            android:id="@+id/userList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:listitem="@layout/item_user_list"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="vertical"/>
+
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/no_data_layout"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="vertical">
+            <com.airbnb.lottie.LottieAnimationView
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="@dimen/_100sdp"
+                app:lottie_rawRes="@raw/no_data"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"/>
+            <TextView
+                android:layout_marginTop="@dimen/_5sdp"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/no_user_found"
+                android:textSize="16dp"
+                android:textColor="@color/textColor"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/there_is_no_data_so"
+                android:textSize="13dp"
+                android:textColor="@color/hintColor"/>
+        </LinearLayout>
+
+    </RelativeLayout>
+</LinearLayout>

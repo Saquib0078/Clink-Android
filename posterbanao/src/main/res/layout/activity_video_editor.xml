@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/app_color">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:padding="5dp"
+            android:src="@drawable/ic_arrow_back"
+            app:tint="@color/white" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.6"
+            android:text="Change Image"
+            android:textColor="@color/white"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/save_video"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn"
+            android:backgroundTint="@color/white"
+            android:gravity="center"
+            android:paddingStart="20dp"
+            android:paddingTop="8dp"
+            android:paddingEnd="20dp"
+            android:paddingBottom="8dp"
+            android:text="@string/export_amp_save"
+            android:textStyle="bold"
+            android:textColor="@color/black" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/bottom1"
+        android:layout_below="@+id/toolbar"
+        android:layout_margin="@dimen/_5sdp"
+        android:background="@color/white">
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="@dimen/_8sdp"
+            app:cardElevation="@dimen/_5sdp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.google.android.exoplayer2.ui.AspectRatioFrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_horizontal"
+                    app:resize_mode="fixed_width">
+
+                    <com.google.android.exoplayer2.ui.PlayerView
+                        android:id="@+id/exo_player_video_detail"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:controller_layout_id="@layout/item_player_controler"
+                        app:show_buffering="always"
+                        app:surface_type="texture_view"
+                        app:use_controller="true">
+
+                    </com.google.android.exoplayer2.ui.PlayerView>
+
+                    <ProgressBar
+                        android:id="@+id/progressBar_exoplayer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center" />
+                </com.google.android.exoplayer2.ui.AspectRatioFrameLayout>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:background="#00000000"
+                    android:contentDescription="@string/app_name"
+                    android:visibility="gone"
+                    app:srcCompat="@drawable/exo_icon_pause" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:background="#00000000"
+                    android:contentDescription="@string/app_name"
+                    android:visibility="gone"
+                    app:srcCompat="@drawable/exo_icon_play" />
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/layout_try_again"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/btn_try_again"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/_30sdp"
+                android:background="@drawable/full_rounded_bg"
+                android:paddingStart="@dimen/_25sdp"
+                android:paddingTop="@dimen/_5sdp"
+                android:paddingEnd="@dimen/_25sdp"
+                android:paddingBottom="@dimen/_5sdp"
+                android:text="@string/try_again"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_14sdp" />
+
+        </LinearLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/bottom1"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:padding="@dimen/_8sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_marginRight="@dimen/_4sdp"
+                android:layout_weight="1"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:background="@drawable/btn"
+                android:backgroundTint="#2196F3"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_50sdp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:background="@null"
+                    android:text="@string/change_music"
+                    android:textColor="@color/white"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="12dp"
+                    android:padding="5dp"
+                    android:background="@drawable/ic_circle"
+                    android:src="@drawable/music" />
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_marginLeft="4dp"
+                android:layout_weight="1"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:background="@drawable/btn"
+                android:backgroundTint="#3F51B5"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_50sdp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:background="@null"
+                    android:text="@string/change_text"
+                    android:textColor="@color/white"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="12dp"
+                    android:padding="5dp"
+                    android:background="@drawable/ic_circle"
+                    android:src="@drawable/text" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/num_img_list"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:layout_gravity="center_vertical" />
+
+    </LinearLayout>
+
+</RelativeLayout>

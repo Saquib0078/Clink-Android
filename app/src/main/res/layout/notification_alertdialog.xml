@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="@dimen/_8sdp"
+    app:cardElevation="@dimen/_3sdp"
+    android:layout_margin="@dimen/_5sdp"
+>
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:padding="@dimen/_10sdp"
+       android:orientation="vertical"
+     >
+       <TextView
+           android:layout_width="match_parent"
+           android:layout_height="@dimen/_45sdp"
+           android:text="Invite"
+           android:gravity="center"
+           android:textSize="@dimen/_15sdp"/>
+
+       <ImageView
+           android:id="@+id/img"
+           android:layout_width="match_parent"
+           android:layout_height="@dimen/_100sdp"
+           android:layout_margin="@dimen/_5sdp"
+           android:src="@drawable/meet" />
+       <androidx.appcompat.widget.AppCompatButton
+           android:id="@+id/btnUploadImage"
+           android:layout_width="match_parent"
+           android:layout_height="@dimen/_40sdp"
+           android:layout_marginStart="@dimen/_15sdp"
+           android:layout_marginEnd="@dimen/_15sdp"
+           android:layout_marginBottom="@dimen/_5sdp"
+           android:background="@drawable/sign_enabled"
+           android:text="Upload Image"
+           android:textColor="@color/white" />
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="@dimen/_45sdp"
+           android:layout_marginStart="@dimen/_10sdp"
+           android:layout_marginTop="@dimen/_10sdp"
+           android:layout_marginEnd="@dimen/_10sdp"
+
+           android:background="@drawable/input_box_bg"
+           android:gravity="center"
+           android:orientation="horizontal">
+
+           <EditText
+               android:id="@+id/title"
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:background="@null"
+               android:hint="Notification Title"
+               android:inputType="text"
+               android:paddingStart="@dimen/_15sdp"
+               android:paddingEnd="@dimen/_11sdp"
+               android:textColor="@color/black"
+               android:textColorHint="#AAAAAB" />
+       </LinearLayout>
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="@dimen/_100sdp"
+           android:layout_marginStart="@dimen/_10sdp"
+           android:layout_marginTop="@dimen/_10sdp"
+           android:layout_marginEnd="@dimen/_10sdp"
+           android:background="@drawable/input_box_bg"
+           android:gravity="center"
+           android:orientation="horizontal">
+
+           <EditText
+               android:id="@+id/descryption"
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:background="@null"
+               android:hint="Notification Descryption"
+               android:gravity="top"
+               android:inputType="textMultiLine"
+               android:layout_marginBottom="@dimen/_10sdp"
+               android:scrollHorizontally="false"
+               android:padding="@dimen/_15sdp"
+               android:textColor="@color/black"
+               android:textColorHint="#AAAAAB" />
+       </LinearLayout>
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="vertical">
+<!--           <RadioGroup-->
+<!--               android:id="@+id/radiogrp"-->
+<!--               android:layout_width="match_parent"-->
+<!--               android:layout_height="wrap_content"-->
+<!--               android:layout_marginTop="@dimen/_5sdp"-->
+<!--               android:orientation="horizontal"-->
+<!--               android:padding="@dimen/_5sdp"-->
+<!--               android:paddingStart="@dimen/_15sdp"-->
+<!--               android:paddingEnd="@dimen/_11sdp">-->
+
+<!--               <RadioButton-->
+<!--                   android:id="@+id/limited"-->
+<!--                   android:layout_width="0dp"-->
+<!--                   android:layout_height="wrap_content"-->
+<!--                   android:layout_weight="1"-->
+<!--                   android:text="Meeting" />-->
+
+<!--               <RadioButton-->
+<!--                   android:id="@+id/openall"-->
+<!--                   android:layout_width="0dp"-->
+<!--                   android:layout_height="wrap_content"-->
+<!--                   android:layout_weight="1"-->
+<!--                   android:text="Task" />-->
+<!--           </RadioGroup>-->
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:orientation="horizontal">
+               <Button
+                   android:id="@+id/invite"
+                   android:layout_width="0dp"
+                   android:layout_height="wrap_content"
+                   android:text="Invite Users"
+                   android:layout_weight="1"
+                   android:background="@drawable/sign_enabled"
+                   android:visibility="gone"
+                   android:layout_marginStart="@dimen/_15sdp"/>
+               <TextView
+                   android:id="@+id/selectedUsers"
+                   android:layout_width="0dp"
+                   android:layout_weight="1"
+                   android:visibility="gone"
+
+                   android:layout_height="wrap_content"
+                   android:background="@null"
+                   android:gravity="center_vertical"
+                   android:hint="0"
+                   android:inputType="text"
+                   android:paddingStart="@dimen/_15sdp"
+                   android:paddingEnd="@dimen/_11sdp"
+                   android:textColor="@color/black"
+                   android:textColorHint="#AAAAAB"
+                   android:textSize="@dimen/_15sdp" />
+           </LinearLayout>
+
+       </LinearLayout>
+
+       <androidx.appcompat.widget.AppCompatButton
+           android:id="@+id/send"
+           android:layout_width="match_parent"
+           android:layout_height="@dimen/_40sdp"
+           android:layout_marginStart="@dimen/_15sdp"
+           android:layout_marginTop="@dimen/_10sdp"
+           android:layout_marginEnd="@dimen/_15sdp"
+           android:layout_marginBottom="@dimen/_5sdp"
+           android:background="@drawable/sign_enabled"
+           android:text="Send"
+           android:textColor="@color/white" />
+
+   </LinearLayout>
+
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.IntroFragment">
+
+    <RelativeLayout
+        android:visibility="gone"
+        android:id="@+id/position_first"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_marginTop="@dimen/_80sdp"
+            android:layout_marginHorizontal="@dimen/_45sdp"
+            android:adjustViewBounds="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/a_intro_first_bg"/>
+
+        <LinearLayout
+            android:gravity="center"
+            android:layout_marginBottom="@dimen/_25sdp"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_above="@+id/page1tv">
+            <LinearLayout
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="All Types of "
+                    android:textStyle="bold"
+                    android:textSize="@dimen/_30sdp"
+                    android:textColor="@color/black"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Festival"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/_30sdp"
+                    android:textColor="@color/app_color"/>
+            </LinearLayout>
+            <LinearLayout
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/business"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/_30sdp"
+                    android:textColor="@color/app_color"/>
+                <TextView
+                    android:layout_marginHorizontal="@dimen/_5sdp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="&amp;"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/_30sdp"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/political"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/_30sdp"
+                    android:textColor="@color/app_color"/>
+            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Poster Available"
+                android:textStyle="bold"
+                android:textSize="@dimen/_30sdp"
+                android:textColor="@color/black"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/page1tv"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/next_btn"
+            android:textColor="@color/gray_darl"
+            android:textSize="@dimen/_15sdp"
+            android:layout_centerHorizontal="true"
+            android:text="@string/all_types_of_business_posters_festival_posters_and_indian_political_poster_can_be_create_esily"
+            android:gravity="center"
+            android:layout_marginHorizontal="@dimen/_20sdp"/>
+
+        <TextView
+            android:id="@+id/next_btn"
+            android:layout_marginBottom="@dimen/_30sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/full_rounded_bg"
+            android:backgroundTint="@color/app_color"
+            android:text="@string/next"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:textStyle="bold"
+            android:textSize="@dimen/_25sdp"
+            android:textColor="@color/white"
+            android:paddingHorizontal="@dimen/_80sdp"
+            android:paddingVertical="@dimen/_10sdp"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:visibility="gone"
+        android:id="@+id/position_second"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_marginTop="@dimen/_100sdp"
+            android:layout_marginHorizontal="@dimen/_65sdp"
+            android:adjustViewBounds="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/a_into_business_card"/>
+
+        <LinearLayout
+            android:gravity="center"
+            android:layout_marginBottom="@dimen/_25sdp"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_above="@+id/page2tv">
+            <LinearLayout
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Digital "
+                    android:textStyle="bold"
+                    android:textSize="@dimen/_30sdp"
+                    android:textColor="@color/black"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Business"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/_30sdp"
+                    android:textColor="@color/app_color"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" Card"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/_30sdp"
+                    android:textColor="@color/black"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_marginHorizontal="@dimen/_5sdp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="with just a few and"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/_30sdp"
+                    android:textColor="@color/black"/>
+
+            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="easy steps"
+                android:textStyle="bold"
+                android:textSize="@dimen/_30sdp"
+                android:textColor="@color/black"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/page2tv"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/next_btn2"
+            android:textColor="@color/gray_darl"
+            android:textSize="@dimen/_15sdp"
+            android:layout_centerHorizontal="true"
+            android:text="Easy to make Digital Business Card and Digital Visiting Card"
+            android:gravity="center"
+            android:layout_marginHorizontal="@dimen/_20sdp"/>
+
+        <TextView
+            android:id="@+id/next_btn2"
+            android:layout_marginBottom="@dimen/_30sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/full_rounded_bg"
+            android:backgroundTint="@color/app_color"
+            android:text="@string/next"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:textStyle="bold"
+            android:textSize="@dimen/_25sdp"
+            android:textColor="@color/white"
+            android:paddingHorizontal="@dimen/_80sdp"
+            android:paddingVertical="@dimen/_10sdp"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:visibility="gone"
+        android:id="@+id/position_third"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:layout_marginTop="@dimen/_100sdp"
+            android:layout_marginHorizontal="@dimen/_65sdp"
+            android:adjustViewBounds="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/a_intro_grow_bg"/>
+
+        <LinearLayout
+            android:gravity="center"
+            android:layout_marginBottom="@dimen/_25sdp"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_above="@+id/page3tv">
+            <LinearLayout
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Grow your "
+                    android:textStyle="bold"
+                    android:textSize="@dimen/_30sdp"
+                    android:textColor="@color/black"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Business"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/_30sdp"
+                    android:textColor="@color/app_color"/>
+            </LinearLayout>
+            <LinearLayout
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_marginHorizontal="@dimen/_5sdp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="using Social Media"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/_30sdp"
+                    android:textColor="@color/black"/>
+
+            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Marketing"
+                android:textStyle="bold"
+                android:textSize="@dimen/_30sdp"
+                android:textColor="@color/app_color"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/page3tv"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/next_btn3"
+            android:textColor="@color/gray_darl"
+            android:textSize="@dimen/_15sdp"
+            android:layout_centerHorizontal="true"
+            android:text="Earn more by using social media marketing to grow your business"
+            android:gravity="center"
+            android:layout_marginHorizontal="@dimen/_20sdp"/>
+
+        <TextView
+            android:id="@+id/next_btn3"
+            android:layout_marginBottom="@dimen/_30sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/full_rounded_bg"
+            android:backgroundTint="@color/app_color"
+            android:text="@string/get_start"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:textStyle="bold"
+            android:textSize="@dimen/_25sdp"
+            android:textColor="@color/white"
+            android:paddingHorizontal="@dimen/_80sdp"
+            android:paddingVertical="@dimen/_10sdp"/>
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:layout_marginHorizontal="@dimen/_20sdp"
+    android:background="@drawable/rounded_bg"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:gravity="center"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:layout_marginHorizontal="@dimen/_8sdp"
+        android:background="@drawable/top_rounded_bg"
+        android:backgroundTint="@color/black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_marginVertical="@dimen/_5sdp"
+            android:paddingHorizontal="@dimen/_5sdp"
+            android:layout_weight="1"
+            android:id="@+id/title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/add_profile"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="18dp" />
+        <Button
+            android:layout_marginRight="@dimen/_8sdp"
+            android:id="@+id/skip_btn"
+            android:textStyle="bold"
+            android:paddingHorizontal="@dimen/_20sdp"
+            android:paddingVertical="@dimen/_4sdp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/skip"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_15sdp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:padding="@dimen/_9sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <androidx.cardview.widget.CardView
+            android:layout_marginRight="@dimen/_8sdp"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="@dimen/_10sdp">
+            <LinearLayout
+                android:paddingVertical="@dimen/_10sdp"
+                android:background="@drawable/rounded_dash_bg"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_width="120dp"
+                    android:layout_height="80dp"
+                    android:background="@drawable/ic_circle"
+                    android:src="@drawable/a_business_type"/>
+                <TextView
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/bussiness_profile"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:textSize="15dp" />
+
+                <Button
+                    android:backgroundTint="@color/black"
+                    android:drawableTint="@color/white"
+                    android:drawableLeft="@drawable/ic_add"
+                    android:id="@+id/businessBtn"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/select"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="15dp" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_marginLeft="@dimen/_8sdp"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="@dimen/_10sdp">
+            <LinearLayout
+                android:background="@drawable/rounded_dash_bg"
+                android:paddingVertical="@dimen/_10sdp"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="120dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/a_political_leader"/>
+
+                <TextView
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/political_profile"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:textSize="15dp" />
+
+                <Button
+                    android:backgroundTint="@color/black"
+                    android:drawableTint="@color/white"
+                    android:drawableLeft="@drawable/ic_add"
+                    android:id="@+id/politicalBtn"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/select"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="15dp" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+</LinearLayout>

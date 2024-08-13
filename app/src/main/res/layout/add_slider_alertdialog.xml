@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="@dimen/_8sdp"
+    app:cardElevation="@dimen/_3sdp"
+    android:layout_margin="@dimen/_5sdp"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_10sdp"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_45sdp"
+            android:text="Add Roles"
+            android:gravity="center"
+            android:textSize="@dimen/_15sdp"/>
+
+        <LinearLayout
+            android:id="@+id/Role"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp"
+            android:visibility="visible"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:background="@drawable/input_box_bg"
+            android:gravity="center"
+            android:clickable="true"
+            android:orientation="horizontal"
+            android:transitionName="number_trans">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/role"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:hint="Role"
+                android:inputType="text"
+                android:paddingStart="@dimen/_15sdp"
+                android:paddingEnd="@dimen/_11sdp"
+                android:textColor="@color/black"
+                android:textColorHint="#AAAAAB" />
+
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/updaterole"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginStart="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_15sdp"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:background="@drawable/sign_enabled"
+            android:text="Add Role"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

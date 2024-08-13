@@ -1,0 +1,41 @@
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+        maven {
+            url "https://s3-ap-southeast-1.amazonaws.com/godel-release/godel/"
+        }
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        jcenter()
+        maven {
+            url "https://github.com/jitsi/jitsi-maven-repository/raw/master/releases"
+        }
+        maven { url "https://jitpack.io"}
+        maven {
+            url "https://s3-ap-southeast-1.amazonaws.com/godel-release/godel/"
+        }
+        maven {
+            url "https://artifactory.paytm.in/libs-release-local"
+        }
+        maven {
+            url 'https://developer.huawei.com/repo/'
+        }
+        flatDir {
+            dirs 'libs'
+        }
+    }
+}
+
+rootProject.name = "C Link"
+include ':app'
+include ':app:popups'
+include ':posterbanao'
+include ':instamojo'
+include ':movie'

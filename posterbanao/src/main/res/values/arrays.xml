@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="fonts_array">
+        <item>default.ttf</item>
+        <item>f(1).ttf</item>
+        <item>hindi_.ttf</item>
+        <item>hindi2.ttf</item>
+        <item>f(2).ttf</item>
+        <item>f(3).ttf</item>
+        <item>f(4).ttf</item>
+        <item>f(5).ttf</item>
+        <item>f(6).ttf</item>
+        <item>f(7).ttf</item>
+        <item>f(8).ttf</item>
+        <item>f(9).otf</item>
+        <item>f(10).otf</item>
+        <item>anek_bold.ttf</item>
+        <item>AnekDevanagari-Bold.ttf</item>
+        <item>AnekDevanagari-ExtraBold.ttf</item>
+        <item>AnekDevanagari-ExtraLight.ttf</item>
+        <item>AnekDevanagari-Light.ttf</item>
+        <item>AnekDevanagari-Medium.ttf</item>
+        <item>AnekDevanagari-Regular.ttf</item>
+        <item>AnekDevanagari-SemiBold.ttf</item>
+        <item>AnekDevanagari-Thin.ttf</item>
+        <item>AnekDevanagari-VariableFont_wdth,wght.ttf</item>
+        <item>AnekDevanagari_Condensed-ExtraBold.ttf</item>
+        <item>AnekDevanagari_Condensed-ExtraLight.ttf</item>
+        <item>AnekDevanagari_Condensed-Light.ttf</item>
+        <item>AnekDevanagari_Condensed-Medium.ttf</item>
+        <item>AnekDevanagari_Condensed-Regular.ttf</item>
+        <item>AnekDevanagari_Condensed-SemiBold.ttf</item>
+        <item>AnekDevanagari_Condensed-Thin.ttf</item>
+        <item>AnekDevanagari_Expanded-Bold.ttf</item>
+        <item>AnekDevanagari_Expanded-ExtraBold.ttf</item>
+        <item>AnekDevanagari_Expanded-ExtraLight.ttf</item>
+        <item>AnekDevanagari_Expanded-Light.ttf</item>
+        <item>AnekDevanagari_Expanded-Medium.ttf</item>
+        <item>AnekDevanagari_Expanded-Regular.ttf</item>
+        <item>AnekDevanagari_Expanded-SemiBold.ttf</item>
+        <item>AnekDevanagari_Expanded-Thin.ttf</item>
+        <item>AnekDevanagari_SemiCondensed-Bold.ttf</item>
+        <item>AnekDevanagari_SemiCondensed-ExtraBold.ttf</item>
+        <item>AnekDevanagari_SemiCondensed-ExtraLight.ttf</item>
+        <item>AnekDevanagari_SemiCondensed-Light.ttf</item>
+        <item>AnekDevanagari_SemiCondensed-Medium.ttf</item>
+        <item>AnekDevanagari_SemiCondensed-Regular.ttf</item>
+        <item>AnekDevanagari_SemiCondensed-SemiBold.ttf</item>
+        <item>AnekDevanagari_SemiCondensed-Thin.ttf</item>
+        <item>AnekDevanagari_SemiExpanded-Bold.ttf</item>
+        <item>AnekDevanagari_SemiExpanded-ExtraBold.ttf</item>
+        <item>AnekDevanagari_SemiExpanded-ExtraLight.ttf</item>
+        <item>AnekDevanagari_SemiExpanded-Light.ttf</item>
+        <item>AnekDevanagari_SemiExpanded-Medium.ttf</item>
+        <item>AnekDevanagari_SemiExpanded-Regular.ttf</item>
+        <item>AnekDevanagari_SemiExpanded-SemiBold.ttf</item>
+        <item>AnekDevanagari_SemiExpanded-Thin.ttf</item>
+        <item>Baloo2-Bold.ttf</item>
+        <item>Baloo2-ExtraBold.ttf</item>
+        <item>Baloo2-Medium.ttf</item>
+        <item>Baloo2-Regular.ttf</item>
+        <item>Baloo2-SemiBold.ttf</item>
+        <item>Baloo2-VariableFont_wght.ttf</item>
+    </string-array>
+    <string-array name="selectAction">
+        <item>Resend OTP</item>
+        <item>Enter OTP Manually</item>
+    </string-array>
+    <string-array name="cat_colors">
+        <item>#F63375</item>
+        <item>#8247EA</item>
+        <item>#F35D52</item>
+        <item>#3AB83F</item>
+        <item>#48ADF0</item>
+        <item>#F16354</item>
+        <item>#1FBD90</item>
+        <item>#9C27B0</item>
+        <item>#BF6C24</item>
+        <item>#F9AD35</item>
+    </string-array>
+
+</resources>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <ImageView
+        android:id="@+id/iv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:src="@drawable/btxt0"/>
+
+    <com.maggie.stroketextviewlibrary.StrokeTextView
+        android:layout_margin="@dimen/_15sdp"
+        android:id="@+id/number"
+        android:layout_centerHorizontal="true"
+        android:drawableLeft="@drawable/ic_call"
+        android:drawablePadding="@dimen/_5sdp"
+        android:layout_marginTop="-3dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0123456789"
+        android:textSize="15sp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/calibrid"
+        app:stroke="5.0"
+        app:strokeColor="#000000"/>
+
+
+    <LinearLayout
+        android:id="@+id/bgView"
+        android:layout_below="@+id/iv"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#191C32"
+        android:orientation="horizontal" />
+
+    <LinearLayout
+        android:layout_below="@+id/iv"
+        android:layout_toLeftOf="@+id/imgLay"
+        android:id="@+id/frameLay"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+
+        <com.maggie.stroketextviewlibrary.StrokeTextView
+            android:id="@+id/user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" Hello Android! "
+            android:textSize="20sp"
+            android:textColor="#3F51B5"
+            android:fontFamily="@font/calibrid"
+            app:stroke="10.0"
+            app:strokeColor="#FFFFFF"/>
+        <com.maggie.stroketextviewlibrary.StrokeTextView
+            android:id="@+id/designation"
+            android:layout_marginTop="-3dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" Hello Android! "
+            android:textSize="13sp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/calibrid"/>
+
+    </LinearLayout>
+
+    <androidx.cardview.widget.CardView
+        android:layout_alignBottom="@+id/bgView"
+        android:id="@+id/imgLay"
+        android:layout_alignParentRight="true"
+        android:layout_margin="@dimen/_10sdp"
+        app:cardCornerRadius="@dimen/_5sdp"
+        app:cardElevation="@dimen/_10sdp"
+        android:layout_width="80dp"
+        android:layout_height="80dp">
+        <androidx.cardview.widget.CardView
+            app:cardCornerRadius="@dimen/_5sdp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/_3sdp">
+            <ImageView
+                android:id="@+id/profile_pic"
+                android:src="@drawable/flag_india"
+                android:scaleType="centerCrop"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </androidx.cardview.widget.CardView>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:layout_marginBottom="@dimen/_15sdp"
+    tools:context=".ui.fragments.viewpager.FilterUserFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_margin="@dimen/_5sdp"
+        android:orientation="horizontal"
+        android:transitionName="number_trans">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnReset"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/sign_enabled"
+            android:gravity="center"
+            android:inputType="none"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:text="Reset"
+            android:textColor="@color/white"
+            android:textColorHint="#AAAAAB" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/filter"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/sign_enabled"
+            android:gravity="center"
+            android:inputType="none"
+
+            android:layout_marginStart="@dimen/_5sdp"
+            android:text="Filter Users"
+            android:textColor="@color/white"
+            android:textColorHint="#AAAAAB" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:background="@drawable/input_box_bg"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:transitionName="number_trans">
+
+        <TextView
+            android:id="@+id/District"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:hint="District"
+            android:inputType="none"
+
+            android:paddingStart="@dimen/_15sdp"
+            android:paddingEnd="@dimen/_11sdp"
+            android:textColor="@color/black"
+            android:textColorHint="#AAAAAB" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/Tehsil"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:background="@drawable/input_box_bg"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:transitionName="number_trans"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tehsil"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:hint="Tehsil"
+            android:inputType="none"
+
+            android:paddingStart="@dimen/_15sdp"
+            android:paddingEnd="@dimen/_11sdp"
+            android:textColor="@color/black"
+            android:textColorHint="#AAAAAB" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/Village"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:background="@drawable/input_box_bg"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:transitionName="number_trans"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/village"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:hint="Village"
+            android:inputType="none"
+
+            android:paddingStart="@dimen/_15sdp"
+            android:paddingEnd="@dimen/_11sdp"
+            android:textColor="@color/black"
+            android:textColorHint="#AAAAAB" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/Age"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:background="@drawable/input_box_bg"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:transitionName="number_trans">
+
+        <Spinner
+            android:id="@+id/age"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:entries="@array/age_range"
+            android:gravity="center_vertical"
+            android:hint="Age Group"
+            android:inputType="none"
+
+            android:paddingStart="@dimen/_15sdp"
+            android:paddingEnd="@dimen/_11sdp"
+            android:textColor="@color/black"
+            android:textColorHint="#AAAAAB" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/Gender"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:background="@drawable/input_box_bg"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:transitionName="number_trans">
+
+        <Spinner
+            android:id="@+id/gender"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:entries="@array/gender_array"
+            android:gravity="center_vertical"
+            android:hint="Gender"
+            android:inputType="none"
+            android:paddingStart="@dimen/_15sdp"
+            android:paddingEnd="@dimen/_11sdp"
+            android:textColor="@color/black"
+            android:textColorHint="#AAAAAB" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/Booth"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:background="@drawable/input_box_bg"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:transitionName="number_trans">
+
+        <TextView
+            android:id="@+id/booth"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:hint="Booth"
+            android:inputType="none"
+
+            android:paddingStart="@dimen/_15sdp"
+            android:paddingEnd="@dimen/_11sdp"
+            android:textColor="@color/black"
+            android:textColorHint="#AAAAAB" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/Role"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp"
+        android:visibility="visible"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:background="@drawable/input_box_bg"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:transitionName="number_trans">
+
+        <TextView
+            android:id="@+id/role"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:hint="Role"
+            android:inputType="none"
+
+            android:paddingStart="@dimen/_15sdp"
+            android:paddingEnd="@dimen/_11sdp"
+            android:textColor="@color/black"
+            android:textColorHint="#AAAAAB" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/Birthdate"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:background="@drawable/input_box_bg"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:transitionName="number_trans">
+
+        <TextView
+            android:id="@+id/birthdate"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:hint="Birthdate"
+            android:inputType="none"
+
+            android:paddingStart="@dimen/_15sdp"
+            android:paddingEnd="@dimen/_11sdp"
+            android:textColor="@color/black"
+            android:textColorHint="#AAAAAB" />
+
+    </LinearLayout>
+
+
+</LinearLayout>
