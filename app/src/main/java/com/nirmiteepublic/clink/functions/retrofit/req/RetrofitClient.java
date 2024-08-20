@@ -17,7 +17,7 @@ public class RetrofitClient {
     //
 //    https://clink-production.up.railway.app/
     //"http://192.168.1.9:3000/"
-//    public static final String BASE_URL = "http://192.168.1.8:3000/";
+//    public static final String BASE_URL = "http://192.168.1.8:3000/"; latesttttttttttttttt
     //118.139.167.71
 //    public static final String BASE_URL = "http://networkdrive.info:8000/";
     public static final String BASE_URL = "http://networkdrive.info:8000/";
